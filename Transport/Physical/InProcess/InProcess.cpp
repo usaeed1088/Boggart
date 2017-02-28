@@ -9,6 +9,12 @@ namespace Transport
 	InProcess::InProcess()
 	{
 		m_Connected = true;
+		Subscribe(this);
+	}
+
+	InProcess::~InProcess()
+	{
+		Unsubscribe(this);
 	}
 
 	void InProcess::Subscribe(const InProcess* subscriber)
@@ -46,7 +52,7 @@ namespace Transport
 
 		if (m_Queue.empty()) { return Type::Bytes(); }
 
-		Type::Bytes data = m_Queue.back();
+		Type::Bytes data = m_Queue.back(); // TODO: This should not be back()
 		m_Queue.erase(m_Queue.begin());
 		return data;
 	}

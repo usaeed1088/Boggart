@@ -15,11 +15,12 @@ namespace Transport
 		mutable std::mutex m_QueueLock;
 		mutable Type::Queue m_Queue;
 
+		void Subscribe(const InProcess* subscriber);
+		void Unsubscribe(const InProcess* subscriber);
+
 	public:
 		InProcess();
-
-		static void Subscribe(const InProcess* subscriber);
-		static void Unsubscribe(const InProcess* subscriber);
+		~InProcess();
 
 		void Send(const Type::Bytes& data) const override;
 		Type::Bytes Receive() const override;

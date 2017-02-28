@@ -8,10 +8,8 @@
 
 void Sender()
 {
-	Transport::InProcess physical;
+	static Transport::InProcess physical;
 	Transport::Transporter transporter(0x01, physical);
-
-	Transport::InProcess::Subscribe(&physical);
 
 	while (true)
 	{
@@ -27,10 +25,8 @@ void Sender()
 
 void Receiver()
 {
-	Transport::InProcess physical;
+	static Transport::InProcess physical;
 	Transport::Transporter transporter(0x02, physical);
-
-	Transport::InProcess::Subscribe(&physical);
 
 	while (true)
 	{
@@ -40,8 +36,8 @@ void Receiver()
 			std::cout << "Received from " << std::hex << 0x01 << " ";
 			for (auto c : data) { std::cout << c; }
 			std::cout << std::endl;
-			std::this_thread::sleep_for(std::chrono::milliseconds(10));
 		}
+		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	}
 }
 
