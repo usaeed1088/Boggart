@@ -22,11 +22,26 @@
     <Filter Include="Message">
       <UniqueIdentifier>{9d38f30b-cc0d-4793-af68-9efad7d3ee1b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physical\TCP">
+      <UniqueIdentifier>{2fddce27-32ea-40dc-b670-a4209968ac63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physical\TCP\Server">
+      <UniqueIdentifier>{03801cf3-c2ba-49a8-bf64-0d4d09d09dd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Physical\TCP\Client">
+      <UniqueIdentifier>{26e31139-c39e-4f65-80c9-45bc0e381fa3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OSAPI">
+      <UniqueIdentifier>{dfd72f99-cbe8-40b2-ace6-73b7cda402e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OSAPI\Socket">
+      <UniqueIdentifier>{20a6d96e-2d45-4681-bd3d-daf9fe8716cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="OSAPI\Windows">
+      <UniqueIdentifier>{798749a9-7772-4bec-9cb2-b79bbc81e32c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Type.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Physical\Physical.h">
       <Filter>Physical</Filter>
     </ClInclude>
@@ -38,6 +53,30 @@
     </ClInclude>
     <ClInclude Include="Transporter.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Physical\TCP\Server\Server.h">
+      <Filter>Physical\TCP\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="Physical\TCP\Client\Client.h">
+      <Filter>Physical\TCP\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="OSAPI\OSAPI.h">
+      <Filter>OSAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="DataType.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OSAPI\Socket\Socket.h">
+      <Filter>OSAPI\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="OSAPI\Socket\Structs.h">
+      <Filter>OSAPI\Socket</Filter>
+    </ClInclude>
+    <ClInclude Include="OSAPI\SocketAPI.h">
+      <Filter>OSAPI</Filter>
+    </ClInclude>
+    <ClInclude Include="OSAPI\Windows\Windows.h">
+      <Filter>OSAPI\Windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -52,6 +91,21 @@
     </ClCompile>
     <ClCompile Include="Transporter.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Physical\TCP\Server\Server.cpp">
+      <Filter>Physical\TCP\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="Physical\TCP\Client\Client.cpp">
+      <Filter>Physical\TCP\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="OSAPI\Socket\Socket.cpp">
+      <Filter>OSAPI\Socket</Filter>
+    </ClCompile>
+    <ClCompile Include="OSAPI\Windows\Windows.cpp">
+      <Filter>OSAPI\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="OSAPI\OSAPI.cpp">
+      <Filter>OSAPI</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

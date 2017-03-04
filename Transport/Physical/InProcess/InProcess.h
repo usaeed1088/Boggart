@@ -13,19 +13,19 @@ namespace Transport
 
 	private:
 		mutable std::mutex m_QueueLock;
-		mutable Type::Queue m_Queue;
+		mutable DataType::Queue m_Queue;
 
 		void Subscribe(const InProcess* subscriber);
 		void Unsubscribe(const InProcess* subscriber);
 
 	public:
 		InProcess();
-		~InProcess();
+		~InProcess() override;
 
-		void Send(const Type::Bytes& data) const override;
-		Type::Bytes Receive() const override;
+		void Send(const DataType::Bytes& data) const override;
+		DataType::Bytes Receive() const override;
 
 	private:
-		void Push(const Type::Bytes& data) const;
+		void Push(const DataType::Bytes& data) const;
 	};
 }

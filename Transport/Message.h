@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Type.h"
+#include "DataType.h"
 
 namespace Transport
 {
 	class Message
 	{
 	public:
-		enum class Type : Transport::Type::Byte
+		enum class Type : Transport::DataType::Byte
 		{
 			Unknown,
 			Request,
@@ -16,36 +16,36 @@ namespace Transport
 
 	private:
 		// Data members
-		Transport::Type::Id			m_Source;
-		Transport::Type::Id			m_Destination;
-		Transport::Type::Sequence	m_Sequence;
+		Transport::DataType::Id			m_Source;
+		Transport::DataType::Id			m_Destination;
+		Transport::DataType::Sequence	m_Sequence;
 		Transport::Message::Type	m_Type;
-		Transport::Type::Size		m_PayloadSize;
-		Transport::Type::Bytes		m_Payload;
+		Transport::DataType::Size		m_PayloadSize;
+		Transport::DataType::Bytes		m_Payload;
 
 		// Meta data
 		bool m_Valid;
 
 	public:
-		Message(Transport::Type::Id source, Transport::Type::Id destination, Transport::Type::Sequence sequence,
+		Message(Transport::DataType::Id source, Transport::DataType::Id destination, Transport::DataType::Sequence sequence,
 			Transport::Message::Type type);
 
-		Message(Transport::Type::Id source, Transport::Type::Id destination, Transport::Type::Sequence sequence,
-			Transport::Message::Type type, const Transport::Type::Bytes& payload);
+		Message(Transport::DataType::Id source, Transport::DataType::Id destination, Transport::DataType::Sequence sequence,
+			Transport::Message::Type type, const Transport::DataType::Bytes& payload);
 
-		Message(const Transport::Type::Bytes& data);
+		Message(const Transport::DataType::Bytes& data);
 
 		bool Valid() const;
 
-		Transport::Type::Id Source() const;
-		Transport::Type::Id Destination() const;
-		Transport::Type::Sequence Sequence() const;
+		Transport::DataType::Id Source() const;
+		Transport::DataType::Id Destination() const;
+		Transport::DataType::Sequence Sequence() const;
 		Transport::Message::Type MessageType() const;
-		Transport::Type::Bytes Payload() const;
+		Transport::DataType::Bytes Payload() const;
 
-		Transport::Type::Bytes Encode() const;
+		Transport::DataType::Bytes Encode() const;
 
 	private:
-		bool Decode(const Transport::Type::Bytes& data);
+		bool Decode(const Transport::DataType::Bytes& data);
 	};
 }

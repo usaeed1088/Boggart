@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../Type.h"
+#include "../DataType.h"
 
 namespace Transport
 {
@@ -11,9 +11,10 @@ namespace Transport
 
 	protected:
 		Physical();
+		virtual ~Physical();
 
 	public:
-		virtual void Send(const Type::Bytes& data) const = 0;
-		virtual Type::Bytes Receive() const = 0;
+		virtual void Send(const DataType::Bytes& data) const = 0;
+		virtual DataType::Bytes Receive() const = 0;
 	};
 }

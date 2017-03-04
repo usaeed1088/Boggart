@@ -143,15 +143,27 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Message.h" />
+    <ClInclude Include="OSAPI\OSAPI.h" />
+    <ClInclude Include="OSAPI\SocketAPI.h" />
+    <ClInclude Include="OSAPI\Socket\Socket.h" />
+    <ClInclude Include="OSAPI\Socket\Structs.h" />
+    <ClInclude Include="OSAPI\Windows\Windows.h" />
     <ClInclude Include="Physical\InProcess\InProcess.h" />
     <ClInclude Include="Physical\Physical.h" />
+    <ClInclude Include="Physical\TCP\Client\Client.h" />
+    <ClInclude Include="Physical\TCP\Server\Server.h" />
     <ClInclude Include="Transporter.h" />
-    <ClInclude Include="Type.h" />
+    <ClInclude Include="DataType.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Message.cpp" />
+    <ClCompile Include="OSAPI\OSAPI.cpp" />
+    <ClCompile Include="OSAPI\Socket\Socket.cpp" />
+    <ClCompile Include="OSAPI\Windows\Windows.cpp" />
     <ClCompile Include="Physical\InProcess\InProcess.cpp" />
     <ClCompile Include="Physical\Physical.cpp" />
+    <ClCompile Include="Physical\TCP\Client\Client.cpp" />
+    <ClCompile Include="Physical\TCP\Server\Server.cpp" />
     <ClCompile Include="Transporter.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

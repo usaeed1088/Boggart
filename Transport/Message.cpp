@@ -2,7 +2,7 @@
 
 namespace Transport
 {
-	Message::Message(Transport::Type::Id source, Transport::Type::Id destination, Transport::Type::Sequence sequence,
+	Message::Message(Transport::DataType::Id source, Transport::DataType::Id destination, Transport::DataType::Sequence sequence,
 		Transport::Message::Type type):
 		m_Source(source), m_Destination(destination), m_Sequence(sequence), m_Type(type), m_PayloadSize(0), m_Payload(),
 		m_Valid(false)
@@ -10,15 +10,15 @@ namespace Transport
 
 	}
 
-	Message::Message(Transport::Type::Id source, Transport::Type::Id destination, Transport::Type::Sequence sequence,
-		Transport::Message::Type type, const Transport::Type::Bytes& payload):
+	Message::Message(Transport::DataType::Id source, Transport::DataType::Id destination, Transport::DataType::Sequence sequence,
+		Transport::Message::Type type, const Transport::DataType::Bytes& payload):
 		m_Source(source), m_Destination(destination), m_Sequence(sequence), m_Type(type), m_PayloadSize(payload.size()), m_Payload(payload),
 		m_Valid(false)
 	{
 
 	}
 
-	Message::Message(const Transport::Type::Bytes& data):
+	Message::Message(const Transport::DataType::Bytes& data):
 		m_Source(0), m_Destination(0), m_Sequence(0), m_Type(Type::Unknown), m_PayloadSize(0), m_Payload(),
 		m_Valid(false)
 	{
@@ -33,17 +33,17 @@ namespace Transport
 		return m_Valid;
 	}
 
-	Transport::Type::Id Message::Source() const
+	Transport::DataType::Id Message::Source() const
 	{
 		return m_Source;
 	}
 
-	Transport::Type::Id Message::Destination() const
+	Transport::DataType::Id Message::Destination() const
 	{
 		return m_Destination;
 	}
 
-	Transport::Type::Sequence Message::Sequence() const
+	Transport::DataType::Sequence Message::Sequence() const
 	{
 		return m_Sequence;
 	}
@@ -53,17 +53,17 @@ namespace Transport
 		return m_Type;
 	}
 
-	Transport::Type::Bytes Message::Payload() const
+	Transport::DataType::Bytes Message::Payload() const
 	{
 		return m_Payload;
 	}
 
 	template<class T>
-	static void Append(Transport::Type::Bytes& data, T value)
+	static void Append(Transport::DataType::Bytes& data, T value)
 	{
-		Transport::Type::Bytes bytes;
+		Transport::DataType::Bytes bytes;
 
-		for (Type::Size i = 0; i < sizeof(value); i++)
+		for (DataType::Size i = 0; i < sizeof(value); i++)
 		{
 			bytes.push_back(value >> (i * 8));
 		}
@@ -71,17 +71,17 @@ namespace Transport
 		data.insert(data.end(), bytes.begin(), bytes.end());
 	}
 
-	Transport::Type::Bytes Message::Encode() const
+	Transport::DataType::Bytes Message::Encode() const
 	{
-		Transport::Type::Bytes data;
+		Transport::DataType::Bytes data;
 
 		Append(data, m_Source);
 		Append(data, m_Destination);
 		Append(data, m_Sequence);
-		Append(data, static_cast<Transport::Type::Byte>(m_Type));
+		Append(data, static_cast<Transport::DataType::Byte>(m_Type));
 		Append(data, m_PayloadSize);
 
-		for (Transport::Type::Byte b : m_Payload)
+		for (Transport::DataType::Byte b : m_Payload)
 		{
 			data.push_back(b);
 		}
@@ -90,11 +90,11 @@ namespace Transport
 	}
 
 	template <class T>
-	static T Subtract(Transport::Type::Bytes& data)
+	static T Subtract(Transport::DataType::Bytes& data)
 	{
 		T value = 0;
 
-		for (Type::Size i = 0; i < sizeof(value); i++)
+		for (DataType::Size i = 0; i < sizeof(value); i++)
 		{
 			value |= static_cast<T>(data[i]) << (i * 8);
 		}
@@ -103,23 +103,23 @@ namespace Transport
 		return value;
 	}
 
-	bool Message::Decode(const Transport::Type::Bytes& data)
+	bool Message::Decode(const Transport::DataType::Bytes& data)
 	{
-		const Transport::Type::Size HeaderLength =
-			sizeof(m_Source) + sizeof(m_Destination) + sizeof(m_Sequence) + sizeof((Transport::Type::Byte)m_Type) + sizeof(m_PayloadSize);
+		const Transport::DataType::Size HeaderLength =
+			sizeof(m_Source) + sizeof(m_Destination) + sizeof(m_Sequence) + sizeof((Transport::DataType::Byte)m_Type) + sizeof(m_PayloadSize);
 
 		if (data.size() < HeaderLength)
 		{
 			return false;
 		}
 
-		Transport::Type::Bytes bytes = data;
+		Transport::DataType::Bytes bytes = data;
 
-		m_Source		= Subtract<Transport::Type::Id>(bytes);
-		m_Destination	= Subtract<Transport::Type::Id>(bytes);
-		m_Sequence		= Subtract<Transport::Type::Sequence>(bytes);
-		m_Type			= static_cast<Message::Type>(Subtract<Transport::Type::Byte>(bytes));
-		m_PayloadSize	= Subtract<Transport::Type::Size>(bytes);
+		m_Source		= Subtract<Transport::DataType::Id>(bytes);
+		m_Destination	= Subtract<Transport::DataType::Id>(bytes);
+		m_Sequence		= Subtract<Transport::DataType::Sequence>(bytes);
+		m_Type			= static_cast<Message::Type>(Subtract<Transport::DataType::Byte>(bytes));
+		m_PayloadSize	= Subtract<Transport::DataType::Size>(bytes);
 
 		if (bytes.size() < m_PayloadSize)
 		{

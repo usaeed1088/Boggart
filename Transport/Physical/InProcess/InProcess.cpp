@@ -15,6 +15,7 @@ namespace Transport
 	InProcess::~InProcess()
 	{
 		Unsubscribe(this);
+		m_Queue.clear();
 	}
 
 	void InProcess::Subscribe(const InProcess* subscriber)
@@ -37,7 +38,7 @@ namespace Transport
 		}
 	}
 
-	void InProcess::Send(const Type::Bytes& data) const
+	void InProcess::Send(const DataType::Bytes& data) const
 	{
 		for (const InProcess* subscriber : Subscribers)
 		{
@@ -46,18 +47,18 @@ namespace Transport
 		}
 	}
 
-	Type::Bytes InProcess::Receive() const
+	DataType::Bytes InProcess::Receive() const
 	{
 		std::lock_guard<std::mutex> lock(m_QueueLock);
 
-		if (m_Queue.empty()) { return Type::Bytes(); }
+		if (m_Queue.empty()) { return DataType::Bytes(); }
 
-		Type::Bytes data = m_Queue.back(); // TODO: This should not be back()
+		DataType::Bytes data = m_Queue.back(); // TODO: This should not be back()
 		m_Queue.erase(m_Queue.begin());
 		return data;
 	}
 
-	void InProcess::Push(const Type::Bytes& data) const
+	void InProcess::Push(const DataType::Bytes& data) const
 	{
 		std::lock_guard<std::mutex> lock(m_QueueLock);
 		m_Queue.push_back(data);

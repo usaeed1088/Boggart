@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Type.h"
+#include "DataType.h"
 #include "Message.h"
 #include "Physical/Physical.h"
 
@@ -9,26 +9,26 @@ namespace Transport
 	class Transporter
 	{
 	public:
-		static const Type::Id BROADCAST = 0;
+		static const DataType::Id BROADCAST = 0;
 
 	private:
-		Type::Id m_Id;
+		DataType::Id m_Id;
 		const Physical& m_Physical;
 
 	public:
-		Transporter(Type::Id id, const Physical& physical);
+		Transporter(DataType::Id id, const Physical& physical);
 		
-		void Send(Type::Id destination, const Type::Bytes& data, bool guaranteedDelivery);
-		Type::Bytes Receive(Type::Id source);
+		void Send(DataType::Id destination, const DataType::Bytes& data, bool guaranteedDelivery);
+		DataType::Bytes Receive(DataType::Id source);
 
 	private:
-		Type::Bytes OnRequest(const Message& message, Type::Id source);
-		Type::Bytes OnReceipt(const Message& message, Type::Id source);
+		DataType::Bytes OnRequest(const Message& message, DataType::Id source);
+		DataType::Bytes OnReceipt(const Message& message, DataType::Id source);
 
 	private:
 		void SendReceipt(const Message& message);
 
 	private:
-		Type::Sequence GenerateSequence();
+		DataType::Sequence GenerateSequence();
 	};
 }

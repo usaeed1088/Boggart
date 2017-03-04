@@ -2,10 +2,11 @@
 
 #include <vector>
 #include <list>
+#include <string>
 
 namespace Transport
 {
-	namespace Type
+	namespace DataType
 	{
 		typedef std::uint8_t		Byte;
 		typedef std::vector<Byte>	Bytes;
@@ -16,5 +17,9 @@ namespace Transport
 		typedef std::list<Bytes>	Queue;
 
 		typedef std::size_t			Size;
+
+		typedef std::string			Text;
+
+		typedef std::int32_t		SocketId;
 	}
 }
