@@ -19,7 +19,7 @@ namespace Transport
 		Transport::DataType::Id			m_Source;
 		Transport::DataType::Id			m_Destination;
 		Transport::DataType::Sequence	m_Sequence;
-		Transport::Message::Type	m_Type;
+		Transport::Message::Type		m_Type;
 		Transport::DataType::Size		m_PayloadSize;
 		Transport::DataType::Bytes		m_Payload;
 

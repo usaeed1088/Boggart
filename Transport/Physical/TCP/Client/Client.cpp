@@ -29,11 +29,19 @@ namespace Transport
 			return m_Socket.Receive();
 		}
 
+		void Client::Process() const
+		{
+			// Empty
+		}
+
 		bool Client::Open()
 		{
 			bool ret = true;
+
+			ret &= m_Socket.Open();
 			ret &= m_Socket.Connect(m_ServerAddress);
 			ret &= m_Socket.SetNonBlocking();
+
 			return ret;
 		}
 

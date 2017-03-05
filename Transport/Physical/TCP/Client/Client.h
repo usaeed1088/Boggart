@@ -21,6 +21,9 @@ namespace Transport
 			DataType::Bytes Receive() const override;
 
 		private:
+			void Process() const override;
+
+		private:
 			bool Open();
 			void Close();
 		};

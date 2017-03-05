@@ -16,5 +16,9 @@ namespace Transport
 	public:
 		virtual void Send(const DataType::Bytes& data) const = 0;
 		virtual DataType::Bytes Receive() const = 0;
+
+	protected:
+		friend class Transporter;
+		virtual void Process() const = 0;
 	};
 }

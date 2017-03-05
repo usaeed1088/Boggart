@@ -7,15 +7,15 @@ namespace Transport
 	Socket::Socket(SocketType type):
 		m_Type(type),
 		m_Connected(false),
+		m_SocketId(0),
 		m_SocketAPI(OSAPI::Instance())
 	{
-		Open(type);
+		
 	}
 
 	Socket::~Socket()
 	{
-		// TODO: Make it auto close upon destruction
-		//Close();
+
 	}
 
 	bool Socket::Connected()
@@ -23,11 +23,12 @@ namespace Transport
 		return m_Connected;
 	}
 
-	bool Socket::Open(SocketType type)
+	bool Socket::Open()
 	{
-		m_SocketId = m_SocketAPI->SocketOpen(SocketFamily::InterNetwork, type, 0);
+		m_SocketId = m_SocketAPI->SocketOpen(SocketFamily::InterNetwork, m_Type, 0);
 		if (m_SocketId > 0)
 		{
+			m_Connected = true;
 			return true;
 		}
 
@@ -54,9 +55,12 @@ namespace Transport
 	{
 		DataType::SocketId id = m_SocketAPI->SocketAccept(m_SocketId, addr);
 
-		socket.m_SocketId = id;
-		socket.m_Connected = true;
-		
+		if (id > 0)
+		{
+			socket.m_SocketId = id;
+			socket.m_Connected = true;
+		}
+
 		return id > 0;
 	}
 

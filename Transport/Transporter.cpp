@@ -4,9 +4,18 @@ namespace Transport
 {
 	Transporter::Transporter(DataType::Id id, const Physical& physical):
 		m_Id(id),
-		m_Physical(physical)
+		m_Physical(physical),
+		m_IncomingMessages()
 	{
 
+	}
+
+	void Transporter::Process()
+	{
+		// TODO: Process Heartbeats
+		// TODO: Process Retransmissions
+		m_Physical.Process();
+		ProcessIncoming();
 	}
 
 	void Transporter::Send(DataType::Id destination, const DataType::Bytes& data, bool guaranteedDelivery)
@@ -20,46 +29,62 @@ namespace Transport
 
 	DataType::Bytes Transporter::Receive(DataType::Id source)
 	{
+		if (m_IncomingMessages.empty())
+		{
+			return DataType::Bytes();
+		}
+
+		DataType::Bytes data;
+		std::list<Message>::iterator removable;
+
+		for (std::list<Message>::iterator it = m_IncomingMessages.begin(); it != m_IncomingMessages.end(); ++it)
+		{
+			if (it->Source() == source)
+			{
+				data = it->Payload();
+				removable = it;
+				break;
+			}
+		}
+
+		m_IncomingMessages.erase(removable);
+		return data;
+	}
+
+	void Transporter::ProcessIncoming()
+	{
 		DataType::Bytes data = m_Physical.Receive();
 		Message message(data);
 
 		if (!message.Valid())
 		{
-			return DataType::Bytes();
+			return;
 		}
 
 		switch (message.MessageType())
 		{
 		case Message::Type::Request:
-			return OnRequest(message, source);
+			OnRequest(message);
 			break;
 		case Message::Type::Receipt:
-			return OnReceipt(message, source);
+			OnReceipt(message);
 			break;
-		}	
-
-		return DataType::Bytes();
+		}
 	}
 
-	DataType::Bytes Transporter::OnRequest(const Message& message, DataType::Id source)
+	void Transporter::OnRequest(const Message& message)
 	{
 		if (message.Destination() == m_Id)
 		{
 			SendReceipt(message);
 		}
 
-		if (message.Source() == source)
-		{
-			return message.Payload();
-		}
-
-		return DataType::Bytes();
+		m_IncomingMessages.push_back(message);
 	}
 
-	DataType::Bytes Transporter::OnReceipt(const Message& message, DataType::Id source)
+	void Transporter::OnReceipt(const Message& message)
 	{
 		// TODO: Process receipts
-		return DataType::Bytes();
 	}
 
 	DataType::Sequence Transporter::GenerateSequence()

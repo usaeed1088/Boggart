@@ -58,6 +58,11 @@ namespace Transport
 		return data;
 	}
 
+	void InProcess::Process() const
+	{
+		// Empty
+	}
+
 	void InProcess::Push(const DataType::Bytes& data) const
 	{
 		std::lock_guard<std::mutex> lock(m_QueueLock);

@@ -7,6 +7,16 @@
 #include <thread>
 #include <chrono>
 #include <string>
+#include <mutex>
+
+void Print(std::string physical, const Transport::DataType::Bytes& bytes)
+{
+	static std::mutex lock;
+	std::lock_guard<std::mutex> guard(lock);
+
+	std::string data(bytes.begin(), bytes.end());
+	std::cout << "[" << physical << "] " << data << std::endl;
+}
 
 void Sender()
 {
@@ -15,13 +25,14 @@ void Sender()
 
 	while (true)
 	{
+		transporter.Process();
+
 		std::string string("a quick brown fox jumps over the lazy dog");
 		Transport::DataType::Bytes data(string.begin(), string.end());
 
 		transporter.Send(0x02, data, true);
-		transporter.Receive(0x02);
 
-		std::this_thread::sleep_for(std::chrono::milliseconds(1000));
+		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
 }
 
@@ -32,12 +43,12 @@ void Receiver()
 
 	while (true)
 	{
+		transporter.Process();
+
 		Transport::DataType::Bytes data = transporter.Receive(0x01);
 		if (!data.empty())
 		{
-			std::cout << "Received from " << std::hex << 0x01 << " ";
-			for (auto c : data) { std::cout << c; }
-			std::cout << std::endl;
+			Print("InProcess", data);
 		}
 		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	}
@@ -50,13 +61,12 @@ void Server()
 
 	while (true)
 	{
-		physical.Process();
+		transporter.Process();
 
 		std::string string("a quick brown fox jumps over the lazy dog");
 		Transport::DataType::Bytes data(string.begin(), string.end());
 
 		transporter.Send(0x02, data, true);
-		transporter.Receive(0x02);
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(100));
 	}
@@ -69,12 +79,12 @@ void Client()
 
 	while (true)
 	{
+		transporter.Process();
+
 		Transport::DataType::Bytes data = transporter.Receive(0x01);
 		if (!data.empty())
 		{
-			std::cout << "Received from " << std::hex << 0x01 << " ";
-			for (auto c : data) { std::cout << c; }
-			std::cout << std::endl;
+			Print("TCP Client", data);
 		}
 		std::this_thread::sleep_for(std::chrono::milliseconds(10));
 	}
@@ -89,7 +99,7 @@ int main(int argc, char* argv[])
 	threads.push_back(std::thread(Sender));
 	threads.push_back(std::thread(Receiver));
 
-	for (int i = 0; i < threads.size(); i++)
+	for (unsigned int i = 0; i < threads.size(); i++)
 	{
 		threads[i].join();
 	}

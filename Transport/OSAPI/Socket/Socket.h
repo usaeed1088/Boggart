@@ -21,10 +21,8 @@ namespace Transport
 
 		bool Connected();
 
-	private:
-		bool Open(SocketType type);
-
 	public:
+		bool Open();
 		bool Close();
 
 	public:

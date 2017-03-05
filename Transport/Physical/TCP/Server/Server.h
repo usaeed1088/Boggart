@@ -21,9 +21,11 @@ namespace Transport
 			void Send(const DataType::Bytes& data) const override;
 			DataType::Bytes Receive() const override;
 
-			// Test function begins
-			void Process();
-			// Test function ends
+		private:
+			void Process() const override;
+			void ProcessConnections() const;
+			void ProcessIncomingData() const;
+
 		private:
 			bool Open();
 			void Close();

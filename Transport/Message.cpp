@@ -65,7 +65,7 @@ namespace Transport
 
 		for (DataType::Size i = 0; i < sizeof(value); i++)
 		{
-			bytes.push_back(value >> (i * 8));
+			bytes.push_back(static_cast<DataType::Byte>(value >> (i * 8)));
 		}
 
 		data.insert(data.end(), bytes.begin(), bytes.end());
