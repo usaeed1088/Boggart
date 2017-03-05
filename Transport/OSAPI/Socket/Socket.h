@@ -23,6 +23,8 @@ namespace Transport
 
 	private:
 		bool Open(SocketType type);
+
+	public:
 		bool Close();
 
 	public:

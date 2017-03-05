@@ -10,7 +10,7 @@ namespace Transport
 	{
 		SOCKADDR_IN sockAddr_in = {};
 		int length_SOCKADDR_IN = sizeof(SOCKADDR_IN);
-		sockAddr_in.sin_family = AF_INET;								/* set the type of connection to TCP/IP */
+		sockAddr_in.sin_family = AF_INET;								// set the type of connection to TCP/IP
 		sockAddr_in.sin_addr.s_addr = inet_addr(addr.Address.c_str());
 		sockAddr_in.sin_port = htons(addr.Port);
 

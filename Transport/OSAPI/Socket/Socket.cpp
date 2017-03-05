@@ -14,7 +14,8 @@ namespace Transport
 
 	Socket::~Socket()
 	{
-		Close();
+		// TODO: Make it auto close upon destruction
+		//Close();
 	}
 
 	bool Socket::Connected()

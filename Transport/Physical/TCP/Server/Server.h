@@ -11,9 +11,11 @@ namespace Transport
 		{
 		private:
 			mutable Socket m_Socket;
+			SocketAddress m_MyAddress;
+			mutable std::vector<Socket> m_Clients;
 
 		public:
-			Server();
+			Server(SocketAddress myAddress);
 			~Server() override;
 
 			void Send(const DataType::Bytes& data) const override;

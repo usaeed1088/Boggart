@@ -4,8 +4,9 @@ namespace Transport
 {
 	namespace TCP
 	{
-		Server::Server():
-			m_Socket(SocketType::Stream)
+		Server::Server(SocketAddress myAddress):
+			m_Socket(SocketType::Stream),
+			m_MyAddress(myAddress)
 		{
 			if (Open())
 			{
@@ -20,7 +21,10 @@ namespace Transport
 
 		void Server::Send(const DataType::Bytes& data) const
 		{
-			m_Socket.Send(data);
+			for (auto client : m_Clients)
+			{
+				client.Send(data);
+			}
 		}
 
 		DataType::Bytes Server::Receive() const
@@ -31,21 +35,10 @@ namespace Transport
 		// Test function begins
 		void Server::Process()
 		{
-			static std::vector<Socket> sockets;
 			Socket socket(SocketType::Stream);
-			if (m_Socket.Accept(SocketAddress("127.0.0.1", 9999), socket))
+			if (m_Socket.Accept(m_MyAddress, socket))
 			{
-				sockets.push_back(socket);
-			}
-
-			for (auto socket : sockets)
-			{
-				std::string data("a quick brown fox jumps over the lazy dog");
-				DataType::Bytes bytes(data.begin(), data.end());
-				if (socket.Send(bytes))
-				{
-					continue;
-				}
+				m_Clients.push_back(socket);
 			}
 		}
 		// Test function ends
@@ -55,7 +48,7 @@ namespace Transport
 			bool ret = true;
 
 			ret &= m_Socket.SetNonBlocking();
-			ret &= m_Socket.Bind(SocketAddress("127.0.0.1", 9999));
+			ret &= m_Socket.Bind(m_MyAddress);
 			ret &= m_Socket.Listen(0xFF);
 
 			return ret;
@@ -63,7 +56,7 @@ namespace Transport
 
 		void Server::Close()
 		{
-
+			m_Socket.Close();
 		}
 	}
 }
