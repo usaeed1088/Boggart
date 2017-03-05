@@ -27,7 +27,7 @@ void Sender()
 	{
 		transporter.Process();
 
-		std::string string("a quick brown fox jumps over the lazy dog");
+		std::string string("a quick [brown] fox jumps\\ over the [laz]y dog");
 		Transport::DataType::Bytes data(string.begin(), string.end());
 
 		transporter.Send(0x02, data, true);
@@ -94,8 +94,11 @@ int main(int argc, char* argv[])
 {
 	std::vector<std::thread> threads;
 
+	// TCP
 	threads.push_back(std::thread(Server));
 	threads.push_back(std::thread(Client));
+
+	// InProcess
 	threads.push_back(std::thread(Sender));
 	threads.push_back(std::thread(Receiver));
 

@@ -1,8 +1,11 @@
 #include "Transporter.h"
 
+#include "Parser/Parser.h"
+
 namespace Transport
 {
 	Transporter::Transporter(DataType::Id id, const Physical& physical):
+		m_Parser(),
 		m_Id(id),
 		m_Physical(physical),
 		m_IncomingMessages()
@@ -12,7 +15,6 @@ namespace Transport
 
 	void Transporter::Process()
 	{
-		// TODO: Process Heartbeats
 		// TODO: Process Retransmissions
 		m_Physical.Process();
 		ProcessIncoming();
@@ -24,7 +26,7 @@ namespace Transport
 		Message message(m_Id, destination, sequence, Message::Type::Request, data);
 
 		// TODO: Push to queue for Receipt processing and retransmission
-		m_Physical.Send(message.Encode());
+		SendToPhysical(message.Encode());
 	}
 
 	DataType::Bytes Transporter::Receive(DataType::Id source)
@@ -35,7 +37,7 @@ namespace Transport
 		}
 
 		DataType::Bytes data;
-		std::list<Message>::iterator removable;
+		std::list<Message>::iterator removable = m_IncomingMessages.end();
 
 		for (std::list<Message>::iterator it = m_IncomingMessages.begin(); it != m_IncomingMessages.end(); ++it)
 		{
@@ -47,13 +49,22 @@ namespace Transport
 			}
 		}
 
-		m_IncomingMessages.erase(removable);
+		if (removable != m_IncomingMessages.end())
+		{
+			m_IncomingMessages.erase(removable);
+		}
+
 		return data;
 	}
 
 	void Transporter::ProcessIncoming()
 	{
-		DataType::Bytes data = m_Physical.Receive();
+		DataType::Bytes data = ReceiveFromPhysical();
+		if (data.empty())
+		{
+			return;
+		}
+
 		Message message(data);
 
 		if (!message.Valid())
@@ -95,6 +106,26 @@ namespace Transport
 	void Transporter::SendReceipt(const Message& message)
 	{
 		Message receipt(m_Id, message.Source(), message.Sequence(), Message::Type::Receipt);
-		m_Physical.Send(receipt.Encode());
+		SendToPhysical(receipt.Encode());
+	}
+
+	void Transporter::SendToPhysical(const DataType::Bytes& data)
+	{
+		m_Physical.Send(Parser::Wrap(Parser::Escape(data)));
+	}
+
+	DataType::Bytes Transporter::ReceiveFromPhysical()
+	{
+		DataType::Bytes data = m_Physical.Receive();
+		m_Parser.ProcessIncomingData(data);
+
+		DataType::Bytes incoming = m_Parser.GetIncomingMessage();
+
+		if (incoming.empty())
+		{
+			return incoming;
+		}
+
+		return Parser::Unwrap(Parser::Unescape(incoming));
 	}
 }

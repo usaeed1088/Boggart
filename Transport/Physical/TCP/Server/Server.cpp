@@ -29,7 +29,8 @@ namespace Transport
 
 		DataType::Bytes Server::Receive() const
 		{
-			return m_Socket.Receive();
+			return DataType::Bytes();
+			//return m_Socket.Receive();
 		}
 
 		void Server::Process() const

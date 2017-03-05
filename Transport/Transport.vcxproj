@@ -32,7 +32,7 @@
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -148,6 +148,7 @@
     <ClInclude Include="OSAPI\Socket\Socket.h" />
     <ClInclude Include="OSAPI\Socket\Structs.h" />
     <ClInclude Include="OSAPI\Windows\Windows.h" />
+    <ClInclude Include="Parser\Parser.h" />
     <ClInclude Include="Physical\InProcess\InProcess.h" />
     <ClInclude Include="Physical\Physical.h" />
     <ClInclude Include="Physical\TCP\Client\Client.h" />
@@ -160,6 +161,7 @@
     <ClCompile Include="OSAPI\OSAPI.cpp" />
     <ClCompile Include="OSAPI\Socket\Socket.cpp" />
     <ClCompile Include="OSAPI\Windows\Windows.cpp" />
+    <ClCompile Include="Parser\Parser.cpp" />
     <ClCompile Include="Physical\InProcess\InProcess.cpp" />
     <ClCompile Include="Physical\Physical.cpp" />
     <ClCompile Include="Physical\TCP\Client\Client.cpp" />

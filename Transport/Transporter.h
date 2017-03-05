@@ -3,6 +3,7 @@
 #include "DataType.h"
 #include "Message.h"
 #include "Physical/Physical.h"
+#include "Parser/Parser.h"
 
 namespace Transport
 {
@@ -12,9 +13,9 @@ namespace Transport
 		static const DataType::Id BROADCAST = 0;
 
 	private:
+		Parser m_Parser;
 		DataType::Id m_Id;
 		const Physical& m_Physical;
-
 		std::list<Message> m_IncomingMessages;
 
 	public:
@@ -37,5 +38,9 @@ namespace Transport
 
 	private:
 		DataType::Sequence GenerateSequence();
+
+	private:
+		void SendToPhysical(const DataType::Bytes& data);
+		DataType::Bytes ReceiveFromPhysical();
 	};
 }
