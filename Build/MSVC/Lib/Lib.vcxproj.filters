@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Configuration">
+      <UniqueIdentifier>{92feaccd-b091-4245-832b-51e46268fd09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{4f38ba5e-bc13-45cb-a4f4-bb535a3ee5d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{7bf8e80a-8a5c-41b4-8499-94e77915148d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC">
+      <UniqueIdentifier>{848bcaec-0e5d-4a29-9de8-1eeb01401d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Message">
+      <UniqueIdentifier>{b001ac8c-593d-4a91-b593-0969ec52a868}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol">
+      <UniqueIdentifier>{9d1f29a6-3621-4df6-8623-3cb216f23b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport">
+      <UniqueIdentifier>{fdcc28f8-e5ec-4791-a6ac-7427859c6bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{c9192f9a-2e0e-4bd5-a98e-eda0cf22f425}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Patterns">
+      <UniqueIdentifier>{d2fb961b-6679-42da-be83-1cb5f4d386c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Patterns\DependencyInjection">
+      <UniqueIdentifier>{14038a83-7f42-4fb5-8c98-115844ec721d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Diagnostics">
+      <UniqueIdentifier>{30bb4161-79cf-4300-8bf8-193132eb0592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Diagnostics\Diagnostics">
+      <UniqueIdentifier>{1d7fc442-2e65-422d-8877-bd99501a6e6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger\Console">
+      <UniqueIdentifier>{1a8caa3c-0645-438d-9bd1-af6407976647}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Lib\Configuration\IConfiguration.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Configuration\ConfigurationBase.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Common\Settings.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\IDependencyInjection.h">
+      <Filter>Common\Patterns\DependencyInjection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjectionBase.h">
+      <Filter>Common\Patterns\DependencyInjection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Logger\ILogger.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Logger\Level.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Diagnostics\IDiagnostics.h">
+      <Filter>Diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Diagnostics\DiagnosticsBase.h">
+      <Filter>Diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Diagnostics\Diagnostics\Diagnsotics.h">
+      <Filter>Diagnostics\Diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Logger\LoggerBase.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Logger\Console\Console.h">
+      <Filter>Logger\Console</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjectionBase.cpp">
+      <Filter>Common\Patterns\DependencyInjection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Logger\Level.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Diagnostics\DiagnosticsBase.cpp">
+      <Filter>Diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Diagnostics\Diagnostics\Diagnsotics.cpp">
+      <Filter>Diagnostics\Diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Logger\LoggerBase.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Logger\Console\Console.cpp">
+      <Filter>Logger\Console</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
