@@ -13,7 +13,5 @@ namespace Boggart
 	void DependencyInjectionBase<T>::InjectDependencies(ILogger* logger)
 	{
 		m_Diagnostics.InjectLogger(logger);
-
-		OnDependenciesInjection();
 	}
 }

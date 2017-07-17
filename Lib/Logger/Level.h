@@ -1,6 +1,5 @@
 #pragma once
 
-#include <string>
 #include <ostream>
 #include <cstdint>
 
@@ -11,20 +10,19 @@ namespace Boggart
 		class Level
 		{
 		public:
-			typedef int8_t Value;
+			typedef std::int8_t Value_t;
 
 		private:
-			Value m_Value;
+			Value_t m_Value;
 
 		public:
-			Level(Value value);
+			Level(Value_t value);
 
-		public:
-			static const Value Debug;
-			static const Value Information;
-			static const Value Warning;
-			static const Value Error;
-			static const Value FatalError;
+			static const Value_t Debug;
+			static const Value_t Information;
+			static const Value_t Warning;
+			static const Value_t Error;
+			static const Value_t FatalError;
 
 			void operator=(Level& level);
 			bool operator==(Level& level);

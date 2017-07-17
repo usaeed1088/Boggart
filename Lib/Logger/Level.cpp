@@ -1,16 +1,18 @@
 #include "Level.h"
 
+#include <string>
+
 namespace Boggart
 {
 	namespace Logger
 	{
-		const Level::Value Level::Debug			(10);
-		const Level::Value Level::Information	(20);
-		const Level::Value Level::Warning		(30);
-		const Level::Value Level::Error			(40);
-		const Level::Value Level::FatalError	(50);
+		const Level::Value_t Level::Debug			(10);
+		const Level::Value_t Level::Information		(20);
+		const Level::Value_t Level::Warning			(30);
+		const Level::Value_t Level::Error			(40);
+		const Level::Value_t Level::FatalError		(50);
 
-		Level::Level(Value value):
+		Level::Level(Value_t value):
 			m_Value(value)
 		{
 

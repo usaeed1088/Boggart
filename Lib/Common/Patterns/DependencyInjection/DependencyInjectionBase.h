@@ -17,9 +17,6 @@ namespace Boggart
 		DependencyInjectionBase(std::string category, std::string moduleName);
 
 		void InjectDependencies(ILogger* logger) override;
-
-	protected:
-		virtual void OnDependenciesInjection() = 0;
 	};
 }
 

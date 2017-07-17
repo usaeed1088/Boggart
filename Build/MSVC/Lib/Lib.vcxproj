@@ -143,6 +143,15 @@
     <ClInclude Include="..\..\..\Lib\Logger\ILogger.h" />
     <ClInclude Include="..\..\..\Lib\Logger\Level.h" />
     <ClInclude Include="..\..\..\Lib\Logger\LoggerBase.h" />
+    <ClInclude Include="..\..\..\Lib\Timer\Common.h" />
+    <ClInclude Include="..\..\..\Lib\Timer\Device\DeviceBase.h" />
+    <ClInclude Include="..\..\..\Lib\Timer\Device\IDevice.h" />
+    <ClInclude Include="..\..\..\Lib\Timer\Device\IManager.h" />
+    <ClInclude Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.h" />
+    <ClInclude Include="..\..\..\Lib\Timer\Device\Type.h" />
+    <ClInclude Include="..\..\..\Lib\Timer\Manager\IManager.h" />
+    <ClInclude Include="..\..\..\Lib\Timer\Manager\ManagerBase.h" />
+    <ClInclude Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjectionBase.cpp">
@@ -156,6 +165,11 @@
     <ClCompile Include="..\..\..\Lib\Logger\Console\Console.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Level.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\LoggerBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\Timer\Device\DeviceBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.cpp" />
+    <ClCompile Include="..\..\..\Lib\Timer\Device\Type.cpp" />
+    <ClCompile Include="..\..\..\Lib\Timer\Manager\ManagerBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

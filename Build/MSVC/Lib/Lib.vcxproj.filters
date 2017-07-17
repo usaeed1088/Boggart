@@ -44,6 +44,21 @@
     <Filter Include="Logger\Console">
       <UniqueIdentifier>{1a8caa3c-0645-438d-9bd1-af6407976647}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Timer">
+      <UniqueIdentifier>{d4d93b17-8ff3-4d15-84e4-db4ea8edc361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer\Manager">
+      <UniqueIdentifier>{7421cdc3-ae47-4d58-83ae-09e7ecdedca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer\Manager\SoftTimerManager">
+      <UniqueIdentifier>{3a38503c-f030-44ba-9949-85e93d6f7317}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer\Device">
+      <UniqueIdentifier>{fd36b526-b028-4dc6-889d-1d2c60eb2399}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer\Device\SoftTimerDevice">
+      <UniqueIdentifier>{94b1b545-4363-4620-b6bb-af997db7fc64}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -85,6 +100,33 @@
     <ClInclude Include="..\..\..\Lib\Logger\Console\Console.h">
       <Filter>Logger\Console</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Manager\IManager.h">
+      <Filter>Timer\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Manager\ManagerBase.h">
+      <Filter>Timer\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Common.h">
+      <Filter>Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.h">
+      <Filter>Timer\Manager\SoftTimerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Device\DeviceBase.h">
+      <Filter>Timer\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Device\IDevice.h">
+      <Filter>Timer\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Device\IManager.h">
+      <Filter>Timer\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Device\Type.h">
+      <Filter>Timer\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.h">
+      <Filter>Timer\Device\SoftTimerDevice</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
@@ -107,6 +149,21 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Logger\Console\Console.cpp">
       <Filter>Logger\Console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Timer\Manager\ManagerBase.cpp">
+      <Filter>Timer\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.cpp">
+      <Filter>Timer\Manager\SoftTimerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Timer\Device\DeviceBase.cpp">
+      <Filter>Timer\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Timer\Device\Type.cpp">
+      <Filter>Timer\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.cpp">
+      <Filter>Timer\Device\SoftTimerDevice</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
