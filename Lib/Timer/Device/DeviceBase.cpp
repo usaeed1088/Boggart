@@ -4,13 +4,14 @@ namespace Boggart
 {
 	namespace Timer
 	{
-		DeviceBase::DeviceBase(std::string moduleName, Id_t id, Span_t span, Type type, Callback_t onExpiry, IManager* manager):
+		DeviceBase::DeviceBase(std::string moduleName, Id_t id, Span_t span, _Type type, Callback_t onExpiry):
 			DependencyInjectionBase<DeviceBase>(std::string("Timer"), moduleName),
 			m_Id(id),
 			m_Span(span),
 			m_Type(type),
 			m_OnExpiry(onExpiry),
-			m_Running(false)
+			m_Running(false),
+			m_Expired(false)
 		{
 
 		}
@@ -20,10 +21,16 @@ namespace Boggart
 
 		}
 
+		void DeviceBase::Process()
+		{
+			OnProcess();
+		}
+
 		bool DeviceBase::Start()
 		{
 			m_Diagnostics.Log(Logger::Level::Debug, "Starting Timer Id %d", m_Id);
 			m_Running = true;
+			m_Expired = false;
 			return OnStart();
 		}
 
@@ -31,6 +38,7 @@ namespace Boggart
 		{
 			m_Diagnostics.Log(Logger::Level::Debug, "Restarting Timer Id %d", m_Id);
 			m_Running = true;
+			m_Expired = false;
 			return OnRestart();
 		}
 
@@ -38,6 +46,7 @@ namespace Boggart
 		{
 			m_Diagnostics.Log(Logger::Level::Debug, "Stopping Timer Id %d", m_Id);
 			m_Running = false;
+			m_Expired = false;
 			return OnStop();
 		}
 
@@ -51,7 +60,7 @@ namespace Boggart
 			return m_Span;
 		}
 
-		Type DeviceBase::_Type()
+		_Type DeviceBase::Type()
 		{
 			return m_Type;
 		}
@@ -64,6 +73,16 @@ namespace Boggart
 		bool DeviceBase::Running()
 		{
 			return m_Running;
+		}
+
+		bool DeviceBase::Expired()
+		{
+			return m_Expired;
+		}
+
+		void DeviceBase::SetExpired()
+		{
+			m_Expired = true;
 		}
 	}
 }

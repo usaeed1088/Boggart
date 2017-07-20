@@ -15,7 +15,7 @@ namespace Boggart
 			virtual ~IManager() {}
 
 		public:
-			virtual IDevicePtr Create(Span_t span, Type type, Callback_t onExpiry) = 0;
+			virtual IDevicePtr Create(Span_t span, _Type type, Callback_t onExpiry) = 0;
 			virtual bool Destroy(IDevicePtr device) = 0;
 
 			virtual void Process() = 0;

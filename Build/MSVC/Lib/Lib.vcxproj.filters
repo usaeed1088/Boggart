@@ -118,9 +118,6 @@
     <ClInclude Include="..\..\..\Lib\Timer\Device\IDevice.h">
       <Filter>Timer\Device</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Lib\Timer\Device\IManager.h">
-      <Filter>Timer\Device</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Lib\Timer\Device\Type.h">
       <Filter>Timer\Device</Filter>
     </ClInclude>

@@ -21,7 +21,7 @@ namespace Boggart
 		public:
 			virtual ~ManagerBase() override;
 
-			IDevicePtr Create(Span_t span, Type type, Callback_t callback) override;
+			IDevicePtr Create(Span_t span, _Type type, Callback_t callback) override;
 			bool Destroy(IDevicePtr device) override;
 
 			void Process() override;
@@ -31,7 +31,7 @@ namespace Boggart
 			bool Stop(IDevicePtr device) override;
 
 		protected:
-			virtual IDevicePtr OnCreate(Id_t id, Span_t span, Type type, Callback_t onExpiry) = 0;
+			virtual IDevicePtr OnCreate(Id_t id, Span_t span, _Type type, Callback_t onExpiry) = 0;
 			virtual bool OnDestroy(IDevicePtr device) = 0;
 
 		protected:

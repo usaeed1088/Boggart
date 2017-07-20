@@ -7,7 +7,7 @@ namespace Boggart
 {
 	namespace Timer
 	{
-		class Type
+		class _Type
 		{
 		public:
 			typedef std::int16_t Value_t;
@@ -16,15 +16,17 @@ namespace Boggart
 			Value_t m_Value;
 
 		public:
-			Type(Value_t value);
+			_Type(Value_t value);
 
 			static const Value_t OneShot = 10;
 			static const Value_t Periodic = 20;
 
-			void operator=(Type& type);
-			bool operator==(Type& type);
+			void operator=(_Type& type);
+			bool operator==(_Type& type);
 			operator int();
-			friend std::ostream& operator<<(std::ostream& os, Type& type);
+			friend std::ostream& operator<<(std::ostream& os, _Type& type);
 		};
+
+		typedef _Type Type_t;
 	}
 }

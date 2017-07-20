@@ -69,7 +69,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IncludePath>$(ProjectDir)/../../../PAL;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>
@@ -146,7 +148,6 @@
     <ClInclude Include="..\..\..\Lib\Timer\Common.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Device\DeviceBase.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Device\IDevice.h" />
-    <ClInclude Include="..\..\..\Lib\Timer\Device\IManager.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Device\Type.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\IManager.h" />

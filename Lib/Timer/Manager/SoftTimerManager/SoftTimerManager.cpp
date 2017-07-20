@@ -22,9 +22,9 @@ namespace Boggart
 			}
 		}
 
-		IDevicePtr SoftTimerManager::OnCreate(Id_t id, Span_t span, Type type, Callback_t onExpiry)
+		IDevicePtr SoftTimerManager::OnCreate(Id_t id, Span_t span, Type_t type, Callback_t onExpiry)
 		{
-			IDevicePtr device = std::make_shared<SoftTimerDevice>(id, span, type, onExpiry, this);
+			IDevicePtr device = std::make_shared<SoftTimerDevice>(id, span, type, onExpiry);
 
 			m_Devices.push_back(device);
 
@@ -40,6 +40,7 @@ namespace Boggart
 			}
 
 			m_Devices.erase(it);
+			return true;
 		}
 
 		void SoftTimerManager::OnProcess()
@@ -48,28 +49,36 @@ namespace Boggart
 
 			for (IDevicePtr device : m_Devices)
 			{
+				device->Process();
+
 				if (!device->Running())
 				{
 					continue;
 				}
 
-				// TODO: Need PAL here
-				TimePoint_t now = 0;
-				std::int32_t elapsed = now - device->StartTime();
-				bool expired = elapsed >= device->Span();
-
-				if (!expired)
+				if (!device->Expired())
 				{
 					continue;
 				}
 
-				switch (device->_Type())
+				switch (device->Type())
 				{
-				case Type::OneShot:
+				case Type_t::OneShot:
+					device->Stop();
 					break;
-				case Type::Periodic:
+				case Type_t::Periodic:
+					device->Restart();
+					break;
+				}
 
-					break;
+				callbacks.push_back(device->Callback());
+			}
+
+			for (Callback_t callback : callbacks)
+			{
+				if (callback)
+				{
+					callback();
 				}
 			}
 		}
@@ -82,7 +91,7 @@ namespace Boggart
 				return false;
 			}
 
-			(*it)->
+			return (*it)->Start();
 		}
 
 		bool SoftTimerManager::OnRestart(IDevicePtr device)
@@ -92,6 +101,8 @@ namespace Boggart
 			{
 				return false;
 			}
+
+			return (*it)->Restart();
 		}
 
 		bool SoftTimerManager::OnStop(IDevicePtr device)
@@ -101,6 +112,8 @@ namespace Boggart
 			{
 				return false;
 			}
+
+			return (*it)->Stop();
 		}
 
 		std::vector<IDevicePtr>::iterator SoftTimerManager::Find(IDevicePtr device)

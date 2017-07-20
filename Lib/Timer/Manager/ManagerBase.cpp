@@ -16,7 +16,7 @@ namespace Boggart
 
 		}
 
-		IDevicePtr ManagerBase::Create(Span_t span, Type type, Callback_t onExpiry)
+		IDevicePtr ManagerBase::Create(Span_t span, _Type type, Callback_t onExpiry)
 		{
 			m_LastCreatedId++;
 

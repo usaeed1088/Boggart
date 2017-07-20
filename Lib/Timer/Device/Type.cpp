@@ -6,35 +6,35 @@ namespace Boggart
 {
 	namespace Timer
 	{
-		Type::Type(Value_t value):
+		_Type::_Type(Value_t value):
 			m_Value(value)
 		{
 
 		}
 
-		void Type::operator=(Type& type)
+		void _Type::operator=(_Type& type)
 		{
 			m_Value = type.m_Value;
 		}
 
-		bool Type::operator==(Type& type)
+		bool _Type::operator==(_Type& type)
 		{
 			return m_Value == type.m_Value;
 		}
 
-		Type::operator int()
+		_Type::operator int()
 		{
 			return m_Value;
 		}
 
-		std::ostream& operator<<(std::ostream& os, Type& type)
+		std::ostream& operator<<(std::ostream& os, _Type& type)
 		{
 			switch (type.m_Value)
 			{
-			case Type::OneShot:
+			case _Type::OneShot:
 				os << std::string("One Shot");
 				break;
-			case Type::Periodic:
+			case _Type::Periodic:
 				os << std::string("Periodic");
 				break;
 			default:

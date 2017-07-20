@@ -18,7 +18,7 @@ namespace Boggart
 			~SoftTimerManager() override;
 
 		private:
-			IDevicePtr OnCreate(Id_t id, Span_t span, Type type, Callback_t onExpiry) override;
+			IDevicePtr OnCreate(Id_t id, Span_t span, Type_t type, Callback_t onExpiry) override;
 			bool OnDestroy(IDevicePtr device) override;
 
 			void OnProcess() override;
