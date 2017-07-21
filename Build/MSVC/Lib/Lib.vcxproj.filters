@@ -124,6 +124,21 @@
     <ClInclude Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.h">
       <Filter>Timer\Device\SoftTimerDevice</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\ITransport.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\IIPC.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Message\IMessage.h">
+      <Filter>Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Event\IEvent.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Message\MessageBase.h">
+      <Filter>Message</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
@@ -161,6 +176,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.cpp">
       <Filter>Timer\Device\SoftTimerDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Message\MessageBase.cpp">
+      <Filter>Message</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

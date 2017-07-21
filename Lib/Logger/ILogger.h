@@ -6,11 +6,14 @@
 
 namespace Boggart
 {
-	class ILogger
+	namespace Logger
 	{
-	public:
-		virtual ~ILogger() {}
+		class ILogger
+		{
+		public:
+			virtual ~ILogger() {}
 
-		virtual void Log(Logger::Level level, std::string category, std::string module, const char* format, ...) = 0;
-	};
+			virtual void Log(Logger::Level level, std::string category, std::string module, const char* format, ...) = 0;
+		};
+	}
 }

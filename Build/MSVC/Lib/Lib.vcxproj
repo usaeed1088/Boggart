@@ -141,10 +141,14 @@
     <ClInclude Include="..\..\..\Lib\Diagnostics\DiagnosticsBase.h" />
     <ClInclude Include="..\..\..\Lib\Diagnostics\Diagnostics\Diagnsotics.h" />
     <ClInclude Include="..\..\..\Lib\Diagnostics\IDiagnostics.h" />
+    <ClInclude Include="..\..\..\Lib\Event\IEvent.h" />
+    <ClInclude Include="..\..\..\Lib\IPC\IIPC.h" />
     <ClInclude Include="..\..\..\Lib\Logger\Console\Console.h" />
     <ClInclude Include="..\..\..\Lib\Logger\ILogger.h" />
     <ClInclude Include="..\..\..\Lib\Logger\Level.h" />
     <ClInclude Include="..\..\..\Lib\Logger\LoggerBase.h" />
+    <ClInclude Include="..\..\..\Lib\Message\IMessage.h" />
+    <ClInclude Include="..\..\..\Lib\Message\MessageBase.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Common.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Device\DeviceBase.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Device\IDevice.h" />
@@ -153,6 +157,7 @@
     <ClInclude Include="..\..\..\Lib\Timer\Manager\IManager.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\ManagerBase.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\ITransport.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjectionBase.cpp">
@@ -166,6 +171,7 @@
     <ClCompile Include="..\..\..\Lib\Logger\Console\Console.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Level.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\LoggerBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\Message\MessageBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Device\DeviceBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Device\Type.cpp" />

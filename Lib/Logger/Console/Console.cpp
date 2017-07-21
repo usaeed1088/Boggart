@@ -4,18 +4,21 @@
 
 namespace Boggart
 {
-	Console::Console()
+	namespace Logger
 	{
+		Console::Console()
+		{
 
-	}
+		}
 
-	Console::~Console()
-	{
+		Console::~Console()
+		{
 
-	}
+		}
 
-	void Console::_OnLog(std::string data)
-	{
-		std::cout << data << std::endl;
+		void Console::_OnLog(std::string data)
+		{
+			std::cout << data << std::endl;
+		}
 	}
 }

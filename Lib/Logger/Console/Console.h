@@ -4,13 +4,16 @@
 
 namespace Boggart
 {
-	class Console : public LoggerBase
+	namespace Logger
 	{
-	public:
-		Console();
-		~Console() override;
+		class Console : public LoggerBase
+		{
+		public:
+			Console();
+			~Console() override;
 
-	private:
-		void _OnLog(std::string data) override;
-	};
+		private:
+			void _OnLog(std::string data) override;
+		};
+	}
 }
