@@ -8,6 +8,6 @@ namespace Boggart
 	class IDependencyInjection
 	{
 	public:
-		virtual void InjectDependencies(ILogger* logger) = 0;
+		virtual void InjectDependencies(Logger::ILogger* logger) = 0;
 	};
 }

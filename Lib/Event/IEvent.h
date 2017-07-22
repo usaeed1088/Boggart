@@ -2,7 +2,7 @@
 
 #include <memory>
 #include <vector>
-#include <cstdint>
+#include <string>
 
 namespace Boggart
 {
@@ -13,7 +13,7 @@ namespace Boggart
 		public:
 			virtual ~IEvent() {}
 
-			virtual std::int16_t Type() = 0;
+			virtual std::string Type() = 0;
 
 			virtual std::vector<unsigned char> Encode() = 0;
 

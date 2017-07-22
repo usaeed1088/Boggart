@@ -14,9 +14,6 @@
     <Filter Include="Event">
       <UniqueIdentifier>{7bf8e80a-8a5c-41b4-8499-94e77915148d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="IPC">
-      <UniqueIdentifier>{848bcaec-0e5d-4a29-9de8-1eeb01401d0d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Message">
       <UniqueIdentifier>{b001ac8c-593d-4a91-b593-0969ec52a868}</UniqueIdentifier>
     </Filter>
@@ -58,6 +55,12 @@
     </Filter>
     <Filter Include="Timer\Device\SoftTimerDevice">
       <UniqueIdentifier>{94b1b545-4363-4620-b6bb-af997db7fc64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC">
+      <UniqueIdentifier>{848bcaec-0e5d-4a29-9de8-1eeb01401d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC\Subscribable">
+      <UniqueIdentifier>{e2e55bab-31bf-4896-9910-615f6a46ffa2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -139,6 +142,12 @@
     <ClInclude Include="..\..\..\Lib\Message\MessageBase.h">
       <Filter>Message</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\IPCBase.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Subscribable\Subscribable.h">
+      <Filter>IPC\Subscribable</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
@@ -179,6 +188,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Message\MessageBase.cpp">
       <Filter>Message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\IPCBase.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Subscribable\Subscribable.cpp">
+      <Filter>IPC\Subscribable</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

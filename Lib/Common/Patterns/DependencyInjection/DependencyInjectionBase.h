@@ -16,7 +16,7 @@ namespace Boggart
 	public:
 		DependencyInjectionBase(std::string category, std::string moduleName);
 
-		void InjectDependencies(ILogger* logger) override;
+		void InjectDependencies(Logger::ILogger* logger) override;
 	};
 }
 

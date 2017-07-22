@@ -143,6 +143,8 @@
     <ClInclude Include="..\..\..\Lib\Diagnostics\IDiagnostics.h" />
     <ClInclude Include="..\..\..\Lib\Event\IEvent.h" />
     <ClInclude Include="..\..\..\Lib\IPC\IIPC.h" />
+    <ClInclude Include="..\..\..\Lib\IPC\IPCBase.h" />
+    <ClInclude Include="..\..\..\Lib\IPC\Subscribable\Subscribable.h" />
     <ClInclude Include="..\..\..\Lib\Logger\Console\Console.h" />
     <ClInclude Include="..\..\..\Lib\Logger\ILogger.h" />
     <ClInclude Include="..\..\..\Lib\Logger\Level.h" />
@@ -168,6 +170,8 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Diagnostics\DiagnosticsBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Diagnostics\Diagnostics\Diagnsotics.cpp" />
+    <ClCompile Include="..\..\..\Lib\IPC\IPCBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\IPC\Subscribable\Subscribable.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Console\Console.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Level.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\LoggerBase.cpp" />

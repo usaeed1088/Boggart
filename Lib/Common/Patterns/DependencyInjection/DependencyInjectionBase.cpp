@@ -10,7 +10,7 @@ namespace Boggart
 	}
 
 	template<class T>
-	void DependencyInjectionBase<T>::InjectDependencies(ILogger* logger)
+	void DependencyInjectionBase<T>::InjectDependencies(Logger::ILogger* logger)
 	{
 		m_Diagnostics.InjectLogger(logger);
 	}

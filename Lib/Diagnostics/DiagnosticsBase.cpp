@@ -14,7 +14,7 @@ namespace Boggart
 
 	}
 
-	void DiagnosticsBase::InjectLogger(ILogger* logger)
+	void DiagnosticsBase::InjectLogger(Logger::ILogger* logger)
 	{
 		m_Logger = logger;
 		OnLoggerInjection();

@@ -13,7 +13,7 @@ namespace Boggart
 		std::string m_Category;
 
 	protected:
-		ILogger* m_Logger;
+		Logger::ILogger* m_Logger;
 
 	protected:
 		DiagnosticsBase(std::string moduleName, std::string category);
@@ -21,7 +21,7 @@ namespace Boggart
 	public:
 		virtual ~DiagnosticsBase() override;
 
-		void InjectLogger(ILogger* logger);
+		void InjectLogger(Logger::ILogger* logger);
 
 		virtual void Log(Logger::Level level, const char* format, ...) override;
 

@@ -1,12 +1,13 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 
 namespace Boggart
 {
 	namespace Transport
 	{
-		class ITransport
+		class ITransport : std::enable_shared_from_this<ITransport>
 		{
 		public:
 			virtual ~ITransport() {}
@@ -20,5 +21,7 @@ namespace Boggart
 
 			virtual bool Close() = 0;
 		};
+
+		typedef std::shared_ptr<ITransport> ITransportPtr;
 	}
 }
