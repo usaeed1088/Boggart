@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Common/Patterns/DependencyInjection/IDependencyInjection.h>
+//#include <Common/Patterns/DependencyInjection/IDependencyInjection.h>
 
 #include "Type.h"
 #include "../Common.h"

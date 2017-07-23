@@ -13,12 +13,16 @@ namespace Boggart
 {
 	namespace IPC
 	{
-		class IPCBase : public IIPC, DependencyInjectionBase<IPCBase>
+		class IPCBase : public IIPC, public DependencyInjectionBase<IPCBase>
 		{
 		private:
-			typedef std::map<std::string, Callback_t> Subscription;
-			typedef std::map<SubscribablePtr, Subscription> Subscriber;
-			typedef std::map<std::string, Subscriber> SubscriptionTable;
+			typedef std::string SubscriberName;
+			typedef std::string Type;
+			typedef std::string TableName;
+
+			typedef std::map<SubscriberName, Callback_t> Subscriber;
+			typedef std::map<Type, Subscriber> Subscription;
+			typedef std::map<TableName, Subscription> SubscriptionTable;
 
 			SubscriptionTable m_SubscriptionTable;
 
@@ -35,15 +39,15 @@ namespace Boggart
 
 			void InjectTransport(Transport::ITransportPtr transport);
 
-			bool SubscribeEvent(SubscribablePtr subscriber, std::string type, Callback_t callback) override;
 			bool SubscribeMessage(SubscribablePtr subscriber, std::string type, Callback_t callback) override;
 			bool SubscribeSource(SubscribablePtr subscriber, std::string type, Callback_t callback) override;
 
-			bool UnsubscribeEvent(SubscribablePtr subscriber, std::string type) override;
 			bool UnsubscribeMessage(SubscribablePtr subscriber, std::string type) override;
 			bool UnsubscribeSource(SubscribablePtr subscriber, std::string type) override;
 
 			bool Unsubscribe(SubscribablePtr subscriber) override;
+
+			bool Start() override;
 
 			bool Send(std::string destination, Message::IMessagePtr message) override;
 
@@ -54,15 +58,14 @@ namespace Boggart
 			std::uint8_t GenerateSequenceNumber();
 
 		protected:
-			virtual bool OnSubscribeEvent(SubscribablePtr subscriber, std::string type, Callback_t callback) = 0;
-			virtual bool OnSubscribeMessage(SubscribablePtr subscriber, std::string type, Callback_t callback) = 0;
-			virtual bool OnSubscribeSource(SubscribablePtr subscriber, std::string type, Callback_t callback) = 0;
+			void SendToTransport(std::vector<unsigned char> data);
+			std::vector<unsigned char> ReceiveFromTransport();
 
-			virtual bool OnUnsubscribeEvent(SubscribablePtr subscriber, std::string type) = 0;
-			virtual bool OnUnsubscribeMessage(SubscribablePtr subscriber, std::string type) = 0;
-			virtual bool OnUnsubscribeSource(SubscribablePtr subscriber, std::string type) = 0;
+			void OnReceive(Message::IMessagePtr message);
 
-			virtual bool OnSend(std::string destination, Message::IMessagePtr message) = 0;
+		protected:
+			virtual bool OnStart() = 0;
+			virtual bool OnSend(Message::IMessagePtr message) = 0;
 		};
 	}
 }

@@ -44,6 +44,10 @@ namespace Boggart
 		protected:
 			virtual std::vector<unsigned char> OnEncode() = 0;
 			virtual bool OnDecode(const std::vector<unsigned char>& data) = 0;
+
+		protected:
+			static void EncodeString(const std::string& string, std::vector<unsigned char>& data);
+			static void DecodeString(std::string& string, std::vector<unsigned char>& data);
 		};
 	}
 }

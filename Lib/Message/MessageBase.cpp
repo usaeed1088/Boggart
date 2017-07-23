@@ -76,7 +76,7 @@ namespace Boggart
 			return m_SequenceNumber;
 		}
 
-		static void EncodeString(const std::string& string, std::vector<unsigned char>& data)
+		void MessageBase::EncodeString(const std::string& string, std::vector<unsigned char>& data)
 		{
 			std::uint8_t size = static_cast<std::uint8_t>(string.length());
 
@@ -106,7 +106,7 @@ namespace Boggart
 			return data;
 		}
 
-		static void DecodeString(std::string& string, std::vector<unsigned char>& data)
+		void MessageBase::DecodeString(std::string& string, std::vector<unsigned char>& data)
 		{
 			std::uint8_t size = data[0];
 			

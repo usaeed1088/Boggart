@@ -1,6 +1,9 @@
 #pragma once
 
 #include <Logger/ILogger.h>
+#include <Timer/Manager/IManager.h>
+
+#include <memory>
 
 namespace Boggart
 {
@@ -8,6 +11,6 @@ namespace Boggart
 	class IDependencyInjection
 	{
 	public:
-		virtual void InjectDependencies(Logger::ILogger* logger) = 0;
+		virtual void InjectDependencies(Logger::ILogger* logger, Timer::IManagerPtr timerManager) = 0;
 	};
 }

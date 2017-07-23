@@ -12,11 +12,12 @@ namespace Boggart
 	protected:
 		// Dependencies
 		Diagnostics m_Diagnostics;
+		Timer::IManagerPtr m_TimerManager;
 
 	public:
 		DependencyInjectionBase(std::string category, std::string moduleName);
 
-		void InjectDependencies(Logger::ILogger* logger) override;
+		void InjectDependencies(Logger::ILogger* logger, Timer::IManagerPtr timerManager) override;
 	};
 }
 

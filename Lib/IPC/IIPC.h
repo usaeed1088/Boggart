@@ -13,22 +13,22 @@ namespace Boggart
 {
 	namespace IPC
 	{
-		typedef std::function<void(void)> Callback_t;
+		typedef std::function<void(Message::IMessagePtr)> Callback_t;
 
 		class IIPC : std::enable_shared_from_this<IIPC>
 		{
 		public:
 			virtual ~IIPC() {}
 
-			virtual bool SubscribeEvent(class Subscribable* subscribable, std::string type, Callback_t callback) = 0;
 			virtual bool SubscribeMessage(class Subscribable* subscribable, std::string type, Callback_t callback) = 0;
 			virtual bool SubscribeSource(class Subscribable* subscribable, std::string type, Callback_t callback) = 0;
 
-			virtual bool UnsubscribeEvent(class Subscribable* subscribable, std::string type) = 0;
 			virtual bool UnsubscribeMessage(class Subscribable* subscribable, std::string type) = 0;
 			virtual bool UnsubscribeSource(class Subscribable* subscribable, std::string type) = 0;
 
 			virtual bool Unsubscribe(class Subscribable* subscriber) = 0;
+
+			virtual bool Start() = 0;
 
 			virtual bool Send(std::string destination, Message::IMessagePtr message) = 0;
 		};

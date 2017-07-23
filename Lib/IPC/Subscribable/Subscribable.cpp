@@ -4,8 +4,9 @@ namespace Boggart
 {
 	namespace IPC
 	{
-		Subscribable::Subscribable():
-			m_IPC(nullptr)
+		Subscribable::Subscribable(std::string subscriberName):
+			m_IPC(nullptr),
+			m_SubscriberName(subscriberName)
 		{
 
 		}
@@ -23,6 +24,11 @@ namespace Boggart
 		void Subscribable::Unsubscribe()
 		{
 			m_IPC->Unsubscribe(this);
+		}
+
+		std::string Subscribable::Name()
+		{
+			return m_SubscriberName;
 		}
 	}
 }

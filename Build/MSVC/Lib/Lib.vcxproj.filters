@@ -62,6 +62,18 @@
     <Filter Include="IPC\Subscribable">
       <UniqueIdentifier>{e2e55bab-31bf-4896-9910-615f6a46ffa2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="IPC\Asynchronous">
+      <UniqueIdentifier>{98b44fba-d7c2-4410-8f7f-957dfb9a14f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC\Messages">
+      <UniqueIdentifier>{adf105f8-c6aa-4519-b4ff-307829f13baf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC\Messages\Request">
+      <UniqueIdentifier>{0333ff93-6417-428b-9c26-cd26ebe45514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC\Messages\Response">
+      <UniqueIdentifier>{0638c135-7e68-46cf-b1ee-72ec781b93b1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -148,6 +160,24 @@
     <ClInclude Include="..\..\..\Lib\IPC\Subscribable\Subscribable.h">
       <Filter>IPC\Subscribable</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Asynchronous\Asynchronous.h">
+      <Filter>IPC\Asynchronous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\MessageBase.h">
+      <Filter>IPC\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Request.h">
+      <Filter>IPC\Messages\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Response.h">
+      <Filter>IPC\Messages\Response</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.h">
+      <Filter>IPC\Messages\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.h">
+      <Filter>IPC\Messages\Response</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
@@ -194,6 +224,24 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Subscribable\Subscribable.cpp">
       <Filter>IPC\Subscribable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Asynchronous\Asynchronous.cpp">
+      <Filter>IPC\Asynchronous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\MessageBase.cpp">
+      <Filter>IPC\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Request.cpp">
+      <Filter>IPC\Messages\Request</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Response.cpp">
+      <Filter>IPC\Messages\Response</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.cpp">
+      <Filter>IPC\Messages\Request</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.cpp">
+      <Filter>IPC\Messages\Response</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

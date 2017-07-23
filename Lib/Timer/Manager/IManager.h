@@ -1,15 +1,17 @@
 #pragma once
 
-#include <Common/Patterns/DependencyInjection/IDependencyInjection.h>
+//#include <Common/Patterns/DependencyInjection/IDependencyInjection.h>
 
 #include "../Common.h"
 #include "../Device/IDevice.h"
+
+#include <memory>
 
 namespace Boggart
 {
 	namespace Timer
 	{
-		class IManager : public IDependencyInjection<IManager>
+		class IManager : /*public IDependencyInjection<IManager>,*/ public std::enable_shared_from_this<IManager>
 		{
 		public:
 			virtual ~IManager() {}
@@ -24,5 +26,7 @@ namespace Boggart
 			virtual bool Restart(IDevicePtr device) = 0;
 			virtual bool Stop(IDevicePtr device) = 0;
 		};
+
+		typedef std::shared_ptr<IManager> IManagerPtr;
 	}
 }
