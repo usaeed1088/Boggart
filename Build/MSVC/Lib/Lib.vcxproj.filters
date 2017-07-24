@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Configuration">
+      <UniqueIdentifier>{92feaccd-b091-4245-832b-51e46268fd09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger">
+      <UniqueIdentifier>{4f38ba5e-bc13-45cb-a4f4-bb535a3ee5d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Event">
+      <UniqueIdentifier>{7bf8e80a-8a5c-41b4-8499-94e77915148d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Message">
+      <UniqueIdentifier>{b001ac8c-593d-4a91-b593-0969ec52a868}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Protocol">
+      <UniqueIdentifier>{9d1f29a6-3621-4df6-8623-3cb216f23b2a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport">
+      <UniqueIdentifier>{fdcc28f8-e5ec-4791-a6ac-7427859c6bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{c9192f9a-2e0e-4bd5-a98e-eda0cf22f425}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Patterns">
+      <UniqueIdentifier>{d2fb961b-6679-42da-be83-1cb5f4d386c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common\Patterns\DependencyInjection">
+      <UniqueIdentifier>{14038a83-7f42-4fb5-8c98-115844ec721d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Diagnostics">
+      <UniqueIdentifier>{30bb4161-79cf-4300-8bf8-193132eb0592}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Diagnostics\Diagnostics">
+      <UniqueIdentifier>{1d7fc442-2e65-422d-8877-bd99501a6e6d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Logger\Console">
+      <UniqueIdentifier>{1a8caa3c-0645-438d-9bd1-af6407976647}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer">
+      <UniqueIdentifier>{d4d93b17-8ff3-4d15-84e4-db4ea8edc361}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer\Manager">
+      <UniqueIdentifier>{7421cdc3-ae47-4d58-83ae-09e7ecdedca9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer\Manager\SoftTimerManager">
+      <UniqueIdentifier>{3a38503c-f030-44ba-9949-85e93d6f7317}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer\Device">
+      <UniqueIdentifier>{fd36b526-b028-4dc6-889d-1d2c60eb2399}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Timer\Device\SoftTimerDevice">
+      <UniqueIdentifier>{94b1b545-4363-4620-b6bb-af997db7fc64}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC">
+      <UniqueIdentifier>{848bcaec-0e5d-4a29-9de8-1eeb01401d0d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC\Subscribable">
+      <UniqueIdentifier>{e2e55bab-31bf-4896-9910-615f6a46ffa2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC\Asynchronous">
+      <UniqueIdentifier>{98b44fba-d7c2-4410-8f7f-957dfb9a14f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC\Messages">
+      <UniqueIdentifier>{adf105f8-c6aa-4519-b4ff-307829f13baf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC\Messages\Request">
+      <UniqueIdentifier>{0333ff93-6417-428b-9c26-cd26ebe45514}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC\Messages\Response">
+      <UniqueIdentifier>{0638c135-7e68-46cf-b1ee-72ec781b93b1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\Lib\Configuration\IConfiguration.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Configuration\ConfigurationBase.h">
+      <Filter>Configuration</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Common\Settings.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\IDependencyInjection.h">
+      <Filter>Common\Patterns\DependencyInjection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjectionBase.h">
+      <Filter>Common\Patterns\DependencyInjection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Logger\ILogger.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Logger\Level.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Diagnostics\IDiagnostics.h">
+      <Filter>Diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Diagnostics\DiagnosticsBase.h">
+      <Filter>Diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Diagnostics\Diagnostics\Diagnsotics.h">
+      <Filter>Diagnostics\Diagnostics</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Logger\LoggerBase.h">
+      <Filter>Logger</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Logger\Console\Console.h">
+      <Filter>Logger\Console</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Manager\IManager.h">
+      <Filter>Timer\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Manager\ManagerBase.h">
+      <Filter>Timer\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Common.h">
+      <Filter>Timer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.h">
+      <Filter>Timer\Manager\SoftTimerManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Device\DeviceBase.h">
+      <Filter>Timer\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Device\IDevice.h">
+      <Filter>Timer\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Device\Type.h">
+      <Filter>Timer\Device</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.h">
+      <Filter>Timer\Device\SoftTimerDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\ITransport.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\IIPC.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Message\IMessage.h">
+      <Filter>Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Event\IEvent.h">
+      <Filter>Event</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Message\MessageBase.h">
+      <Filter>Message</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\IPCBase.h">
+      <Filter>IPC</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Subscribable\Subscribable.h">
+      <Filter>IPC\Subscribable</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Asynchronous\Asynchronous.h">
+      <Filter>IPC\Asynchronous</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\MessageBase.h">
+      <Filter>IPC\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Request.h">
+      <Filter>IPC\Messages\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Response.h">
+      <Filter>IPC\Messages\Response</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.h">
+      <Filter>IPC\Messages\Request</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.h">
+      <Filter>IPC\Messages\Response</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\TransportBase.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
+      <Filter>Configuration</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjectionBase.cpp">
+      <Filter>Common\Patterns\DependencyInjection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Logger\Level.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Diagnostics\DiagnosticsBase.cpp">
+      <Filter>Diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Diagnostics\Diagnostics\Diagnsotics.cpp">
+      <Filter>Diagnostics\Diagnostics</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Logger\LoggerBase.cpp">
+      <Filter>Logger</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Logger\Console\Console.cpp">
+      <Filter>Logger\Console</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Timer\Manager\ManagerBase.cpp">
+      <Filter>Timer\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.cpp">
+      <Filter>Timer\Manager\SoftTimerManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Timer\Device\DeviceBase.cpp">
+      <Filter>Timer\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Timer\Device\Type.cpp">
+      <Filter>Timer\Device</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.cpp">
+      <Filter>Timer\Device\SoftTimerDevice</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Message\MessageBase.cpp">
+      <Filter>Message</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\IPCBase.cpp">
+      <Filter>IPC</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Subscribable\Subscribable.cpp">
+      <Filter>IPC\Subscribable</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Asynchronous\Asynchronous.cpp">
+      <Filter>IPC\Asynchronous</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\MessageBase.cpp">
+      <Filter>IPC\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Request.cpp">
+      <Filter>IPC\Messages\Request</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Response.cpp">
+      <Filter>IPC\Messages\Response</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.cpp">
+      <Filter>IPC\Messages\Request</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.cpp">
+      <Filter>IPC\Messages\Response</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Transport.cpp">
+      <Filter>Transport</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
