@@ -12,14 +12,13 @@ namespace Boggart
 		public:
 			virtual ~ITransport() {}
 
-			virtual bool Send(const std::vector<unsigned char>& data) = 0;
-
-			virtual std::vector<unsigned char> Receive() = 0;
-
-		protected:
 			virtual bool Open() = 0;
 
 			virtual bool Close() = 0;
+
+			virtual bool Send(const std::vector<unsigned char>& data) = 0;
+
+			virtual std::vector<unsigned char> Receive() = 0;
 		};
 
 		typedef std::shared_ptr<ITransport> ITransportPtr;

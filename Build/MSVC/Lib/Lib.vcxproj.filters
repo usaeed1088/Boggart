@@ -178,6 +178,9 @@
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.h">
       <Filter>IPC\Messages\Response</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\TransportBase.h">
+      <Filter>Transport</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
@@ -242,6 +245,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.cpp">
       <Filter>IPC\Messages\Response</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Transport.cpp">
+      <Filter>Transport</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
