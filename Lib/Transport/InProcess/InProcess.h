@@ -19,7 +19,7 @@ namespace Boggart
 			std::queue<std::vector<unsigned char>> m_DataQueue;
 
 		public:
-			InProcess();
+			InProcess(std::string id);
 			~InProcess() override;
 
 		private:

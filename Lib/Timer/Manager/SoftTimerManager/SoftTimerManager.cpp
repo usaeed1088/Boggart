@@ -24,7 +24,9 @@ namespace Boggart
 
 		IDevicePtr SoftTimerManager::OnCreate(Id_t id, Span_t span, Type_t type, Callback_t onExpiry)
 		{
-			IDevicePtr device = std::make_shared<SoftTimerDevice>(id, span, type, onExpiry);
+			std::shared_ptr<SoftTimerDevice> device = std::make_shared<SoftTimerDevice>(id, span, type, onExpiry);
+
+			m_Diagnostics.ShareLogger(std::static_pointer_cast<IDependencyInjection>(device));
 
 			m_Devices.push_back(device);
 

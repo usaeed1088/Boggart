@@ -74,6 +74,9 @@
     <Filter Include="IPC\Messages\Response">
       <UniqueIdentifier>{0638c135-7e68-46cf-b1ee-72ec781b93b1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Transport\InProcess">
+      <UniqueIdentifier>{23905031-752b-40ca-9a8e-b2d653d0f592}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -181,6 +184,9 @@
     <ClInclude Include="..\..\..\Lib\Transport\TransportBase.h">
       <Filter>Transport</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\InProcess\InProcess.h">
+      <Filter>Transport\InProcess</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
@@ -246,8 +252,11 @@
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.cpp">
       <Filter>IPC\Messages\Response</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Lib\Transport\Transport.cpp">
+    <ClCompile Include="..\..\..\Lib\Transport\TransportBase.cpp">
       <Filter>Transport</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\InProcess\InProcess.cpp">
+      <Filter>Transport\InProcess</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

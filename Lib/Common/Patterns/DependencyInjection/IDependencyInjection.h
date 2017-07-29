@@ -7,10 +7,12 @@
 
 namespace Boggart
 {
-	template<class T>
-	class IDependencyInjection
+	class IDependencyInjection : std::enable_shared_from_this<IDependencyInjection>
 	{
 	public:
-		virtual void InjectDependencies(Logger::ILogger* logger, Timer::IManagerPtr timerManager) = 0;
+		virtual void InjectDependencies(Logger::ILoggerPtr logger) = 0;
+		virtual void InjectDependencies(Logger::ILoggerPtr logger, Timer::IManagerPtr timerManager) = 0;
 	};
+
+	typedef std::shared_ptr<IDependencyInjection> IDependencyInjectionPtr;
 }

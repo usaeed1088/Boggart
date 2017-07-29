@@ -16,6 +16,8 @@ namespace Boggart
 
 			virtual bool Close() = 0;
 
+			virtual std::string Id() = 0;
+
 			virtual bool Send(const std::vector<unsigned char>& data) = 0;
 
 			virtual std::vector<unsigned char> Receive() = 0;

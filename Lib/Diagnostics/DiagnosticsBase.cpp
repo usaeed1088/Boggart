@@ -4,7 +4,8 @@ namespace Boggart
 {
 	DiagnosticsBase::DiagnosticsBase(std::string moduleName, std::string category):
 		m_ModuleName(moduleName),
-		m_Category(category)
+		m_Category(category),
+		m_Logger(nullptr)
 	{
 
 	}
@@ -14,7 +15,7 @@ namespace Boggart
 
 	}
 
-	void DiagnosticsBase::InjectLogger(Logger::ILogger* logger)
+	void DiagnosticsBase::InjectLogger(Logger::ILoggerPtr logger)
 	{
 		m_Logger = logger;
 		OnLoggerInjection();

@@ -6,18 +6,20 @@
 
 namespace Boggart
 {
+	// TODO: May be tamplate is not needed here ?
 	template<class T>
-	class DependencyInjectionBase : public IDependencyInjection<T>
+	class DependencyInjectionBase : public IDependencyInjection
 	{
 	protected:
 		// Dependencies
-		Diagnostics m_Diagnostics;
+		class Diagnostics m_Diagnostics;
 		Timer::IManagerPtr m_TimerManager;
 
 	public:
 		DependencyInjectionBase(std::string category, std::string moduleName);
 
-		void InjectDependencies(Logger::ILogger* logger, Timer::IManagerPtr timerManager) override;
+		void InjectDependencies(Logger::ILoggerPtr logger) override;
+		void InjectDependencies(Logger::ILoggerPtr logger, Timer::IManagerPtr timerManager) override;
 	};
 }
 

@@ -4,8 +4,10 @@ namespace Boggart
 {
 	namespace Transport
 	{
-		InProcess::InProcess():
-			TransportBase(std::string("InProcess"))
+		std::vector<InProcess*> InProcess::s_Subscribers;
+
+		InProcess::InProcess(std::string id):
+			TransportBase(std::string("InProcess"), id)
 		{
 			s_Subscribers.push_back(this);
 		}

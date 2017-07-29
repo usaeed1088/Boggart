@@ -72,6 +72,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(ProjectDir)/../../../PAL;$(IncludePath)</IncludePath>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>$(ProjectDir)/../../../PAL/;$(ProjectDir)/../../../Lib;$(IncludePath)</IncludePath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <PrecompiledHeader>
@@ -165,15 +168,18 @@
     <ClInclude Include="..\..\..\Lib\Timer\Manager\IManager.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\ManagerBase.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\InProcess\InProcess.h" />
     <ClInclude Include="..\..\..\Lib\Transport\ITransport.h" />
     <ClInclude Include="..\..\..\Lib\Transport\TransportBase.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjectionBase.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Diagnostics\DiagnosticsBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Diagnostics\Diagnostics\Diagnsotics.cpp" />
@@ -194,7 +200,8 @@
     <ClCompile Include="..\..\..\Lib\Timer\Device\Type.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\ManagerBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.cpp" />
-    <ClCompile Include="..\..\..\Lib\Transport\Transport.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\InProcess\InProcess.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\TransportBase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

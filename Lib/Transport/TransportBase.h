@@ -10,8 +10,11 @@ namespace Boggart
 	{
 		class TransportBase : public ITransport, public DependencyInjectionBase<TransportBase>
 		{
+		private:
+			std::string m_Id;
+
 		protected:
-			TransportBase(std::string moduleName);
+			TransportBase(std::string moduleName, std::string id);
 
 		public:
 			virtual ~TransportBase() override;
@@ -19,6 +22,8 @@ namespace Boggart
 			bool Open() override;
 
 			bool Close() override;
+
+			std::string Id() override;
 
 			bool Send(const std::vector<unsigned char>& data) override;
 

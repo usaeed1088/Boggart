@@ -4,6 +4,8 @@
 
 #include <Logger/ILogger.h>
 
+#include <memory>
+
 namespace Boggart
 {
 	class DiagnosticsBase : public IDiagnostics
@@ -13,7 +15,7 @@ namespace Boggart
 		std::string m_Category;
 
 	protected:
-		Logger::ILogger* m_Logger;
+		Logger::ILoggerPtr m_Logger;
 
 	protected:
 		DiagnosticsBase(std::string moduleName, std::string category);
@@ -21,7 +23,7 @@ namespace Boggart
 	public:
 		virtual ~DiagnosticsBase() override;
 
-		void InjectLogger(Logger::ILogger* logger);
+		void InjectLogger(Logger::ILoggerPtr logger);
 
 		virtual void Log(Logger::Level level, const char* format, ...) override;
 

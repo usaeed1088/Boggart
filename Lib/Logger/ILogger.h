@@ -3,6 +3,7 @@
 #include "Level.h"
 
 #include <string>
+#include <memory>
 
 namespace Boggart
 {
@@ -15,5 +16,7 @@ namespace Boggart
 
 			virtual void Log(Logger::Level level, std::string category, std::string module, const char* format, ...) = 0;
 		};
+
+		typedef std::shared_ptr<ILogger> ILoggerPtr;
 	}
 }
