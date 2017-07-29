@@ -21,6 +21,11 @@ namespace Boggart
 		OnLoggerInjection();
 	}
 
+	void DiagnosticsBase::ShareLogger(std::shared_ptr<class IDependencyInjection> dependentObject)
+	{
+		dependentObject->InjectDependencies(m_Logger);
+	}
+
 	void DiagnosticsBase::Log(Logger::Level level, const char* format, ...)
 	{
 		// Empty

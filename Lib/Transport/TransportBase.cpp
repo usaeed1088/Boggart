@@ -5,7 +5,7 @@ namespace Boggart
 	namespace Transport
 	{
 		TransportBase::TransportBase(std::string moduleName, std::string id):
-			DependencyInjectionBase<TransportBase>(std::string("Transport"), moduleName),
+			DependencyInjectionBase(std::string("Transport"), moduleName),
 			m_Id(id)
 		{
 
@@ -18,14 +18,14 @@ namespace Boggart
 
 		bool TransportBase::Open()
 		{
-			m_Diagnostics.Log(Logger::Level::Information, "Opening Transport");
+			m_Diagnostics->Log(Logger::Level::Information, "Opening Transport");
 
 			return OnOpen();
 		}
 
 		bool TransportBase::Close()
 		{
-			m_Diagnostics.Log(Logger::Level::Information, "Closing Transport");
+			m_Diagnostics->Log(Logger::Level::Information, "Closing Transport");
 
 			return OnClose();
 		}
@@ -37,7 +37,7 @@ namespace Boggart
 
 		bool TransportBase::Send(const std::vector<unsigned char>& data)
 		{
-			m_Diagnostics.Log(Logger::Level::Debug, "Sending Data. Size %d", data.size());
+			m_Diagnostics->Log(Logger::Level::Debug, "Sending Data. Size %d", data.size());
 
 			return OnSend(data);
 		}
@@ -48,7 +48,7 @@ namespace Boggart
 
 			if (!data.empty())
 			{
-				m_Diagnostics.Log(Logger::Level::Debug, "Received Data. Size %d", data.size());
+				m_Diagnostics->Log(Logger::Level::Debug, "Received Data. Size %d", data.size());
 			}
 
 			return data;

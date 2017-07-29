@@ -8,7 +8,7 @@ namespace Boggart
 		const std::string SOURCE_TABLE("SOURCES");
 
 		IPCBase::IPCBase(std::string moduleName, std::string myId):
-			DependencyInjectionBase<IPCBase>(std::string("IPC"), moduleName),
+			DependencyInjectionBase(std::string("IPC"), moduleName),
 			m_SubscriptionTable(),
 			m_Transport(nullptr),
 			m_MyId(myId)
@@ -64,14 +64,14 @@ namespace Boggart
 				}
 			}
 
-			m_Diagnostics.Log(Logger::Level::Information, "%s Unsubscribed", subscriber->Name().c_str());
+			m_Diagnostics->Log(Logger::Level::Information, "%s Unsubscribed", subscriber->Name().c_str());
 
 			return true;
 		}
 
 		bool IPCBase::Start()
 		{
-			m_Diagnostics.Log(Logger::Level::Information, "Starting");
+			m_Diagnostics->Log(Logger::Level::Information, "Starting");
 
 			return OnStart();
 		}
@@ -82,7 +82,7 @@ namespace Boggart
 			message->Destination(destination);
 			message->Source(m_MyId);
 
-			m_Diagnostics.Log(Logger::Level::Debug, "Sending Message Sequence Number [%d] to [%s]", (std::int32_t)message->SequenceNumber(), destination.c_str());
+			m_Diagnostics->Log(Logger::Level::Debug, "Sending Message Sequence Number [%d] to [%s]", (std::int32_t)message->SequenceNumber(), destination.c_str());
 
 			// TODO: Handle Retransmissions here?
 
@@ -94,7 +94,7 @@ namespace Boggart
 			subscriber->InjectIPC(this);
 			m_SubscriptionTable[table][type][subscriber->Name()] = callback;
 
-			m_Diagnostics.Log(Logger::Level::Information, "%s Subscribed on %s for type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
+			m_Diagnostics->Log(Logger::Level::Information, "%s Subscribed on %s for type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
 			return true;
 		}
 
@@ -108,7 +108,7 @@ namespace Boggart
 			}		
 
 			m_SubscriptionTable[table][type].erase(subscriberName);
-			m_Diagnostics.Log(Logger::Level::Information, "%s Unsubscribed from %s for type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
+			m_Diagnostics->Log(Logger::Level::Information, "%s Unsubscribed from %s for type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
 
 			return true;
 		}
@@ -135,7 +135,7 @@ namespace Boggart
 			const std::string source = message->Source();
 			const std::string type = message->Type();
 
-			m_Diagnostics.Log(Logger::Level::Debug, "Received message of type %s from %s", type.c_str(), source.c_str());
+			m_Diagnostics->Log(Logger::Level::Debug, "Received message of type %s from %s", type.c_str(), source.c_str());
 
 			Subscriber messageSubscribers = m_SubscriptionTable[MESSAGE_TABLE][type];
 			Subscriber sourceSubscribers = m_SubscriptionTable[SOURCE_TABLE][source];
@@ -144,13 +144,13 @@ namespace Boggart
 
 			for (std::pair<std::string, Callback_t> p : messageSubscribers)
 			{
-				m_Diagnostics.Log(Logger::Level::Debug, "Forwarding message to %s", p.first.c_str());
+				m_Diagnostics->Log(Logger::Level::Debug, "Forwarding message to %s", p.first.c_str());
 				callbacks.push_back(p.second);
 			}
 
 			for (std::pair<std::string, Callback_t> p : sourceSubscribers)
 			{
-				m_Diagnostics.Log(Logger::Level::Debug, "Forwarding message to %s", p.first.c_str());
+				m_Diagnostics->Log(Logger::Level::Debug, "Forwarding message to %s", p.first.c_str());
 				callbacks.push_back(p.second);
 			}
 

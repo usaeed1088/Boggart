@@ -2,17 +2,15 @@
 
 #include "IDependencyInjection.h"
 
-#include <Diagnostics/Diagnostics/Diagnsotics.h>
+#include <Diagnostics/IDiagnostics.h>
 
 namespace Boggart
 {
-	// TODO: May be tamplate is not needed here ?
-	template<class T>
 	class DependencyInjectionBase : public IDependencyInjection
 	{
 	protected:
 		// Dependencies
-		class Diagnostics m_Diagnostics;
+		IDiagnosticsPtr m_Diagnostics;
 		Timer::IManagerPtr m_TimerManager;
 
 	public:
@@ -22,5 +20,3 @@ namespace Boggart
 		void InjectDependencies(Logger::ILoggerPtr logger, Timer::IManagerPtr timerManager) override;
 	};
 }
-
-#include "DependencyInjectionBase.cpp"

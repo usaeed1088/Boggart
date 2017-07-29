@@ -8,7 +8,7 @@ namespace Boggart
 {
 	namespace Transport
 	{
-		class TransportBase : public ITransport, public DependencyInjectionBase<TransportBase>
+		class TransportBase : public ITransport, public DependencyInjectionBase
 		{
 		private:
 			std::string m_Id;

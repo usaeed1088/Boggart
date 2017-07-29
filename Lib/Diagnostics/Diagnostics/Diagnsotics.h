@@ -12,7 +12,6 @@ namespace Boggart
 		Diagnostics(std::string moduleName, std::string category);
 		~Diagnostics() override;
 
-		void ShareLogger(std::shared_ptr<class IDependencyInjection> dependentObject);
 		void Log(Logger::Level level, const char* format, ...) override;
 
 	private:

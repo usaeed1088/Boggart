@@ -10,7 +10,7 @@ namespace Boggart
 {
 	namespace Timer
 	{
-		class ManagerBase : public IManager, public DependencyInjectionBase<ManagerBase>
+		class ManagerBase : public IManager, public DependencyInjectionBase
 		{
 		private:
 			Id_t m_LastCreatedId;

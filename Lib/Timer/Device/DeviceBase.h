@@ -12,7 +12,7 @@ namespace Boggart
 {
 	namespace Timer
 	{
-		class DeviceBase : public IDevice, public DependencyInjectionBase<DeviceBase>
+		class DeviceBase : public IDevice, public DependencyInjectionBase
 		{
 		private:
 			Id_t m_Id;

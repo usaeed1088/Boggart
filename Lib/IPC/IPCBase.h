@@ -13,7 +13,7 @@ namespace Boggart
 {
 	namespace IPC
 	{
-		class IPCBase : public IIPC, public DependencyInjectionBase<IPCBase>
+		class IPCBase : public IIPC, public DependencyInjectionBase
 		{
 		private:
 			typedef std::string SubscriberName;
