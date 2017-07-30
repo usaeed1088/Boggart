@@ -1,5 +1,7 @@
 #include "LoggerBase.h"
 
+#include <Lib/Instantiator.h>
+
 #include <sstream>
 #include <cstdarg>
 
@@ -29,11 +31,14 @@ namespace Boggart
 
 			std::stringstream ss;
 
-			ss << "[" << "timestamp_placeholder" << "] ";
+			PAL::API::ITimePtr timeAPI = PAL::Instantiator::APIFactory()->GetTimeInstance();
+			std::string datetime = timeAPI->DateFormat() + std::string(" ") + timeAPI->TimeFormat();
+
+			ss << "[" << timeAPI->HumanReadableTimestamp(datetime, true) << "] ";
 			ss << "[" << level << "] ";
 			ss << "[" << category << "] ";
 			ss << "[" << module << "] ";
-			ss << "[" << std::string(buffer) << "]";
+			ss << "" << std::string(buffer) << "";
 
 			// Log
 			_OnLog(ss.str());
