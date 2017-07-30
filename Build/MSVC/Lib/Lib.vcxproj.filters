@@ -199,6 +199,9 @@
     <ClInclude Include="..\..\..\Lib\Transport\TCP\Client\Client.h">
       <Filter>Transport\TCP\Client</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\TCP\Server\Server.h">
+      <Filter>Transport\TCP\Server</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
@@ -269,6 +272,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\InProcess\InProcess.cpp">
       <Filter>Transport\InProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\TCP\Client\Client.cpp">
+      <Filter>Transport\TCP\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\TCP\Server\Server.cpp">
+      <Filter>Transport\TCP\Server</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

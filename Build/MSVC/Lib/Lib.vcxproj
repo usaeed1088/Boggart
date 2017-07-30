@@ -171,6 +171,7 @@
     <ClInclude Include="..\..\..\Lib\Transport\InProcess\InProcess.h" />
     <ClInclude Include="..\..\..\Lib\Transport\ITransport.h" />
     <ClInclude Include="..\..\..\Lib\Transport\TCP\Client\Client.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\TCP\Server\Server.h" />
     <ClInclude Include="..\..\..\Lib\Transport\TransportBase.h" />
   </ItemGroup>
   <ItemGroup>
@@ -208,6 +209,8 @@
     <ClCompile Include="..\..\..\Lib\Timer\Manager\ManagerBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\InProcess\InProcess.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\TCP\Client\Client.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\TCP\Server\Server.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\TransportBase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
