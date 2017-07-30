@@ -1,6 +1,6 @@
 #include "SoftTimerDevice.h"
 
-#include <Lib/PAL.h>
+#include <Lib/Instantiator.h>
 
 namespace Boggart
 {
@@ -19,7 +19,7 @@ namespace Boggart
 
 		void SoftTimerDevice::OnProcess()
 		{
-			std::uint64_t now = PAL::PAL::Instance()->Milliseconds();
+			std::uint64_t now = PAL::Instantiator::APIFactory()->GetTimeInstance()->Milliseconds();
 			if ((now - m_StartTime) >= Span())
 			{
 				SetExpired();
@@ -28,13 +28,13 @@ namespace Boggart
 
 		bool SoftTimerDevice::OnStart()
 		{
-			m_StartTime = PAL::PAL::Instance()->Milliseconds();
+			m_StartTime = PAL::Instantiator::APIFactory()->GetTimeInstance()->Milliseconds();
 			return true;
 		}
 
 		bool SoftTimerDevice::OnRestart()
 		{
-			m_StartTime = PAL::PAL::Instance()->Milliseconds();
+			m_StartTime = PAL::Instantiator::APIFactory()->GetTimeInstance()->Milliseconds();
 			return true;
 		}
 
