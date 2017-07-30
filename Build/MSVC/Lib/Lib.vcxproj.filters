@@ -77,6 +77,15 @@
     <Filter Include="Transport\InProcess">
       <UniqueIdentifier>{23905031-752b-40ca-9a8e-b2d653d0f592}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Transport\TCP">
+      <UniqueIdentifier>{51819c28-88f2-4639-b50c-0eae40777a04}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\TCP\Server">
+      <UniqueIdentifier>{8b6cbda6-a95e-4f2c-8b64-67144ce634e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\TCP\Client">
+      <UniqueIdentifier>{5315e038-d38a-4bbd-8942-8ed5eca5cb84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -187,6 +196,12 @@
     <ClInclude Include="..\..\..\Lib\Transport\InProcess\InProcess.h">
       <Filter>Transport\InProcess</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\TCP\Client\Client.h">
+      <Filter>Transport\TCP\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\TCP\Server\Server.h">
+      <Filter>Transport\TCP\Server</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
@@ -257,6 +272,12 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\InProcess\InProcess.cpp">
       <Filter>Transport\InProcess</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\TCP\Client\Client.cpp">
+      <Filter>Transport\TCP\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\TCP\Server\Server.cpp">
+      <Filter>Transport\TCP\Server</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

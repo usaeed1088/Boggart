@@ -1,7 +1,5 @@
 #pragma once
 
-//#include <Common/Patterns/DependencyInjection/IDependencyInjection.h>
-
 #include "../Common.h"
 #include "../Device/IDevice.h"
 
@@ -11,7 +9,7 @@ namespace Boggart
 {
 	namespace Timer
 	{
-		class IManager : /*public IDependencyInjection<IManager>,*/ public std::enable_shared_from_this<IManager>
+		class IManager : public std::enable_shared_from_this<IManager>
 		{
 		public:
 			virtual ~IManager() {}

@@ -170,6 +170,8 @@
     <ClInclude Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.h" />
     <ClInclude Include="..\..\..\Lib\Transport\InProcess\InProcess.h" />
     <ClInclude Include="..\..\..\Lib\Transport\ITransport.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\TCP\Client\Client.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\TCP\Server\Server.h" />
     <ClInclude Include="..\..\..\Lib\Transport\TransportBase.h" />
   </ItemGroup>
   <ItemGroup>
@@ -185,11 +187,17 @@
     <ClCompile Include="..\..\..\Lib\Diagnostics\Diagnostics\Diagnsotics.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\Asynchronous\Asynchronous.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\IPCBase.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\MessageBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\MessageBase.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/IPCMessageBase.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Request.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Response.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.cpp" />
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/RequestSubtypes.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/ResponseSubtypes.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Subscribable\Subscribable.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Console\Console.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Level.cpp" />
@@ -201,6 +209,8 @@
     <ClCompile Include="..\..\..\Lib\Timer\Manager\ManagerBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\InProcess\InProcess.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\TCP\Client\Client.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\TCP\Server\Server.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\TransportBase.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
