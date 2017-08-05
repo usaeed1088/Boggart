@@ -4,6 +4,8 @@
 
 #include "ITransport.h"
 
+#include "IncomingBuffer/IncomingBuffer.h"
+
 namespace Boggart
 {
 	namespace Transport
@@ -12,6 +14,8 @@ namespace Boggart
 		{
 		private:
 			std::string m_Id;
+			IncomingBuffer m_IncomingBuffer;
+			Timer::IDevicePtr m_ProcessingTimer;
 
 		protected:
 			TransportBase(std::string moduleName, std::string id);
@@ -28,6 +32,10 @@ namespace Boggart
 			bool Send(const std::vector<unsigned char>& data) override;
 
 			std::vector<unsigned char> Receive() override;
+
+		private:
+			void OnProcessingTimerExpired();
+			void ProcessIncomingData();
 
 		protected:
 			virtual bool OnOpen() = 0;

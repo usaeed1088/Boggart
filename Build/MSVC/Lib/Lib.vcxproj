@@ -168,6 +168,9 @@
     <ClInclude Include="..\..\..\Lib\Timer\Manager\IManager.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\ManagerBase.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Definition\Definition.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Helper\Helper.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\IncomingBuffer\IncomingBuffer.h" />
     <ClInclude Include="..\..\..\Lib\Transport\InProcess\InProcess.h" />
     <ClInclude Include="..\..\..\Lib\Transport\ITransport.h" />
     <ClInclude Include="..\..\..\Lib\Transport\TCP\Client\Client.h" />
@@ -208,6 +211,9 @@
     <ClCompile Include="..\..\..\Lib\Timer\Device\Type.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\ManagerBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Definition\Definition.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Helper\Helper.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\IncomingBuffer\IncomingBuffer.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\InProcess\InProcess.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\TCP\Client\Client.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\TCP\Server\Server.cpp" />
