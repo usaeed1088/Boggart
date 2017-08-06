@@ -1,7 +1,7 @@
 #pragma once
 
-#include <Logger/ILogger.h>
-#include <Common/Patterns/DependencyInjection/IDependencyInjection.h>
+#include <Lib/Logger/ILogger.h>
+#include <Lib/Common/Patterns/DependencyInjection/IDependencyInjection.h>
 
 #include <string>
 #include <memory>

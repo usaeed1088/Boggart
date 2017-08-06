@@ -8,6 +8,9 @@ namespace Boggart
 	{
 		class MessageBase : public IMessage
 		{
+		public:
+			static const std::string DestinationAny;
+
 		private:
 			std::string m_Type;
 			std::string m_Source;
@@ -37,17 +40,11 @@ namespace Boggart
 			std::uint8_t SequenceNumber() override;
 
 			std::vector<unsigned char> Encode() override;
-
-		private:
 			bool Decode(const std::vector<unsigned char>& data) override;
 
 		protected:
 			virtual std::vector<unsigned char> OnEncode() = 0;
 			virtual bool OnDecode(const std::vector<unsigned char>& data) = 0;
-
-		protected:
-			static void EncodeString(const std::string& string, std::vector<unsigned char>& data);
-			static void DecodeString(std::string& string, std::vector<unsigned char>& data);
 		};
 	}
 }

@@ -16,6 +16,11 @@ namespace Boggart
 		m_Diagnostics->InjectLogger(logger);
 	}
 
+	void DependencyInjectionBase::InjectDependencies(Timer::IManagerPtr timerManager)
+	{
+		m_TimerManager = timerManager;
+	}
+
 	void DependencyInjectionBase::InjectDependencies(Logger::ILoggerPtr logger, Timer::IManagerPtr timerManager)
 	{
 		m_Diagnostics->InjectLogger(logger);

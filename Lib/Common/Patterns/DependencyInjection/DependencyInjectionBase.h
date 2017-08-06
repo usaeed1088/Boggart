@@ -2,7 +2,7 @@
 
 #include "IDependencyInjection.h"
 
-#include <Diagnostics/IDiagnostics.h>
+#include <Lib/Diagnostics/IDiagnostics.h>
 
 namespace Boggart
 {
@@ -17,6 +17,7 @@ namespace Boggart
 		DependencyInjectionBase(std::string category, std::string moduleName);
 
 		void InjectDependencies(Logger::ILoggerPtr logger) override;
+		void InjectDependencies(Timer::IManagerPtr timerManager) override;
 		void InjectDependencies(Logger::ILoggerPtr logger, Timer::IManagerPtr timerManager) override;
 	};
 }

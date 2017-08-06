@@ -88,12 +88,11 @@ namespace Boggart
 		{
 			std::vector<unsigned char> data = OnReceive();
 
-			if (data.empty())
+			while (!data.empty())
 			{
-				return;
+				m_IncomingBuffer.ProcessIncomingData(data);
+				data = OnReceive();
 			}
-
-			m_IncomingBuffer.ProcessIncomingData(data);
 		}
 	}
 }

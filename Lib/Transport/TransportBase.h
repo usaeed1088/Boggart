@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Common/Patterns/DependencyInjection/DependencyInjectionBase.h>
+#include <Lib/Common/Patterns/DependencyInjection/DependencyInjectionBase.h>
 
 #include "ITransport.h"
 

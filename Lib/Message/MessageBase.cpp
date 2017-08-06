@@ -1,11 +1,15 @@
 #include "MessageBase.h"
 
+#include "Utility/Utility.h"
+
 #include <cstdint>
 
 namespace Boggart
 {
 	namespace Message
 	{
+		const std::string MessageBase::DestinationAny("Any");
+
 		MessageBase::MessageBase(std::string type):
 			m_Type(type),
 			m_Source(),
@@ -18,17 +22,14 @@ namespace Boggart
 		}
 
 		MessageBase::MessageBase(const std::vector<unsigned char>& data):
-			m_Type(0),
+			m_Type(),
 			m_Source(),
 			m_Destination(),
 			m_SequenceNumber(0),
 			m_PayloadLength(0),
 			m_Valid(false)
 		{
-			if (Decode(data))
-			{
-				m_Valid = true;
-			}
+			
 		}
 
 		MessageBase::~MessageBase()
@@ -74,15 +75,7 @@ namespace Boggart
 		std::uint8_t MessageBase::SequenceNumber()
 		{
 			return m_SequenceNumber;
-		}
-
-		void MessageBase::EncodeString(const std::string& string, std::vector<unsigned char>& data)
-		{
-			std::uint8_t size = static_cast<std::uint8_t>(string.length());
-
-			data.push_back(size);
-			data.insert(data.end(), string.begin(), string.end());
-		}
+		}		
 
 		std::vector<unsigned char> MessageBase::Encode()
 		{
@@ -92,9 +85,9 @@ namespace Boggart
 
 			std::vector<unsigned char> data;
 
-			EncodeString(m_Type, data);				// 0
-			EncodeString(m_Source, data);			// 1
-			EncodeString(m_Destination, data);		// 2
+			Utility::EncodeString(m_Type, data);				// 0
+			Utility::EncodeString(m_Source, data);			// 1
+			Utility::EncodeString(m_Destination, data);		// 2
 
 			data.push_back(m_SequenceNumber);		// 3
 
@@ -106,23 +99,15 @@ namespace Boggart
 			return data;
 		}
 
-		void MessageBase::DecodeString(std::string& string, std::vector<unsigned char>& data)
-		{
-			std::uint8_t size = data[0];
-			
-			string.insert(string.end(), data.begin() + 1, data.begin() + 1 + size);
-			data.erase(data.begin(), data.begin() + 1 + size);
-		}
-
 		bool MessageBase::Decode(const std::vector<unsigned char>& data)
 		{
 			// NOTE: Make sure that 'data' is not referred anywhere in decoding.
 			// Use '_data' instead
 			std::vector<unsigned char> _data = data;
 
-			DecodeString(m_Type, _data);				// 0
-			DecodeString(m_Source, _data);				// 1
-			DecodeString(m_Destination, _data);			// 2
+			Utility::DecodeString(m_Type, _data);				// 0
+			Utility::DecodeString(m_Source, _data);				// 1
+			Utility::DecodeString(m_Destination, _data);			// 2
 
 			m_SequenceNumber = _data[0]; _data.erase(_data.begin());		// 3
 

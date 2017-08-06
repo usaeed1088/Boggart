@@ -1,6 +1,6 @@
 #pragma once
  
-#include <Message/MessageBase.h>
+#include <Lib/Message/MessageBase.h>
 
 namespace Boggart
 {

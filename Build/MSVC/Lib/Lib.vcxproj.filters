@@ -95,6 +95,21 @@
     <Filter Include="Transport\IncomingBuffer">
       <UniqueIdentifier>{d5fa45ff-ae3b-480c-8d46-94be50eaa845}</UniqueIdentifier>
     </Filter>
+    <Filter Include="IPC\Messages\Factory">
+      <UniqueIdentifier>{124a96d9-908d-4682-8300-08e30f10a395}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Message\Factory">
+      <UniqueIdentifier>{d3a4a0be-2e29-485f-9482-d6270dcd7ab7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Message\Utility">
+      <UniqueIdentifier>{c6d0a470-ef6a-4a3b-ac3b-cd10f8a32b32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="IPC\ConnectionManager">
+      <UniqueIdentifier>{6881b50b-7457-45df-af9c-5e36a383c617}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Message\Definition">
+      <UniqueIdentifier>{480880e1-b4de-4f30-b7ff-6f9db75289f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -190,9 +205,6 @@
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Request.h">
       <Filter>IPC\Messages\Request</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Response.h">
-      <Filter>IPC\Messages\Response</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.h">
       <Filter>IPC\Messages\Request</Filter>
     </ClInclude>
@@ -211,6 +223,9 @@
     <ClInclude Include="..\..\..\Lib\Transport\TCP\Server\Server.h">
       <Filter>Transport\TCP\Server</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Response.h">
+      <Filter>IPC\Messages\Response</Filter>
+    </ClInclude>
     <ClInclude Include="..\..\..\Lib\Transport\Helper\Helper.h">
       <Filter>Transport\Helper</Filter>
     </ClInclude>
@@ -219,6 +234,24 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Lib\Transport\IncomingBuffer\IncomingBuffer.h">
       <Filter>Transport\IncomingBuffer</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Factory\Factory.h">
+      <Filter>IPC\Messages\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Message\Factory\IFactory.h">
+      <Filter>Message\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Message\Factory\FactoryBase.h">
+      <Filter>Message\Factory</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Message\Utility\Utility.h">
+      <Filter>Message\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\ConnectionManager\ConnectionManager.h">
+      <Filter>IPC\ConnectionManager</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Message\Definition\Definition.h">
+      <Filter>Message\Definition</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -276,9 +309,6 @@
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Request.cpp">
       <Filter>IPC\Messages\Request</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Response.cpp">
-      <Filter>IPC\Messages\Response</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.cpp">
       <Filter>IPC\Messages\Request</Filter>
     </ClCompile>
@@ -297,6 +327,9 @@
     <ClCompile Include="..\..\..\Lib\Transport\TCP\Server\Server.cpp">
       <Filter>Transport\TCP\Server</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Response.cpp">
+      <Filter>IPC\Messages\Response</Filter>
+    </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\Helper\Helper.cpp">
       <Filter>Transport\Helper</Filter>
     </ClCompile>
@@ -305,6 +338,21 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\IncomingBuffer\IncomingBuffer.cpp">
       <Filter>Transport\IncomingBuffer</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Factory\Factory.cpp">
+      <Filter>IPC\Messages\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Message\Factory\FactoryBase.cpp">
+      <Filter>Message\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Message\Utility\Utility.cpp">
+      <Filter>Message\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\ConnectionManager\ConnectionManager.cpp">
+      <Filter>IPC\ConnectionManager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Message\Definition\Defintion.cpp">
+      <Filter>Message\Definition</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

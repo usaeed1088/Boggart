@@ -2,8 +2,11 @@
 
 #include "IIPC.h"
 
-#include "../Transport/ITransport.h"
-#include "../Common/Patterns/DependencyInjection/DependencyInjectionBase.h"
+#include <Lib/Transport/ITransport.h>
+#include <Lib/Common/Patterns/DependencyInjection/DependencyInjectionBase.h>
+
+#include "Messages/Factory/Factory.h"
+#include "ConnectionManager/ConnectionManager.h"
 
 #include <map>
 #include <string>
@@ -27,6 +30,11 @@ namespace Boggart
 			SubscriptionTable m_SubscriptionTable;
 
 			Transport::ITransportPtr m_Transport;
+
+			std::shared_ptr<ConnectionManager> m_ConnectionManager;
+
+		protected:
+			Factory m_Factory;
 
 		private:
 			std::string m_MyId;

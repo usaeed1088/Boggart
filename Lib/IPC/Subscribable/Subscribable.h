@@ -9,7 +9,7 @@ namespace Boggart
 {
 	namespace IPC
 	{
-		class Subscribable
+		class Subscribable : public std::enable_shared_from_this<Subscribable>
 		{
 		private:
 			class IIPC* m_IPC;
@@ -26,6 +26,6 @@ namespace Boggart
 			std::string Name();
 		};
 
-		typedef class Subscribable* SubscribablePtr;
+		typedef std::shared_ptr<class Subscribable> SubscribablePtr;
 	}
 }

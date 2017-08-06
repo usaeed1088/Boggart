@@ -2,7 +2,7 @@
 
 #include "IManager.h"
 
-#include <Common/Patterns/DependencyInjection/DependencyInjectionBase.h>
+#include <Lib/Common/Patterns/DependencyInjection/DependencyInjectionBase.h>
 
 #include <string>
 

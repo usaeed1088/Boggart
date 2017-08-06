@@ -1,5 +1,7 @@
 #include "Response.h"
 
+#include <Lib/Message/Utility/Utility.h>
+
 namespace Boggart
 {
 	namespace IPC
@@ -37,7 +39,7 @@ namespace Boggart
 		{
 			std::vector<unsigned char> data;
 
-			Message::MessageBase::EncodeString(m_SubType, data);
+			Message::Utility::EncodeString(m_SubType, data);
 
 			return data;
 		}
@@ -46,7 +48,7 @@ namespace Boggart
 		{
 			std::vector<unsigned char> _data = data;
 
-			Message::MessageBase::DecodeString(m_SubType, _data);
+			Message::Utility::DecodeString(m_SubType, _data);
 
 			return true;
 		}

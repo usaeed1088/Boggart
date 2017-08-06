@@ -2,6 +2,8 @@
 
 #include "../MessageBase.h"
 
+#include "Subtypes.h"
+
 namespace Boggart
 {
 	namespace IPC
@@ -25,5 +27,7 @@ namespace Boggart
 			std::vector<unsigned char> _OnEncode() override;
 			bool _OnDecode(const std::vector<unsigned char>& data) override;
 		};
+
+		typedef std::shared_ptr<Response> ResponsePtr;
 	}
 }
