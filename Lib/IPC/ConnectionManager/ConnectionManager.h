@@ -1,10 +1,12 @@
 #pragma once
 
 #include <Lib/Message/IMessage.h>
-#include <Lib/Common/Patterns/DependencyInjection/DependencyInjectionBase.h>
+#include <Lib/Common/Patterns/DependencyInjection/DependencyInjection.h>
 
 #include "../Messages/Request/Request.h"
 #include "../Messages/Response/Response.h"
+
+#include "../Subscribable/Subscribable.h"
 
 #include <string>
 #include <vector>
@@ -15,7 +17,7 @@ namespace Boggart
 {
 	namespace IPC
 	{
-		class ConnectionManager : public DependencyInjectionBase
+		class ConnectionManager : public DependencyInjection, public Subscribable
 		{
 		private:
 			struct Properties

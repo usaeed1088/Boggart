@@ -25,7 +25,7 @@ namespace Boggart
 
 		void InjectLogger(Logger::ILoggerPtr logger);
 
-		void ShareLogger(std::shared_ptr<class IDependencyInjection> dependentObject) override;
+		void ShareLogger(std::shared_ptr<class DependencyInjection> dependentObject) override;
 		virtual void Log(Logger::Level level, const char* format, ...) override;
 
 	protected:

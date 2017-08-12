@@ -5,7 +5,7 @@ namespace Boggart
 	namespace Timer
 	{
 		ManagerBase::ManagerBase(std::string moduleName):
-			DependencyInjectionBase(std::string("Timer"), moduleName),
+			DependencyInjection(std::string("Timer"), moduleName),
 			m_LastCreatedId(0)
 		{
 

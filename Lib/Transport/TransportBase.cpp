@@ -7,7 +7,7 @@ namespace Boggart
 	namespace Transport
 	{
 		TransportBase::TransportBase(std::string moduleName, std::string id):
-			DependencyInjectionBase(std::string("Transport"), moduleName),
+			DependencyInjection(std::string("Transport"), moduleName),
 			m_Id(id),
 			m_IncomingBuffer(),
 			m_ProcessingTimer(nullptr)

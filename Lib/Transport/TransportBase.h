@@ -1,8 +1,8 @@
 #pragma once
 
-#include <Lib/Common/Patterns/DependencyInjection/DependencyInjectionBase.h>
-
 #include "ITransport.h"
+
+#include <Lib/Common/Patterns/DependencyInjection/DependencyInjection.h>
 
 #include "IncomingBuffer/IncomingBuffer.h"
 
@@ -10,7 +10,7 @@ namespace Boggart
 {
 	namespace Transport
 	{
-		class TransportBase : public ITransport, public DependencyInjectionBase
+		class TransportBase : public ITransport, public DependencyInjection
 		{
 		private:
 			std::string m_Id;

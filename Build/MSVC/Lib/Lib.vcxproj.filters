@@ -110,6 +110,21 @@
     <Filter Include="Message\Definition">
       <UniqueIdentifier>{480880e1-b4de-4f30-b7ff-6f9db75289f6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Transport\Arbitrator">
+      <UniqueIdentifier>{b10fcfda-d976-46cd-a2cc-dac1188abeba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Arbitrator\Messages">
+      <UniqueIdentifier>{627fa62e-43fa-4c43-9eaf-06e3249b251b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Arbitrator\Messages\Ping">
+      <UniqueIdentifier>{101a7751-1583-4cd6-8507-778d59fc6b16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Arbitrator\Messages\Pong">
+      <UniqueIdentifier>{9a553268-85c2-4868-8e3d-e87d0b7f5b13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Boggart">
+      <UniqueIdentifier>{35813158-6ffd-4ea1-84f4-6acbc2848fba}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -123,12 +138,6 @@
     </ClInclude>
     <ClInclude Include="..\..\..\Lib\Common\Settings.h">
       <Filter>Common</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\IDependencyInjection.h">
-      <Filter>Common\Patterns\DependencyInjection</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjectionBase.h">
-      <Filter>Common\Patterns\DependencyInjection</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Lib\Logger\ILogger.h">
       <Filter>Logger</Filter>
@@ -253,13 +262,22 @@
     <ClInclude Include="..\..\..\Lib\Message\Definition\Definition.h">
       <Filter>Message\Definition</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\Arbitrator\Arbitrator.h">
+      <Filter>Transport\Arbitrator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\Arbitrator\Ping\Ping.h">
+      <Filter>Transport\Arbitrator\Messages\Ping</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Boggart\Boggart.h">
+      <Filter>Boggart</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjection.h">
+      <Filter>Common\Patterns\DependencyInjection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
       <Filter>Configuration</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjectionBase.cpp">
-      <Filter>Common\Patterns\DependencyInjection</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Logger\Level.cpp">
       <Filter>Logger</Filter>
@@ -353,6 +371,18 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Message\Definition\Defintion.cpp">
       <Filter>Message\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Arbitrator\Arbitrator.cpp">
+      <Filter>Transport\Arbitrator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Arbitrator\Ping\Ping.cpp">
+      <Filter>Transport\Arbitrator\Messages\Ping</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Boggart\Boggart.cpp">
+      <Filter>Boggart</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjection.cpp">
+      <Filter>Common\Patterns\DependencyInjection</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -5,7 +5,8 @@ namespace Boggart
 	namespace IPC
 	{
 		ConnectionManager::ConnectionManager(std::string myId, DataSendCallback callback):
-			DependencyInjectionBase(std::string("IPC"), std::string("ConnectionManager")),
+			DependencyInjection(std::string("IPC"), std::string("ConnectionManager")),
+			Subscribable(std::string("ConnectionManager")),
 			m_MyId(myId),
 			m_DataSendCallback(callback),
 			m_HostConnection(Message::Defintion::DestinationAny),

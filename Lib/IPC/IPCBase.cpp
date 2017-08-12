@@ -8,9 +8,8 @@ namespace Boggart
 		const std::string SOURCE_TABLE("SOURCES");
 
 		IPCBase::IPCBase(std::string moduleName, std::string myId):
-			DependencyInjectionBase(std::string("IPC"), moduleName),
+			DependencyInjection(std::string("IPC"), moduleName),
 			m_SubscriptionTable(),
-			m_Transport(nullptr),
 			m_MyId(myId),
 			m_ConnectionManager(new ConnectionManager(myId, std::bind(&IPCBase::Send, this, std::placeholders::_1, std::placeholders::_2)))
 		{
@@ -20,11 +19,6 @@ namespace Boggart
 		IPCBase::~IPCBase()
 		{
 
-		}
-
-		void IPCBase::InjectTransport(Transport::ITransportPtr transport)
-		{
-			m_Transport = transport;
 		}
 
 		bool IPCBase::SubscribeMessage(SubscribablePtr subscriber, std::string type, Callback_t callback)
@@ -75,6 +69,9 @@ namespace Boggart
 
 			m_Diagnostics->ShareLogger(m_ConnectionManager);
 			m_ConnectionManager->InjectDependencies(m_TimerManager);
+
+			SubscribeMessage(m_ConnectionManager, Request::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1));
+			SubscribeMessage(m_ConnectionManager, Response::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1));
 
 			m_ConnectionManager->Start();
 
@@ -144,8 +141,6 @@ namespace Boggart
 
 			Subscriber messageSubscribers = m_SubscriptionTable[MESSAGE_TABLE][type];
 			Subscriber sourceSubscribers = m_SubscriptionTable[SOURCE_TABLE][source];
-
-			m_ConnectionManager->OnIncomingMessage(message);
 
 			std::vector<Callback_t> callbacks;
 

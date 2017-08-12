@@ -3,7 +3,7 @@
 #include "IIPC.h"
 
 #include <Lib/Transport/ITransport.h>
-#include <Lib/Common/Patterns/DependencyInjection/DependencyInjectionBase.h>
+#include <Lib/Common/Patterns/DependencyInjection/DependencyInjection.h>
 
 #include "Messages/Factory/Factory.h"
 #include "ConnectionManager/ConnectionManager.h"
@@ -16,7 +16,7 @@ namespace Boggart
 {
 	namespace IPC
 	{
-		class IPCBase : public IIPC, public DependencyInjectionBase
+		class IPCBase : public IIPC, public DependencyInjection
 		{
 		private:
 			typedef std::string SubscriberName;
@@ -28,8 +28,6 @@ namespace Boggart
 			typedef std::map<TableName, Subscription> SubscriptionTable;
 
 			SubscriptionTable m_SubscriptionTable;
-
-			Transport::ITransportPtr m_Transport;
 
 			std::shared_ptr<ConnectionManager> m_ConnectionManager;
 
@@ -44,8 +42,6 @@ namespace Boggart
 
 		public:
 			virtual ~IPCBase() override;
-
-			void InjectTransport(Transport::ITransportPtr transport);
 
 			bool SubscribeMessage(SubscribablePtr subscriber, std::string type, Callback_t callback) override;
 			bool SubscribeSource(SubscribablePtr subscriber, std::string type, Callback_t callback) override;
