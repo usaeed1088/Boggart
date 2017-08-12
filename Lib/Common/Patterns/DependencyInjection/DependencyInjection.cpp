@@ -12,17 +12,17 @@ namespace Boggart
 
 	}
 
-	void DependencyInjection::InjectDependencies(std::shared_ptr<Logger::ILogger> logger)
+	void DependencyInjection::InjectDependency(std::shared_ptr<Logger::ILogger> logger)
 	{
 		m_Diagnostics->InjectLogger(logger);
 	}
 
-	void DependencyInjection::InjectDependencies(std::shared_ptr<Timer::IManager> timerManager)
+	void DependencyInjection::InjectDependency(std::shared_ptr<Timer::IManager> timerManager)
 	{
 		m_TimerManager = timerManager;
 	}
 
-	void DependencyInjection::InjectDependencies(std::shared_ptr<Transport::ITransport> transport)
+	void DependencyInjection::InjectDependency(std::shared_ptr<Transport::ITransport> transport)
 	{
 		m_Transport = transport;
 	}

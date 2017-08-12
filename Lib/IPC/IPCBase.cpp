@@ -68,7 +68,7 @@ namespace Boggart
 			m_Diagnostics->Log(Logger::Level::Information, "Starting");
 
 			m_Diagnostics->ShareLogger(m_ConnectionManager);
-			m_ConnectionManager->InjectDependencies(m_TimerManager);
+			m_ConnectionManager->InjectDependency(m_TimerManager);
 
 			SubscribeMessage(m_ConnectionManager, Request::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1));
 			SubscribeMessage(m_ConnectionManager, Response::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1));

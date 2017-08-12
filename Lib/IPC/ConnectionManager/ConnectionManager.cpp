@@ -25,7 +25,7 @@ namespace Boggart
 		{
 			m_ProcessingTimer = m_TimerManager->Create
 			(
-				Timer::Span_t(100),
+				Timer::Span_t(5000),
 				Timer::Type_t::Periodic,
 				std::bind(&ConnectionManager::OnProcessingTimerExpired, this)
 			);

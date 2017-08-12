@@ -25,7 +25,7 @@ namespace Boggart
 
 	void DiagnosticsBase::ShareLogger(std::shared_ptr<class DependencyInjection> dependentObject)
 	{
-		dependentObject->InjectDependencies(m_Logger);
+		dependentObject->InjectDependency(m_Logger);
 	}
 
 	void DiagnosticsBase::Log(Logger::Level level, const char* format, ...)

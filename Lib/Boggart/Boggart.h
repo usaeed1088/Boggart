@@ -6,8 +6,12 @@
 // Loggers
 #include <Logger/Console/Console.h>
 
+// Diagnostics
+#include <Diagnostics/Diagnostics/Diagnsotics.h>
+
 // IPCs
 #include <IPC/Asynchronous/Asynchronous.h>
+#include <IPC/Subscribable/Subscribable.h>
 
 // Transports
 #include <Transport/InProcess/InProcess.h>
@@ -21,27 +25,37 @@ namespace Boggart
 	class Boggart
 	{
 	private:
-		IPC::IIPCPtr m_IPC;
-		Logger::ILoggerPtr m_Logger;
-		Timer::IManagerPtr m_TimerManager;
-		Transport::ITransportPtr m_Transport;
+		std::shared_ptr<IPC::IPCBase> m_IPC;
+		std::shared_ptr<Logger::LoggerBase> m_Logger;
+		std::shared_ptr<Timer::ManagerBase> m_TimerManager;
+		std::shared_ptr<Transport::TransportBase> m_Transport;
 
 		std::vector<std::shared_ptr<Boggart>> m_Boggarts;
 
+		Diagnostics m_Diagnostics;
+
 	public:
-		Boggart();
+		Boggart(std::string name);
 		~Boggart();
 
-		void InjectIPC(IPC::IIPCPtr ipc);
-		void InjectLogger(Logger::ILoggerPtr logger);
-		void InjectTimerManager(Timer::IManagerPtr timerManager);
-		void InjectTransport(Transport::ITransportPtr transport);
+		void InjectIPC(std::shared_ptr<IPC::IPCBase> ipc);
+		void InjectLogger(std::shared_ptr<Logger::LoggerBase> logger);
+		void InjectTimerManager(std::shared_ptr<Timer::ManagerBase> timerManager);
+		void InjectTransport(std::shared_ptr<Transport::TransportBase> transport);
 
 		void InjectBoggart(std::shared_ptr<Boggart> boggart);
 
 		void Start();
 
+		IPC::IIPCPtr IPC();
+		Logger::ILoggerPtr Logger();
+		Timer::IManagerPtr TimerManager();
+
 	private:
 		void Process();
+		void ProcessBoggarts();
+
+		void InjectDependencies();
+		bool StartComponents();
 	};
 }

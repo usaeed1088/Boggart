@@ -24,8 +24,8 @@ namespace Boggart
 	public:
 		DependencyInjection(std::string category, std::string moduleName);
 
-		void InjectDependencies(std::shared_ptr<Logger::ILogger> logger);
-		void InjectDependencies(std::shared_ptr<Timer::IManager> timerManager);
-		void InjectDependencies(std::shared_ptr<Transport::ITransport> transport);
+		void InjectDependency(std::shared_ptr<Logger::ILogger> logger);
+		void InjectDependency(std::shared_ptr<Timer::IManager> timerManager);
+		void InjectDependency(std::shared_ptr<Transport::ITransport> transport);
 	};
 }
