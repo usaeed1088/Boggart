@@ -4,6 +4,8 @@
 
 namespace Boggart
 {
+	std::vector<Boggart*> Boggart::s_Boggarts;
+
 	Boggart::Boggart(std::string name):
 		m_IPC(nullptr),
 		m_Logger(nullptr),
@@ -11,12 +13,19 @@ namespace Boggart
 		m_Transport(nullptr),
 		m_Diagnostics(name, std::string("Boggart"))
 	{
-
+		s_Boggarts.push_back(this);
 	}
 
 	Boggart::~Boggart()
 	{
-
+		for (int i=0; i<s_Boggarts.size(); i++)
+		{
+			if (s_Boggarts[i] == this)
+			{
+				s_Boggarts.erase(s_Boggarts.begin() + i);
+				break;
+			}
+		}
 	}
 
 	void Boggart::InjectIPC(std::shared_ptr<IPC::IPCBase> ipc)
@@ -40,22 +49,9 @@ namespace Boggart
 		m_Transport = transport;
 	}
 
-	void Boggart::InjectBoggart(std::shared_ptr<Boggart> boggart)
-	{
-		m_Boggarts.push_back(boggart);
-	}
-
 	void Boggart::Start()
 	{
-		InjectDependencies();
-		
-		if (!StartComponents())
-		{
-			m_Diagnostics.Log(Logger::Level::FatalError, "Could Not Start Components. Terminating...");
-			return;
-		}
-
-		for (std::shared_ptr<Boggart> boggart : m_Boggarts)
+		for (Boggart* boggart : s_Boggarts)
 		{
 			boggart->InjectDependencies();
 			boggart->StartComponents();
@@ -63,8 +59,10 @@ namespace Boggart
 
 		while (true)
 		{
-			Process();
-			ProcessBoggarts();
+			for (Boggart* boggart : s_Boggarts)
+			{
+				boggart->Process();
+			}
 			PAL::Instantiator::APIFactory()->GetTranceInstance()->Sleep(10);
 		}
 	}
@@ -87,14 +85,6 @@ namespace Boggart
 	void Boggart::Process()
 	{
 		m_TimerManager->Process();
-	}
-
-	void Boggart::ProcessBoggarts()
-	{
-		for (std::shared_ptr<Boggart> boggart : m_Boggarts)
-		{
-			boggart->Process();
-		}
 	}
 
 	void Boggart::InjectDependencies()

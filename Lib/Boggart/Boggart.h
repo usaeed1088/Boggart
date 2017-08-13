@@ -22,7 +22,7 @@
 
 namespace Boggart
 {
-	class Boggart
+	class Boggart : std::enable_shared_from_this<Boggart>
 	{
 	private:
 		std::shared_ptr<IPC::IPCBase> m_IPC;
@@ -30,7 +30,7 @@ namespace Boggart
 		std::shared_ptr<Timer::ManagerBase> m_TimerManager;
 		std::shared_ptr<Transport::TransportBase> m_Transport;
 
-		std::vector<std::shared_ptr<Boggart>> m_Boggarts;
+		static std::vector<Boggart*> s_Boggarts;
 
 		Diagnostics m_Diagnostics;
 
@@ -43,9 +43,7 @@ namespace Boggart
 		void InjectTimerManager(std::shared_ptr<Timer::ManagerBase> timerManager);
 		void InjectTransport(std::shared_ptr<Transport::TransportBase> transport);
 
-		void InjectBoggart(std::shared_ptr<Boggart> boggart);
-
-		void Start();
+		static void Start();
 
 		IPC::IIPCPtr IPC();
 		Logger::ILoggerPtr Logger();
@@ -53,7 +51,6 @@ namespace Boggart
 
 	private:
 		void Process();
-		void ProcessBoggarts();
 
 		void InjectDependencies();
 		bool StartComponents();
