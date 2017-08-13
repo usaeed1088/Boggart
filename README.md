@@ -1,8 +1,10 @@
-# transport
-A cross-platform multi-medium data transport framework.
-The goal of this project is to create a cross-platform data transport library which is capable of connecting multiple devices across different mediums (RS-232, RS-485, TCP, UDP, Xbee etc) through a unified interface.
+# Boggart
+We live in a world where everything wants to be connected with us and other things. There are a lot of interfaces to provide connectivity e.g, Bluetooth, Wifi, Serial. On top of these interfaces there are multiple protocols e.g, HDLC, TCP, UDP, MQTT, CoAP etc. All these interfaces and protocols have a simple common goal i.e, to provide connectivity and a medium for data exchange between applications running on the devices.
+The goal of Boggart is to build a simple API on top of these interfaces and protocols for a simplified device-to-device communication. Boggart uses a Platform Abstraction Layer to provide support for cross-platform.
+
+Inspiration for the name 'Boggart' comes from Harry Potter where a Boggart can take any shape. The Boggart API will be capable to assume any shape over the network (don't be afraid :P) as it will be capable to run over any transport medium and any type of OS.
 
 The library is currently under heavy development and builds only for Windows based systems. Support for Linux will soon be added.
-In the meanwhile, refer to the TransportApp to have a glimpse of amazing interface and to see 'Transport' in action.
+In the meanwhile, refer to the BoggartApplication to have a glimpse of amazing interface and to see 'Boggart' in action.
 
 Contributions are welcomed.
