@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <queue>
+#include <cstdint>
 
 namespace Boggart
 {
