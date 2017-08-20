@@ -63,12 +63,11 @@ namespace Boggart
 			{
 				std::vector<unsigned char> data = m_IncomingQueue.front();
 
-				// TODO: Create a Message Factory for IPC?
-				Message::IMessagePtr message = m_Factory.CreateMessage(data);
+				IPCMessagePtr message(new IPCMessage(data));
 
-				if(message)
+				if(message->Valid())
 				{
-					OnReceive(std::static_pointer_cast<MessageBase>(message));
+					OnReceive(message);
 				}
 
 				m_IncomingQueue.pop();

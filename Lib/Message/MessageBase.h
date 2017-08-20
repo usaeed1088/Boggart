@@ -8,12 +8,17 @@ namespace Boggart
 	{
 		class MessageBase : public IMessage
 		{
+		private:
+			std::string m_Type;
+
 		protected:
 			MessageBase(std::string type);
 			MessageBase(const std::vector<unsigned char>& data);
 
 		public:
 			virtual ~MessageBase() override;
+
+			std::string Type() override;
 
 			std::vector<unsigned char> Encode() override;
 			bool Decode(const std::vector<unsigned char>& data) override;

@@ -25,8 +25,6 @@ namespace Boggart
 			// TODO: Find a better way to determine type of incoming message
 			// At this stage, any change in message header must be reflected here
 			std::vector<unsigned char> _data = data;
-			_data.erase(_data.begin());
-
 			std::string type;
 			Message::Utility::DecodeString(type, _data);
 

@@ -53,7 +53,7 @@ namespace Boggart
 
 			bool Start() override;
 
-			bool Send(std::string destination, IPCMessagePtr message) override;
+			bool Send(std::string destination, Message::IMessagePtr message) override;
 
 		private:
 			bool Subscribe(std::string table, SubscribablePtr subscriber, std::string type, Callback_t callback);

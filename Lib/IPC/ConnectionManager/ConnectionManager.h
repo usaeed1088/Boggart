@@ -29,7 +29,7 @@ namespace Boggart
 				std::uint8_t Attempts;
 			};
 
-			typedef std::function<void(std::string, IPCMessagePtr)> DataSendCallback;
+			typedef std::function<void(std::string, Message::IMessagePtr)> DataSendCallback;
 
 		private:
 			std::string m_MyId;
@@ -45,11 +45,11 @@ namespace Boggart
 
 			void Start();
 
-			void OnIncomingMessage(IPCMessagePtr message);
+			void OnIncomingMessage(std::string source, std::string destination, std::vector<unsigned char> data);
 
 		private:
-			void OnRequest(RequestPtr request);
-			void OnResponse(ResponsePtr response);
+			void OnRequest(std::string source, std::string destination, RequestPtr request);
+			void OnResponse(std::string source, std::string destination, ResponsePtr response);
 
 			std::int32_t Find(std::string id);
 

@@ -10,10 +10,9 @@ namespace Boggart
 	{
 		const std::string DestinationAny("Any");
 
-		class MessageBase : public Message::MessageBase
+		class IPCMessage : public Message::MessageBase
 		{
 		private:
-			std::string m_Type;
 			std::string m_Source;
 			std::string m_Destination;
 			std::uint8_t m_SequenceNumber;
@@ -21,15 +20,13 @@ namespace Boggart
 
 			bool m_Valid;
 
-		protected:
-			MessageBase(std::string type);
-			MessageBase(const std::vector<unsigned char>& data);
-
 		public:
-			virtual ~MessageBase() override;
+			IPCMessage(std::string type);
+			IPCMessage(const std::vector<unsigned char>& data);
+
+			~IPCMessage() override;
 
 			bool Valid();
-			std::string Type();
 
 			void Source(std::string source);
 			void Destination(std::string destination);
@@ -46,12 +43,8 @@ namespace Boggart
 		private:
 			std::vector<unsigned char> OnEncode() override;
 			bool OnDecode(const std::vector<unsigned char>& data) override;
-
-		protected:
-			virtual std::vector<unsigned char> _OnEncode() = 0;
-			virtual bool _OnDecode(const std::vector<unsigned char>& data) = 0;
 		};
 
-		typedef std::shared_ptr<MessageBase> IPCMessagePtr;
+		typedef std::shared_ptr<IPCMessage> IPCMessagePtr;
 	}
 }

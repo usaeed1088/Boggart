@@ -150,7 +150,7 @@
     <ClInclude Include="..\..\..\Lib\IPC\IIPC.h" />
     <ClInclude Include="..\..\..\Lib\IPC\IPCBase.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Factory\Factory.h" />
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\MessageBase.h" />
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\IPCMessage.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Request.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Response.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Subtypes.h" />
@@ -200,7 +200,7 @@
     <ClCompile Include="..\..\..\Lib\IPC\ConnectionManager\ConnectionManager.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\IPCBase.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Factory\Factory.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\MessageBase.cpp">
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\IPCMessage.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/IPCMessageBase.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Request.cpp" />
