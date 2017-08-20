@@ -8,10 +8,10 @@ namespace Boggart
 		const std::string SOURCE_TABLE("SOURCES");
 
 		IPCBase::IPCBase(std::string moduleName, std::string myId):
-			DependencyInjectionBase(std::string("IPC"), moduleName),
+			DependencyInjection(std::string("IPC"), moduleName),
 			m_SubscriptionTable(),
-			m_Transport(nullptr),
-			m_MyId(myId)
+			m_MyId(myId),
+			m_ConnectionManager(new ConnectionManager(myId, std::bind(&IPCBase::Send, this, std::placeholders::_1, std::placeholders::_2)))
 		{
 
 		}
@@ -19,11 +19,6 @@ namespace Boggart
 		IPCBase::~IPCBase()
 		{
 
-		}
-
-		void IPCBase::InjectTransport(Transport::ITransportPtr transport)
-		{
-			m_Transport = transport;
 		}
 
 		bool IPCBase::SubscribeMessage(SubscribablePtr subscriber, std::string type, Callback_t callback)
@@ -59,7 +54,6 @@ namespace Boggart
 					{
 						// Erase that subscriber
 						iit->second.erase(subscriber->Name());
-						continue;
 					}
 				}
 			}
@@ -72,6 +66,14 @@ namespace Boggart
 		bool IPCBase::Start()
 		{
 			m_Diagnostics->Log(Logger::Level::Information, "Starting");
+
+			m_Diagnostics->ShareLogger(m_ConnectionManager);
+			m_ConnectionManager->InjectDependency(m_TimerManager);
+
+			SubscribeMessage(m_ConnectionManager, Request::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1));
+			SubscribeMessage(m_ConnectionManager, Response::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1));
+
+			m_ConnectionManager->Start();
 
 			return OnStart();
 		}

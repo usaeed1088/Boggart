@@ -2,7 +2,7 @@
 
 #include "IDevice.h"
 
-#include <Common/Patterns/DependencyInjection/DependencyInjectionBase.h>
+#include <Common/Patterns/DependencyInjection/DependencyInjection.h>
 
 #include "../Manager/IManager.h"
 
@@ -12,7 +12,7 @@ namespace Boggart
 {
 	namespace Timer
 	{
-		class DeviceBase : public IDevice, public DependencyInjectionBase
+		class DeviceBase : public IDevice, public DependencyInjection
 		{
 		private:
 			Id_t m_Id;

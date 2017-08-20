@@ -9,6 +9,6 @@ namespace Boggart
 
 		}
 
-		const std::string ResponseSubtypes::Connection("Connection");
+		const std::string ResponseSubtypes::KeepAlive("KeepAlive");
 	}
 }

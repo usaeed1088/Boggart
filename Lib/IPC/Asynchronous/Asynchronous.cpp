@@ -12,14 +12,13 @@ namespace Boggart
 
 		Asynchronous::~Asynchronous()
 		{
-			m_TimerManager->Stop(m_ProcessingTimer);
 			m_TimerManager->Destroy(m_ProcessingTimer);
 		}
 
 		bool Asynchronous::OnStart()
 		{
 			// TODO: Get Span from Configuration
-			m_ProcessingTimer = m_TimerManager->Create(Timer::Span_t(100), Timer::Type_t::Periodic, std::bind(&Asynchronous::OnProcessingTimerExpired, this));
+			m_ProcessingTimer = m_TimerManager->Create(Timer::Span_t(10), Timer::Type_t::Periodic, std::bind(&Asynchronous::OnProcessingTimerExpired, this));
 			return m_TimerManager->Start(m_ProcessingTimer);
 		}
 
@@ -65,7 +64,7 @@ namespace Boggart
 				std::vector<unsigned char> data = m_IncomingQueue.front();
 
 				// TODO: Create a Message Factory for IPC?
-				Message::IMessagePtr message = nullptr;
+				Message::IMessagePtr message = m_Factory.CreateMessage(data);
 
 				if(message)
 				{

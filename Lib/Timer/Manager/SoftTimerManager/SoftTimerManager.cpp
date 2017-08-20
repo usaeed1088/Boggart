@@ -26,7 +26,7 @@ namespace Boggart
 		{
 			std::shared_ptr<SoftTimerDevice> device = std::make_shared<SoftTimerDevice>(id, span, type, onExpiry);
 
-			m_Diagnostics->ShareLogger(std::static_pointer_cast<IDependencyInjection>(device));
+			m_Diagnostics->ShareLogger(std::static_pointer_cast<DependencyInjection>(device));
 
 			m_Devices.push_back(device);
 

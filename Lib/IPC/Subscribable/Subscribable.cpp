@@ -23,7 +23,7 @@ namespace Boggart
 
 		void Subscribable::Unsubscribe()
 		{
-			m_IPC->Unsubscribe(this);
+			m_IPC->Unsubscribe(shared_from_this());
 		}
 
 		std::string Subscribable::Name()

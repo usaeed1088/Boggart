@@ -7,7 +7,7 @@ namespace Boggart
 	namespace Transport
 	{
 		TransportBase::TransportBase(std::string moduleName, std::string id):
-			DependencyInjectionBase(std::string("Transport"), moduleName),
+			DependencyInjection(std::string("Transport"), moduleName),
 			m_Id(id),
 			m_IncomingBuffer(),
 			m_ProcessingTimer(nullptr)
@@ -88,12 +88,11 @@ namespace Boggart
 		{
 			std::vector<unsigned char> data = OnReceive();
 
-			if (data.empty())
+			while (!data.empty())
 			{
-				return;
+				m_IncomingBuffer.ProcessIncomingData(data);
+				data = OnReceive();
 			}
-
-			m_IncomingBuffer.ProcessIncomingData(data);
 		}
 	}
 }

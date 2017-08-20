@@ -1,7 +1,5 @@
 #pragma once
 
-#include <Common/Patterns/DependencyInjection/DependencyInjectionBase.h>
-
 #include "../DiagnosticsBase.h"
 
 namespace Boggart

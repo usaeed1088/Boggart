@@ -1,5 +1,7 @@
 #include "DiagnosticsBase.h"
 
+#include <Common/Patterns/DependencyInjection/DependencyInjection.h>
+
 namespace Boggart
 {
 	DiagnosticsBase::DiagnosticsBase(std::string moduleName, std::string category):
@@ -21,9 +23,9 @@ namespace Boggart
 		OnLoggerInjection();
 	}
 
-	void DiagnosticsBase::ShareLogger(std::shared_ptr<class IDependencyInjection> dependentObject)
+	void DiagnosticsBase::ShareLogger(std::shared_ptr<class DependencyInjection> dependentObject)
 	{
-		dependentObject->InjectDependencies(m_Logger);
+		dependentObject->InjectDependency(m_Logger);
 	}
 
 	void DiagnosticsBase::Log(Logger::Level level, const char* format, ...)

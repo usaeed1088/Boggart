@@ -1,4 +1,4 @@
-#include "Request.h"
+#include "Response.h"
 
 #include <Lib/Message/Utility/Utility.h>
 
@@ -6,36 +6,36 @@ namespace Boggart
 {
 	namespace IPC
 	{
-		std::string Request::TypeString()
+		std::string Response::TypeString()
 		{
-			return std::string("Request");
+			return std::string("Response");
 		}
 
-		Request::Request(std::string subType):
+		Response::Response(std::string subType):
 			MessageBase(TypeString()),
 			m_SubType(subType)
 		{
 
 		}
 
-		Request::Request(const std::vector<unsigned char>& data):
+		Response::Response(const std::vector<unsigned char>& data):
 			MessageBase(data),
 			m_SubType()
 		{
 
 		}
 
-		Request::~Request()
+		Response::~Response()
 		{
 
 		}
 
-		std::string Request::SubType()
+		std::string Response::SubType()
 		{
 			return m_SubType;
 		}
 
-		std::vector<unsigned char> Request::_OnEncode()
+		std::vector<unsigned char> Response::_OnEncode()
 		{
 			std::vector<unsigned char> data;
 
@@ -44,7 +44,7 @@ namespace Boggart
 			return data;
 		}
 
-		bool Request::_OnDecode(const std::vector<unsigned char>& data)
+		bool Response::_OnDecode(const std::vector<unsigned char>& data)
 		{
 			std::vector<unsigned char> _data = data;
 

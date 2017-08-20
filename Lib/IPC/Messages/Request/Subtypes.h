@@ -12,7 +12,7 @@ namespace Boggart
 			RequestSubtypes();
 
 		public:
-			static const std::string Connection;
+			static const std::string KeepAlive;
 		};
 	}
 }

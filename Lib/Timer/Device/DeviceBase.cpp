@@ -5,7 +5,7 @@ namespace Boggart
 	namespace Timer
 	{
 		DeviceBase::DeviceBase(std::string moduleName, Id_t id, Span_t span, _Type type, Callback_t onExpiry):
-			DependencyInjectionBase(std::string("Timer"), moduleName),
+			DependencyInjection(std::string("Timer"), moduleName),
 			m_Id(id),
 			m_Span(span),
 			m_Type(type),

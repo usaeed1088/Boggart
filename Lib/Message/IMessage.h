@@ -1,5 +1,7 @@
 #pragma once
 
+#include "Definition/Definition.h"
+
 #include <memory>
 #include <vector>
 #include <string>
@@ -27,8 +29,6 @@ namespace Boggart
 			virtual std::uint8_t SequenceNumber() = 0;
 
 			virtual std::vector<unsigned char> Encode() = 0;
-
-		protected:
 			virtual bool Decode(const std::vector<unsigned char>& data) = 0;
 		};
 

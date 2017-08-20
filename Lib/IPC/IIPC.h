@@ -20,13 +20,13 @@ namespace Boggart
 		public:
 			virtual ~IIPC() {}
 
-			virtual bool SubscribeMessage(class Subscribable* subscribable, std::string type, Callback_t callback) = 0;
-			virtual bool SubscribeSource(class Subscribable* subscribable, std::string type, Callback_t callback) = 0;
+			virtual bool SubscribeMessage(std::shared_ptr<class Subscribable> subscribable, std::string type, Callback_t callback) = 0;
+			virtual bool SubscribeSource(std::shared_ptr<class Subscribable> subscribable, std::string type, Callback_t callback) = 0;
 
-			virtual bool UnsubscribeMessage(class Subscribable* subscribable, std::string type) = 0;
-			virtual bool UnsubscribeSource(class Subscribable* subscribable, std::string type) = 0;
+			virtual bool UnsubscribeMessage(std::shared_ptr<class Subscribable> subscribable, std::string type) = 0;
+			virtual bool UnsubscribeSource(std::shared_ptr<class Subscribable> subscribable, std::string type) = 0;
 
-			virtual bool Unsubscribe(class Subscribable* subscriber) = 0;
+			virtual bool Unsubscribe(std::shared_ptr<class Subscribable> subscriber) = 0;
 
 			virtual bool Start() = 0;
 

@@ -70,7 +70,7 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(ProjectDir)/../../../../PAL;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir)../../../../Boggart;$(ProjectDir)/../../../../PAL;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(ProjectDir)/../../../PAL/;$(ProjectDir)/../../../Lib;$(IncludePath)</IncludePath>
@@ -136,8 +136,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjectionBase.h" />
-    <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\IDependencyInjection.h" />
+    <ClInclude Include="..\..\..\Lib\Boggart\Boggart.h" />
+    <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjection.h" />
     <ClInclude Include="..\..\..\Lib\Common\Settings.h" />
     <ClInclude Include="..\..\..\Lib\Configuration\ConfigurationBase.h" />
     <ClInclude Include="..\..\..\Lib\Configuration\IConfiguration.h" />
@@ -146,20 +146,26 @@
     <ClInclude Include="..\..\..\Lib\Diagnostics\IDiagnostics.h" />
     <ClInclude Include="..\..\..\Lib\Event\IEvent.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Asynchronous\Asynchronous.h" />
+    <ClInclude Include="..\..\..\Lib\IPC\ConnectionManager\ConnectionManager.h" />
     <ClInclude Include="..\..\..\Lib\IPC\IIPC.h" />
     <ClInclude Include="..\..\..\Lib\IPC\IPCBase.h" />
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Factory\Factory.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\MessageBase.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Request.h" />
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Response.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.h" />
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Response.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Subscribable\Subscribable.h" />
     <ClInclude Include="..\..\..\Lib\Logger\Console\Console.h" />
     <ClInclude Include="..\..\..\Lib\Logger\ILogger.h" />
     <ClInclude Include="..\..\..\Lib\Logger\Level.h" />
     <ClInclude Include="..\..\..\Lib\Logger\LoggerBase.h" />
+    <ClInclude Include="..\..\..\Lib\Message\Definition\Definition.h" />
+    <ClInclude Include="..\..\..\Lib\Message\Factory\FactoryBase.h" />
+    <ClInclude Include="..\..\..\Lib\Message\Factory\IFactory.h" />
     <ClInclude Include="..\..\..\Lib\Message\IMessage.h" />
     <ClInclude Include="..\..\..\Lib\Message\MessageBase.h" />
+    <ClInclude Include="..\..\..\Lib\Message\Utility\Utility.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Common.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Device\DeviceBase.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Device\IDevice.h" />
@@ -168,6 +174,8 @@
     <ClInclude Include="..\..\..\Lib\Timer\Manager\IManager.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\ManagerBase.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Arbitrator\Arbitrator.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Arbitrator\Ping\Ping.h" />
     <ClInclude Include="..\..\..\Lib\Transport\Definition\Definition.h" />
     <ClInclude Include="..\..\..\Lib\Transport\Helper\Helper.h" />
     <ClInclude Include="..\..\..\Lib\Transport\IncomingBuffer\IncomingBuffer.h" />
@@ -178,7 +186,8 @@
     <ClInclude Include="..\..\..\Lib\Transport\TransportBase.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjectionBase.cpp">
+    <ClCompile Include="..\..\..\Lib\Boggart\Boggart.cpp" />
+    <ClCompile Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjection.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -189,15 +198,17 @@
     <ClCompile Include="..\..\..\Lib\Diagnostics\DiagnosticsBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Diagnostics\Diagnostics\Diagnsotics.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\Asynchronous\Asynchronous.cpp" />
+    <ClCompile Include="..\..\..\Lib\IPC\ConnectionManager\ConnectionManager.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\IPCBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Factory\Factory.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\Messages\MessageBase.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/IPCMessageBase.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Request.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Response.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/RequestSubtypes.obj</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Response.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/ResponseSubtypes.obj</ObjectFileName>
     </ClCompile>
@@ -205,12 +216,17 @@
     <ClCompile Include="..\..\..\Lib\Logger\Console\Console.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Level.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\LoggerBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\Message\Definition\Defintion.cpp" />
+    <ClCompile Include="..\..\..\Lib\Message\Factory\FactoryBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Message\MessageBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\Message\Utility\Utility.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Device\DeviceBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Device\Type.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\ManagerBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Arbitrator\Arbitrator.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Arbitrator\Ping\Ping.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\Definition\Definition.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\Helper\Helper.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\IncomingBuffer\IncomingBuffer.cpp" />

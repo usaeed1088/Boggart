@@ -2,7 +2,7 @@
 
 #include "IManager.h"
 
-#include <Common/Patterns/DependencyInjection/DependencyInjectionBase.h>
+#include <Lib/Common/Patterns/DependencyInjection/DependencyInjection.h>
 
 #include <string>
 
@@ -10,7 +10,7 @@ namespace Boggart
 {
 	namespace Timer
 	{
-		class ManagerBase : public IManager, public DependencyInjectionBase
+		class ManagerBase : public IManager, public DependencyInjection
 		{
 		private:
 			Id_t m_LastCreatedId;

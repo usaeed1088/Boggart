@@ -8,7 +8,7 @@ namespace Boggart
 {
 	namespace IPC
 	{
-		class Request : public MessageBase
+		class Response : public MessageBase
 		{
 		private:
 			std::string m_SubType;
@@ -17,10 +17,9 @@ namespace Boggart
 			static std::string TypeString();
 
 		public:
-			Request(std::string subType);
-			Request(const std::vector<unsigned char>& data);
-
-			~Request() override;
+			Response(std::string subType);
+			Response(const std::vector<unsigned char>& data);
+			~Response() override;
 
 			std::string SubType();
 
@@ -29,6 +28,6 @@ namespace Boggart
 			bool _OnDecode(const std::vector<unsigned char>& data) override;
 		};
 
-		typedef std::shared_ptr<Request> RequestPtr;
+		typedef std::shared_ptr<Response> ResponsePtr;
 	}
 }

@@ -14,6 +14,12 @@ namespace Boggart
 		public:
 			virtual ~ILogger() {}
 
+			virtual void EnableLevel(Logger::Level level) = 0;
+
+			virtual void EnableCategory(std::string category) = 0;
+
+			virtual void EnableModule(std::string module) = 0;
+
 			virtual void Log(Logger::Level level, std::string category, std::string module, const char* format, ...) = 0;
 		};
 

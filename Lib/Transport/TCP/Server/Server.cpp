@@ -33,9 +33,12 @@ namespace Boggart
 				ret &= m_Socket->Bind(m_Port);
 				ret &= m_Socket->Listen();
 
-				// TODO: Get span from configuration or not. Think about it?
-				m_ProcessingTimer = m_TimerManager->Create(Timer::Span_t(50), Timer::Type_t::Periodic, std::bind(&Server::OnProcessingTimerExpired, this));
-				m_TimerManager->Start(m_ProcessingTimer);
+				if (ret)
+				{
+					// TODO: Get span from configuration or not. Think about it?
+					m_ProcessingTimer = m_TimerManager->Create(Timer::Span_t(50), Timer::Type_t::Periodic, std::bind(&Server::OnProcessingTimerExpired, this));
+					m_TimerManager->Start(m_ProcessingTimer);
+				}
 
 				return ret;
 			}

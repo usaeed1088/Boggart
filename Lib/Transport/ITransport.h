@@ -2,9 +2,12 @@
 
 #include <vector>
 #include <memory>
+#include <string>
 
 namespace Boggart
 {
+	class DependencyInjection;
+
 	namespace Transport
 	{
 		class ITransport : std::enable_shared_from_this<ITransport>
