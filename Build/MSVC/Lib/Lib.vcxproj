@@ -152,9 +152,8 @@
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Factory\Factory.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\MessageBase.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Request.h" />
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Response.h" />
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.h" />
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Subtypes.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Subscribable\Subscribable.h" />
     <ClInclude Include="..\..\..\Lib\Logger\Console\Console.h" />
     <ClInclude Include="..\..\..\Lib\Logger\ILogger.h" />
@@ -205,13 +204,8 @@
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/IPCMessageBase.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Request.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/RequestSubtypes.obj</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Response.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/ResponseSubtypes.obj</ObjectFileName>
-    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Subtypes.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\Subscribable\Subscribable.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Console\Console.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Level.cpp" />

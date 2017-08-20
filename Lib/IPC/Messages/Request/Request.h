@@ -2,7 +2,7 @@
 
 #include "../MessageBase.h"
 
-#include "Subtypes.h"
+#include "../Subtypes.h"
 
 namespace Boggart
 {

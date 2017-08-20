@@ -33,7 +33,7 @@ namespace Boggart
 			m_TimerManager->Start(m_ProcessingTimer);
 		}
 
-		void ConnectionManager::OnIncomingMessage(Message::IMessagePtr message)
+		void ConnectionManager::OnIncomingMessage(IPCMessagePtr message)
 		{
 			std::string type = message->Type();
 
@@ -53,7 +53,7 @@ namespace Boggart
 			std::string destination = request->Destination();
 			std::string subType = request->SubType();
 
-			if (subType != RequestSubtypes::KeepAlive)
+			if (subType != Subtypes::KeepAlive)
 			{
 				return;
 			}
@@ -91,7 +91,7 @@ namespace Boggart
 			std::string destination = response->Destination();
 			std::string subType = response->SubType();
 
-			if (subType == ResponseSubtypes::KeepAlive)
+			if (subType == Subtypes::KeepAlive)
 			{
 				if (m_HostConnection.Id.empty() || destination == m_MyId)
 				{
@@ -143,7 +143,7 @@ namespace Boggart
 
 			m_Diagnostics->Log(Logger::Level::Debug, "[%s] Sending KeepAlive Request to Host %s", m_MyId.c_str(), m_HostConnection.Id.c_str());
 
-			RequestPtr request(new Request(RequestSubtypes::KeepAlive));
+			RequestPtr request(new Request(Subtypes::KeepAlive));
 			m_DataSendCallback(m_HostConnection.Id, request);
 		}
 

@@ -214,12 +214,6 @@
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Request.h">
       <Filter>IPC\Messages\Request</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.h">
-      <Filter>IPC\Messages\Request</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.h">
-      <Filter>IPC\Messages\Response</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Lib\Transport\TransportBase.h">
       <Filter>Transport</Filter>
     </ClInclude>
@@ -274,6 +268,9 @@
     <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjection.h">
       <Filter>Common\Patterns\DependencyInjection</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Subtypes.h">
+      <Filter>IPC\Messages</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
@@ -327,12 +324,6 @@
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Request.cpp">
       <Filter>IPC\Messages\Request</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.cpp">
-      <Filter>IPC\Messages\Request</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.cpp">
-      <Filter>IPC\Messages\Response</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\TransportBase.cpp">
       <Filter>Transport</Filter>
     </ClCompile>
@@ -383,6 +374,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjection.cpp">
       <Filter>Common\Patterns\DependencyInjection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Subtypes.cpp">
+      <Filter>IPC\Messages</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

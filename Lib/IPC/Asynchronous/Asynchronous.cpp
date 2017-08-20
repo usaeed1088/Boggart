@@ -22,7 +22,7 @@ namespace Boggart
 			return m_TimerManager->Start(m_ProcessingTimer);
 		}
 
-		bool Asynchronous::OnSend(Message::IMessagePtr message)
+		bool Asynchronous::OnSend(IPCMessagePtr message)
 		{
 			m_OutgoingQueue.push(message->Encode());
 			return true;
@@ -68,7 +68,7 @@ namespace Boggart
 
 				if(message)
 				{
-					OnReceive(message);
+					OnReceive(std::static_pointer_cast<MessageBase>(message));
 				}
 
 				m_IncomingQueue.pop();

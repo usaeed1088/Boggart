@@ -78,7 +78,7 @@ namespace Boggart
 			return OnStart();
 		}
 
-		bool IPCBase::Send(std::string destination, Message::IMessagePtr message)
+		bool IPCBase::Send(std::string destination, IPCMessagePtr message)
 		{
 			message->SequenceNumber(GenerateSequenceNumber());
 			message->Destination(destination);
@@ -132,7 +132,7 @@ namespace Boggart
 			return m_Transport->Receive();
 		}
 
-		void IPCBase::OnReceive(Message::IMessagePtr message)
+		void IPCBase::OnReceive(IPCMessagePtr message)
 		{
 			const std::string source = message->Source();
 			const std::string type = message->Type();

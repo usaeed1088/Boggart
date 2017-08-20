@@ -2,18 +2,46 @@
  
 #include <Lib/Message/MessageBase.h>
 
+#include <memory>
+
 namespace Boggart
 {
 	namespace IPC
 	{
+		const std::string DestinationAny("Any");
+
 		class MessageBase : public Message::MessageBase
 		{
+		private:
+			std::string m_Type;
+			std::string m_Source;
+			std::string m_Destination;
+			std::uint8_t m_SequenceNumber;
+			std::vector<unsigned char> m_ApplicationPayload;
+
+			bool m_Valid;
+
 		protected:
 			MessageBase(std::string type);
 			MessageBase(const std::vector<unsigned char>& data);
 
 		public:
 			virtual ~MessageBase() override;
+
+			bool Valid();
+			std::string Type();
+
+			void Source(std::string source);
+			void Destination(std::string destination);
+
+			std::string Source();
+			std::string Destination();
+
+			void SequenceNumber(std::uint8_t sequenceNumber);
+			std::uint8_t SequenceNumber();
+
+			void ApplicationPayload(const std::vector<unsigned char>& payload);
+			std::vector<unsigned char> ApplicationPayload();
 
 		private:
 			std::vector<unsigned char> OnEncode() override;
@@ -23,5 +51,7 @@ namespace Boggart
 			virtual std::vector<unsigned char> _OnEncode() = 0;
 			virtual bool _OnDecode(const std::vector<unsigned char>& data) = 0;
 		};
+
+		typedef std::shared_ptr<MessageBase> IPCMessagePtr;
 	}
 }
