@@ -53,32 +53,36 @@ namespace Boggart
 			std::string destination = request->Destination();
 			std::string subType = request->SubType();
 
-			if (subType == RequestSubtypes::KeepAlive)
+			if (subType != RequestSubtypes::KeepAlive)
 			{
-				if (destination == Message::Defintion::DestinationAny || destination == m_MyId)
+				return;
+			}
+			
+			if (!(destination == Message::Defintion::DestinationAny || destination == m_MyId))
+			{
+				return;
+			}
+			
+			if (destination == m_MyId)
+			{
+				// This module has considered us host
+				std::int32_t index = Find(source);
+				if (index == -1)
 				{
-					std::int32_t index = Find(source);
-					if (destination == m_MyId)
-					{
-						// This module has considered us our master
-						if (index == -1)
-						{
-							m_PeerConnections.push_back(Properties(source));
-							m_Diagnostics->Log(Logger::Level::Information, "Module Added as Peer %s", source.c_str());
-						}
-						else
-						{
-							m_PeerConnections[index].Attempts = 0;
-						}
-					}
-
-					m_Diagnostics->Log(Logger::Level::Debug, "KeepAlive Request received from %s", source.c_str());
-					m_Diagnostics->Log(Logger::Level::Debug, "Sending KeepAlive Response to %s", source.c_str());
-
-					ResponsePtr response(new Response(subType));
-					m_DataSendCallback(source, response);
+					m_PeerConnections.push_back(Properties(source));
+					m_Diagnostics->Log(Logger::Level::Information, "[%s] Module Added as Peer %s", m_MyId.c_str(), source.c_str());
+				}
+				else
+				{
+					m_PeerConnections[index].Attempts = 0;
 				}
 			}
+
+			m_Diagnostics->Log(Logger::Level::Debug, "[%s] KeepAlive Request received from %s", m_MyId.c_str(), source.c_str());
+			m_Diagnostics->Log(Logger::Level::Debug, "[%s] Sending KeepAlive Response to %s", m_MyId.c_str(), source.c_str());
+
+			ResponsePtr response(new Response(subType));
+			m_DataSendCallback(source, response);
 		}
 
 		void ConnectionManager::OnResponse(ResponsePtr response)
@@ -91,10 +95,15 @@ namespace Boggart
 			{
 				if (m_HostConnection.Id.empty() || destination == m_MyId)
 				{
+					if (m_HostConnection.Id != source)
+					{
+						m_Diagnostics->Log(Logger::Level::Information, "[%s] Changing host from %s to %s", m_MyId.c_str(), m_HostConnection.Id.c_str(), source.c_str());
+					}
+
 					m_HostConnection.Id = source;
 					m_HostConnection.Attempts = 0;
 
-					m_Diagnostics->Log(Logger::Level::Information, "KeepAlive Response received from %s", source.c_str());
+					m_Diagnostics->Log(Logger::Level::Debug, "[%s] KeepAlive Response received from %s", m_MyId.c_str(), source.c_str());
 				}
 			}
 		}
@@ -128,10 +137,11 @@ namespace Boggart
 			const std::int32_t MaxAttempts = 3;
 			if (m_HostConnection.Attempts > MaxAttempts)
 			{
+				m_Diagnostics->Log(Logger::Level::Warning, "[%s] Host Connection Attempts Expired", m_MyId.c_str());
 				m_HostConnection.Id = Message::Defintion::DestinationAny;
 			}
 
-			m_Diagnostics->Log(Logger::Level::Debug, "Sending KeepAlive Request to Host %s", m_HostConnection.Id.c_str());
+			m_Diagnostics->Log(Logger::Level::Debug, "[%s] Sending KeepAlive Request to Host %s", m_MyId.c_str(), m_HostConnection.Id.c_str());
 
 			RequestPtr request(new Request(RequestSubtypes::KeepAlive));
 			m_DataSendCallback(m_HostConnection.Id, request);
@@ -146,7 +156,7 @@ namespace Boggart
 				it->Attempts++;
 				if (it->Attempts > MaxAttempts)
 				{
-					m_Diagnostics->Log(Logger::Level::Warning, "KeepAlive attempts expired for %s", it->Id.c_str());
+					m_Diagnostics->Log(Logger::Level::Warning, "[%s] KeepAlive attempts expired for %s", m_MyId.c_str(), it->Id.c_str());
 					it = m_PeerConnections.erase(it);
 				}
 				else

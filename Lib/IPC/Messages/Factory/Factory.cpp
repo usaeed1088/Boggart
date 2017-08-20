@@ -36,7 +36,7 @@ namespace Boggart
 				message = std::shared_ptr<Response>(new Response(data));
 			}
 
-			if (!message->Decode(data))
+			if (message && !message->Decode(data))
 			{
 				message = nullptr;
 			}

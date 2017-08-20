@@ -55,4 +55,6 @@ namespace Boggart
 		void InjectDependencies();
 		bool StartComponents();
 	};
+
+	typedef std::shared_ptr<Boggart> BoggartPtr;
 }
