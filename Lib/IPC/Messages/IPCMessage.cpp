@@ -11,8 +11,7 @@ namespace Boggart
 			m_Source(),
 			m_Destination(),
 			m_SequenceNumber(0),
-			m_ApplicationPayload(),
-			m_Valid(true)
+			m_ApplicationPayload()
 		{
 
 		}
@@ -22,8 +21,7 @@ namespace Boggart
 			m_Source(),
 			m_Destination(),
 			m_SequenceNumber(0),
-			m_ApplicationPayload(),
-			m_Valid(false)
+			m_ApplicationPayload()
 		{
 			if (Decode(data))
 			{
@@ -34,11 +32,6 @@ namespace Boggart
 		IPCMessage::~IPCMessage()
 		{
 
-		}
-
-		bool IPCMessage::Valid()
-		{
-			return m_Valid;
 		}
 
 		void IPCMessage::Source(std::string source)

@@ -9,12 +9,14 @@ namespace Boggart
 	namespace Message
 	{
 		MessageBase::MessageBase(std::string type):
+			m_Valid(true),
 			m_Type(type)
 		{
 
 		}
 
 		MessageBase::MessageBase(const std::vector<unsigned char>& data):
+			m_Valid(false),
 			m_Type()
 		{
 			
@@ -24,6 +26,11 @@ namespace Boggart
 		{
 
 		}	
+
+		bool MessageBase::Valid()
+		{
+			return m_Valid;
+		}
 
 		std::string MessageBase::Type()
 		{

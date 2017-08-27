@@ -1,13 +1,13 @@
 #include "Factory.h"
 
-#include <Lib/Message/Utility/Utility.h>
+#include <Message/Utility/Utility.h>
 
-#include "../Request/Request.h"
-#include "../Response/Response.h"
+#include "../Ping/Ping.h"
+#include "../Pong/Pong.h"
 
 namespace Boggart
 {
-	namespace IPC
+	namespace Transport
 	{
 		Factory::Factory()
 		{
@@ -28,13 +28,13 @@ namespace Boggart
 			std::string type;
 			Message::Utility::DecodeString(type, _data);
 
-			if (type == Request::TypeString())
+			if (type == Ping::TypeString())
 			{
-				message = std::shared_ptr<Request>(new Request(data));
+				message = std::shared_ptr<Ping>(new Ping(data));
 			}
-			else if (type == Response::TypeString())
+			else if (type == Pong::TypeString())
 			{
-				message = std::shared_ptr<Response>(new Response(data));
+				message = std::shared_ptr<Pong>(new Pong(data));
 			}
 
 			if (message && !message->Decode(data))

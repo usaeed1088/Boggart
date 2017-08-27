@@ -8,6 +8,9 @@ namespace Boggart
 	{
 		class MessageBase : public IMessage
 		{
+		protected:
+			bool m_Valid;
+
 		private:
 			std::string m_Type;
 
@@ -18,6 +21,7 @@ namespace Boggart
 		public:
 			virtual ~MessageBase() override;
 
+			bool Valid() override;
 			std::string Type() override;
 
 			std::vector<unsigned char> Encode() override;

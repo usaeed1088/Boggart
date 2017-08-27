@@ -16,6 +16,7 @@ namespace Boggart
 		public:
 			virtual ~IMessage() {}
 
+			virtual bool Valid() = 0;
 			virtual std::string Type() = 0;
 
 			virtual std::vector<unsigned char> Encode() = 0;

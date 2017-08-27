@@ -18,15 +18,11 @@ namespace Boggart
 			std::uint8_t m_SequenceNumber;
 			std::vector<unsigned char> m_ApplicationPayload;
 
-			bool m_Valid;
-
 		public:
 			IPCMessage(std::string type);
 			IPCMessage(const std::vector<unsigned char>& data);
 
 			~IPCMessage() override;
-
-			bool Valid();
 
 			void Source(std::string source);
 			void Destination(std::string destination);
