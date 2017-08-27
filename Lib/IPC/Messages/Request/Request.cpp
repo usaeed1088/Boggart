@@ -11,18 +11,19 @@ namespace Boggart
 			return std::string("Request");
 		}
 
-		Request::Request(std::string subType):
-			MessageBase(TypeString()),
-			m_SubType(subType)
+		Request::Request():
+			MessageBase(TypeString())
 		{
 
 		}
 
 		Request::Request(const std::vector<unsigned char>& data):
-			MessageBase(data),
-			m_SubType()
+			MessageBase(data)
 		{
-
+			if (Decode(data))
+			{
+				m_Valid = true;
+			}
 		}
 
 		Request::~Request()
@@ -30,25 +31,16 @@ namespace Boggart
 
 		}
 
-		std::string Request::SubType()
-		{
-			return m_SubType;
-		}
-
-		std::vector<unsigned char> Request::_OnEncode()
+		std::vector<unsigned char> Request::OnEncode()
 		{
 			std::vector<unsigned char> data;
-
-			Message::Utility::EncodeString(m_SubType, data);
 
 			return data;
 		}
 
-		bool Request::_OnDecode(const std::vector<unsigned char>& data)
+		bool Request::OnDecode(const std::vector<unsigned char>& data)
 		{
 			std::vector<unsigned char> _data = data;
-
-			Message::Utility::DecodeString(m_SubType, _data);
 
 			return true;
 		}

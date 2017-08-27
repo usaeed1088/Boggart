@@ -11,18 +11,19 @@ namespace Boggart
 			return std::string("Response");
 		}
 
-		Response::Response(std::string subType):
-			MessageBase(TypeString()),
-			m_SubType(subType)
+		Response::Response():
+			MessageBase(TypeString())
 		{
 
 		}
 
 		Response::Response(const std::vector<unsigned char>& data):
-			MessageBase(data),
-			m_SubType()
+			MessageBase(data)
 		{
-
+			if (Decode(data))
+			{
+				m_Valid = true;
+			}
 		}
 
 		Response::~Response()
@@ -30,25 +31,16 @@ namespace Boggart
 
 		}
 
-		std::string Response::SubType()
-		{
-			return m_SubType;
-		}
-
-		std::vector<unsigned char> Response::_OnEncode()
+		std::vector<unsigned char> Response::OnEncode()
 		{
 			std::vector<unsigned char> data;
-
-			Message::Utility::EncodeString(m_SubType, data);
 
 			return data;
 		}
 
-		bool Response::_OnDecode(const std::vector<unsigned char>& data)
+		bool Response::OnDecode(const std::vector<unsigned char>& data)
 		{
 			std::vector<unsigned char> _data = data;
-
-			Message::Utility::DecodeString(m_SubType, _data);
 
 			return true;
 		}

@@ -1,5 +1,7 @@
 #include "ConnectionManager.h"
 
+#include "../Messages/Factory/Factory.h"
+
 namespace Boggart
 {
 	namespace IPC
@@ -33,31 +35,24 @@ namespace Boggart
 			m_TimerManager->Start(m_ProcessingTimer);
 		}
 
-		void ConnectionManager::OnIncomingMessage(Message::IMessagePtr message)
+		void ConnectionManager::OnIncomingMessage(std::string source, std::string destination, std::vector<unsigned char> data)
 		{
+			Factory factory;
+			Message::IMessagePtr message = factory.CreateMessage(data);
 			std::string type = message->Type();
 
 			if (type == Request::TypeString())
 			{
-				OnRequest(std::static_pointer_cast<Request>(message));
+				OnRequest(source, destination, std::static_pointer_cast<Request>(message));
 			}
 			else if (type == Response::TypeString())
 			{
-				OnResponse(std::static_pointer_cast<Response>(message));
+				OnResponse(source, destination, std::static_pointer_cast<Response>(message));
 			}
 		}
 
-		void ConnectionManager::OnRequest(RequestPtr request)
-		{
-			std::string source = request->Source();
-			std::string destination = request->Destination();
-			std::string subType = request->SubType();
-
-			if (subType != RequestSubtypes::KeepAlive)
-			{
-				return;
-			}
-			
+		void ConnectionManager::OnRequest(std::string source, std::string destination, RequestPtr request)
+		{			
 			if (!(destination == Message::Defintion::DestinationAny || destination == m_MyId))
 			{
 				return;
@@ -81,30 +76,23 @@ namespace Boggart
 			m_Diagnostics->Log(Logger::Level::Debug, "[%s] KeepAlive Request received from %s", m_MyId.c_str(), source.c_str());
 			m_Diagnostics->Log(Logger::Level::Debug, "[%s] Sending KeepAlive Response to %s", m_MyId.c_str(), source.c_str());
 
-			ResponsePtr response(new Response(subType));
+			ResponsePtr response(new Response());
 			m_DataSendCallback(source, response);
 		}
 
-		void ConnectionManager::OnResponse(ResponsePtr response)
+		void ConnectionManager::OnResponse(std::string source, std::string destination, ResponsePtr response)
 		{
-			std::string source = response->Source();
-			std::string destination = response->Destination();
-			std::string subType = response->SubType();
-
-			if (subType == ResponseSubtypes::KeepAlive)
+			if (m_HostConnection.Id.empty() || destination == m_MyId)
 			{
-				if (m_HostConnection.Id.empty() || destination == m_MyId)
+				if (m_HostConnection.Id != source)
 				{
-					if (m_HostConnection.Id != source)
-					{
-						m_Diagnostics->Log(Logger::Level::Information, "[%s] Changing host from %s to %s", m_MyId.c_str(), m_HostConnection.Id.c_str(), source.c_str());
-					}
-
-					m_HostConnection.Id = source;
-					m_HostConnection.Attempts = 0;
-
-					m_Diagnostics->Log(Logger::Level::Debug, "[%s] KeepAlive Response received from %s", m_MyId.c_str(), source.c_str());
+					m_Diagnostics->Log(Logger::Level::Information, "[%s] Changing host from %s to %s", m_MyId.c_str(), m_HostConnection.Id.c_str(), source.c_str());
 				}
+
+				m_HostConnection.Id = source;
+				m_HostConnection.Attempts = 0;
+
+				m_Diagnostics->Log(Logger::Level::Debug, "[%s] KeepAlive Response received from %s", m_MyId.c_str(), source.c_str());
 			}
 		}
 
@@ -143,7 +131,7 @@ namespace Boggart
 
 			m_Diagnostics->Log(Logger::Level::Debug, "[%s] Sending KeepAlive Request to Host %s", m_MyId.c_str(), m_HostConnection.Id.c_str());
 
-			RequestPtr request(new Request(RequestSubtypes::KeepAlive));
+			RequestPtr request(new Request());
 			m_DataSendCallback(m_HostConnection.Id, request);
 		}
 

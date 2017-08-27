@@ -22,7 +22,7 @@ namespace Boggart
 			return m_TimerManager->Start(m_ProcessingTimer);
 		}
 
-		bool Asynchronous::OnSend(Message::IMessagePtr message)
+		bool Asynchronous::OnSend(IPCMessagePtr message)
 		{
 			m_OutgoingQueue.push(message->Encode());
 			return true;
@@ -63,10 +63,9 @@ namespace Boggart
 			{
 				std::vector<unsigned char> data = m_IncomingQueue.front();
 
-				// TODO: Create a Message Factory for IPC?
-				Message::IMessagePtr message = m_Factory.CreateMessage(data);
+				IPCMessagePtr message(new IPCMessage(data));
 
-				if(message)
+				if(message->Valid())
 				{
 					OnReceive(message);
 				}

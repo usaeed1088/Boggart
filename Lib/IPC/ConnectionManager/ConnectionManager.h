@@ -45,11 +45,11 @@ namespace Boggart
 
 			void Start();
 
-			void OnIncomingMessage(Message::IMessagePtr message);
+			void OnIncomingMessage(std::string source, std::string destination, std::vector<unsigned char> data);
 
 		private:
-			void OnRequest(RequestPtr request);
-			void OnResponse(ResponsePtr response);
+			void OnRequest(std::string source, std::string destination, RequestPtr request);
+			void OnResponse(std::string source, std::string destination, ResponsePtr response);
 
 			std::int32_t Find(std::string id);
 

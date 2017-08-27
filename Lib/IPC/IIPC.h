@@ -2,7 +2,7 @@
 
 #include "Subscribable/Subscribable.h"
 
-#include "../Message/IMessage.h"
+#include "Messages/IPCMessage.h"
 
 #include <string>
 #include <memory>
@@ -13,7 +13,7 @@ namespace Boggart
 {
 	namespace IPC
 	{
-		typedef std::function<void(Message::IMessagePtr)> Callback_t;
+		typedef std::function<void(std::string, std::string, std::vector<unsigned char>)> Callback_t;
 
 		class IIPC : std::enable_shared_from_this<IIPC>
 		{

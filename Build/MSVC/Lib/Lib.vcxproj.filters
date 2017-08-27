@@ -110,20 +110,29 @@
     <Filter Include="Message\Definition">
       <UniqueIdentifier>{480880e1-b4de-4f30-b7ff-6f9db75289f6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Transport\Arbitrator">
-      <UniqueIdentifier>{b10fcfda-d976-46cd-a2cc-dac1188abeba}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Transport\Arbitrator\Messages">
-      <UniqueIdentifier>{627fa62e-43fa-4c43-9eaf-06e3249b251b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Transport\Arbitrator\Messages\Ping">
-      <UniqueIdentifier>{101a7751-1583-4cd6-8507-778d59fc6b16}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Transport\Arbitrator\Messages\Pong">
-      <UniqueIdentifier>{9a553268-85c2-4868-8e3d-e87d0b7f5b13}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Boggart">
       <UniqueIdentifier>{35813158-6ffd-4ea1-84f4-6acbc2848fba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Discipline">
+      <UniqueIdentifier>{a742e29b-69b8-4426-b3b7-786fbb56debf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Discipline\Moderator">
+      <UniqueIdentifier>{b10fcfda-d976-46cd-a2cc-dac1188abeba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Discipline\Moderated">
+      <UniqueIdentifier>{f23916ac-5d06-4c96-a303-e6ac4f7a3de3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Discipline\Messages">
+      <UniqueIdentifier>{139dbd2b-9521-4510-be88-6138116cffc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Discipline\Messages\Ping">
+      <UniqueIdentifier>{0cb6df8e-2bb4-43b2-aa13-aae377dcb9e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Discipline\Messages\Pong">
+      <UniqueIdentifier>{eba069c2-17f8-45c6-9bbb-88057bf61408}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Discipline\Messages\Factory">
+      <UniqueIdentifier>{b1024ffe-625e-4128-9355-a331f5c1ecc6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -208,17 +217,8 @@
     <ClInclude Include="..\..\..\Lib\IPC\Asynchronous\Asynchronous.h">
       <Filter>IPC\Asynchronous</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\MessageBase.h">
-      <Filter>IPC\Messages</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Request.h">
       <Filter>IPC\Messages\Request</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.h">
-      <Filter>IPC\Messages\Request</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.h">
-      <Filter>IPC\Messages\Response</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Lib\Transport\TransportBase.h">
       <Filter>Transport</Filter>
@@ -262,17 +262,38 @@
     <ClInclude Include="..\..\..\Lib\Message\Definition\Definition.h">
       <Filter>Message\Definition</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\Lib\Transport\Arbitrator\Arbitrator.h">
-      <Filter>Transport\Arbitrator</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\Lib\Transport\Arbitrator\Ping\Ping.h">
-      <Filter>Transport\Arbitrator\Messages\Ping</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\Lib\Boggart\Boggart.h">
       <Filter>Boggart</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjection.h">
       <Filter>Common\Patterns\DependencyInjection</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Subtypes.h">
+      <Filter>IPC\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\IPCMessage.h">
+      <Filter>IPC\Messages</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\Moderator\Moderator.h">
+      <Filter>Transport\Discipline\Moderator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\Moderated\Moderated.h">
+      <Filter>Transport\Discipline\Moderated</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\Messages\Ping\Ping.h">
+      <Filter>Transport\Discipline\Messages\Ping</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\Messages\Pong\Pong.h">
+      <Filter>Transport\Discipline\Messages\Pong</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\IDiscipline.h">
+      <Filter>Transport\Discipline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\DisciplineBase.h">
+      <Filter>Transport\Discipline</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\Messages\Factory\Factory.h">
+      <Filter>Transport\Discipline\Messages\Factory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -321,17 +342,8 @@
     <ClCompile Include="..\..\..\Lib\IPC\Asynchronous\Asynchronous.cpp">
       <Filter>IPC\Asynchronous</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\MessageBase.cpp">
-      <Filter>IPC\Messages</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Request.cpp">
       <Filter>IPC\Messages\Request</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.cpp">
-      <Filter>IPC\Messages\Request</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.cpp">
-      <Filter>IPC\Messages\Response</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\TransportBase.cpp">
       <Filter>Transport</Filter>
@@ -372,17 +384,35 @@
     <ClCompile Include="..\..\..\Lib\Message\Definition\Defintion.cpp">
       <Filter>Message\Definition</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Lib\Transport\Arbitrator\Arbitrator.cpp">
-      <Filter>Transport\Arbitrator</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\Lib\Transport\Arbitrator\Ping\Ping.cpp">
-      <Filter>Transport\Arbitrator\Messages\Ping</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Lib\Boggart\Boggart.cpp">
       <Filter>Boggart</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Common\Patterns\DependencyInjection\DependencyInjection.cpp">
       <Filter>Common\Patterns\DependencyInjection</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Subtypes.cpp">
+      <Filter>IPC\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\IPCMessage.cpp">
+      <Filter>IPC\Messages</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Moderator\Moderator.cpp">
+      <Filter>Transport\Discipline\Moderator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Moderated\Moderated.cpp">
+      <Filter>Transport\Discipline\Moderated</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Ping\Ping.cpp">
+      <Filter>Transport\Discipline\Messages\Ping</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Pong\Pong.cpp">
+      <Filter>Transport\Discipline\Messages\Pong</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\DisciplineBase.cpp">
+      <Filter>Transport\Discipline</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Factory\Factory.cpp">
+      <Filter>Transport\Discipline\Messages\Factory</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

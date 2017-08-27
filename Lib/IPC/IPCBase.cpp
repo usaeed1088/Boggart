@@ -70,8 +70,8 @@ namespace Boggart
 			m_Diagnostics->ShareLogger(m_ConnectionManager);
 			m_ConnectionManager->InjectDependency(m_TimerManager);
 
-			SubscribeMessage(m_ConnectionManager, Request::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1));
-			SubscribeMessage(m_ConnectionManager, Response::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1));
+			Subscribe(MESSAGE_TABLE, m_ConnectionManager, Request::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+			Subscribe(MESSAGE_TABLE, m_ConnectionManager, Response::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
 			m_ConnectionManager->Start();
 
@@ -80,15 +80,18 @@ namespace Boggart
 
 		bool IPCBase::Send(std::string destination, Message::IMessagePtr message)
 		{
-			message->SequenceNumber(GenerateSequenceNumber());
-			message->Destination(destination);
-			message->Source(m_MyId);
+			IPCMessagePtr ipcMessage(new IPCMessage(message->Type()));
 
-			m_Diagnostics->Log(Logger::Level::Debug, "Sending Message Sequence Number [%d] to [%s]", (std::int32_t)message->SequenceNumber(), destination.c_str());
+			ipcMessage->SequenceNumber(GenerateSequenceNumber());
+			ipcMessage->Destination(destination);
+			ipcMessage->Source(m_MyId);
+			ipcMessage->ApplicationPayload(message->Encode());
+
+			m_Diagnostics->Log(Logger::Level::Debug, "Sending Message Sequence Number [%d] to [%s]", (std::int32_t)ipcMessage->SequenceNumber(), destination.c_str());
 
 			// TODO: Handle Retransmissions here?
 
-			return OnSend(message);
+			return OnSend(ipcMessage);
 		}
 
 		bool IPCBase::Subscribe(std::string table, SubscribablePtr subscriber, std::string type, Callback_t callback)
@@ -132,9 +135,10 @@ namespace Boggart
 			return m_Transport->Receive();
 		}
 
-		void IPCBase::OnReceive(Message::IMessagePtr message)
+		void IPCBase::OnReceive(IPCMessagePtr message)
 		{
 			const std::string source = message->Source();
+			const std::string destination = message->Destination();
 			const std::string type = message->Type();
 
 			m_Diagnostics->Log(Logger::Level::Debug, "Received message of type %s from %s", type.c_str(), source.c_str());
@@ -160,7 +164,7 @@ namespace Boggart
 			{
 				if (callback)
 				{
-					callback(message);
+					callback(source, destination, message->ApplicationPayload());
 				}
 			}
 		}

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -22,32 +22,32 @@
     <ProjectGuid>{49F83FB4-9495-46FD-8375-905DB78D0684}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>Lib</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -150,11 +150,10 @@
     <ClInclude Include="..\..\..\Lib\IPC\IIPC.h" />
     <ClInclude Include="..\..\..\Lib\IPC\IPCBase.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Factory\Factory.h" />
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\MessageBase.h" />
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\IPCMessage.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Request.h" />
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Response.h" />
-    <ClInclude Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.h" />
+    <ClInclude Include="..\..\..\Lib\IPC\Messages\Subtypes.h" />
     <ClInclude Include="..\..\..\Lib\IPC\Subscribable\Subscribable.h" />
     <ClInclude Include="..\..\..\Lib\Logger\Console\Console.h" />
     <ClInclude Include="..\..\..\Lib\Logger\ILogger.h" />
@@ -174,9 +173,14 @@
     <ClInclude Include="..\..\..\Lib\Timer\Manager\IManager.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\ManagerBase.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.h" />
-    <ClInclude Include="..\..\..\Lib\Transport\Arbitrator\Arbitrator.h" />
-    <ClInclude Include="..\..\..\Lib\Transport\Arbitrator\Ping\Ping.h" />
     <ClInclude Include="..\..\..\Lib\Transport\Definition\Definition.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\DisciplineBase.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\IDiscipline.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\Messages\Factory\Factory.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\Messages\Ping\Ping.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\Messages\Pong\Pong.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\Moderated\Moderated.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Discipline\Moderator\Moderator.h" />
     <ClInclude Include="..\..\..\Lib\Transport\Helper\Helper.h" />
     <ClInclude Include="..\..\..\Lib\Transport\IncomingBuffer\IncomingBuffer.h" />
     <ClInclude Include="..\..\..\Lib\Transport\InProcess\InProcess.h" />
@@ -201,17 +205,12 @@
     <ClCompile Include="..\..\..\Lib\IPC\ConnectionManager\ConnectionManager.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\IPCBase.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Factory\Factory.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\MessageBase.cpp">
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\IPCMessage.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/IPCMessageBase.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Request.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Request\Subtypes.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/RequestSubtypes.obj</ObjectFileName>
-    </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Response.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Response\Subtypes.cpp">
-      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/ResponseSubtypes.obj</ObjectFileName>
-    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Subtypes.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\Subscribable\Subscribable.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Console\Console.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Level.cpp" />
@@ -225,9 +224,13 @@
     <ClCompile Include="..\..\..\Lib\Timer\Device\Type.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\ManagerBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.cpp" />
-    <ClCompile Include="..\..\..\Lib\Transport\Arbitrator\Arbitrator.cpp" />
-    <ClCompile Include="..\..\..\Lib\Transport\Arbitrator\Ping\Ping.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\Definition\Definition.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\DisciplineBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Factory\Factory.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Ping\Ping.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Pong\Pong.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Moderated\Moderated.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Moderator\Moderator.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\Helper\Helper.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\IncomingBuffer\IncomingBuffer.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\InProcess\InProcess.cpp" />

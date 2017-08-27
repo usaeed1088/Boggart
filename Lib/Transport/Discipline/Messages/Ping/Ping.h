@@ -2,28 +2,28 @@
 
 #include <Message/MessageBase.h>
 
-#include "../Subtypes.h"
-
 namespace Boggart
 {
-	namespace IPC
+	namespace Transport
 	{
-		class Request : public Message::MessageBase
+		class Ping : public Message::MessageBase
 		{
+		private:
+			static const std::string s_Type;
+
 		public:
 			static std::string TypeString();
 
 		public:
-			Request();
-			Request(const std::vector<unsigned char>& data);
-
-			~Request() override;
+			Ping();
+			Ping(const std::vector<unsigned char> data);
+			~Ping() override;
 
 		private:
 			std::vector<unsigned char> OnEncode() override;
 			bool OnDecode(const std::vector<unsigned char>& data) override;
 		};
 
-		typedef std::shared_ptr<Request> RequestPtr;
+		typedef std::shared_ptr<Ping> PingPtr;
 	}
 }

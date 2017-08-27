@@ -65,11 +65,11 @@ namespace Boggart
 			void SendToTransport(std::vector<unsigned char> data);
 			std::vector<unsigned char> ReceiveFromTransport();
 
-			void OnReceive(Message::IMessagePtr message);
+			void OnReceive(IPCMessagePtr message);
 
 		protected:
 			virtual bool OnStart() = 0;
-			virtual bool OnSend(Message::IMessagePtr message) = 0;
+			virtual bool OnSend(IPCMessagePtr message) = 0;
 		};
 	}
 }

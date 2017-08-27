@@ -22,7 +22,7 @@ namespace Boggart
 
 		private:
 			bool OnStart() override;
-			bool OnSend(Message::IMessagePtr message) override;
+			bool OnSend(IPCMessagePtr message) override;
 
 			void OnProcessingTimerExpired();
 
