@@ -20,7 +20,10 @@ namespace Boggart
 		Request::Request(const std::vector<unsigned char>& data):
 			MessageBase(data)
 		{
-
+			if (Decode(data))
+			{
+				m_Valid = true;
+			}
 		}
 
 		Request::~Request()

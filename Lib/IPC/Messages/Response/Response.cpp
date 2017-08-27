@@ -20,7 +20,10 @@ namespace Boggart
 		Response::Response(const std::vector<unsigned char>& data):
 			MessageBase(data)
 		{
-
+			if (Decode(data))
+			{
+				m_Valid = true;
+			}
 		}
 
 		Response::~Response()
