@@ -7,13 +7,16 @@ namespace Boggart
 	std::vector<Boggart*> Boggart::s_Boggarts;
 
 	Boggart::Boggart(std::string name):
+		Subscribable(name),
 		m_IPC(nullptr),
 		m_Logger(nullptr),
 		m_TimerManager(nullptr),
 		m_Transport(nullptr),
-		m_Diagnostics(name, std::string("Boggart"))
+		m_Diagnostics(name, std::string("Boggart")),
+		m_Name(name)
 	{
 		s_Boggarts.push_back(this);
+		LoadDefaultDependencies();
 	}
 
 	Boggart::~Boggart()
@@ -26,6 +29,20 @@ namespace Boggart
 				break;
 			}
 		}
+	}
+
+	void Boggart::LoadDefaultDependencies()
+	{
+		InjectIPC(std::shared_ptr<IPC::IPCBase>(new IPC::Asynchronous(m_Name)));
+		InjectLogger(std::shared_ptr<Logger::LoggerBase>(new Logger::Console()));
+		InjectTimerManager(std::shared_ptr<Timer::ManagerBase>(new Timer::SoftTimerManager()));
+		InjectTransport(std::shared_ptr<Transport::TransportBase>(new Transport::InProcess(m_Name)));
+
+		Logger()->EnableLevel(Logger::Level::Information);
+		Logger()->EnableLevel(Logger::Level::Error);
+		Logger()->EnableLevel(Logger::Level::FatalError);
+
+		m_Diagnostics.Log(Logger::Level::Information, "%s Boggart Loaded Default Dependencies", m_Name.c_str());
 	}
 
 	void Boggart::InjectIPC(std::shared_ptr<IPC::IPCBase> ipc)
@@ -49,6 +66,21 @@ namespace Boggart
 		m_Transport = transport;
 	}
 
+	bool Boggart::SubscribeMessage(std::string type, IPC::Callback_t callback)
+	{
+		return m_IPC->SubscribeMessage(shared_from_this(), type, callback);
+	}
+
+	bool Boggart::SubscribeSource(std::string type, IPC::Callback_t callback)
+	{
+		return m_IPC->SubscribeSource(shared_from_this(), type, callback);
+	}
+
+	bool Boggart::Send(std::string destination, Message::IMessagePtr message)
+	{
+		return m_IPC->Send(destination, message);
+	}
+
 	void Boggart::Start()
 	{
 		// Setup the Boggarts
@@ -69,19 +101,9 @@ namespace Boggart
 		}
 	}
 
-	IPC::IIPCPtr Boggart::IPC()
-	{
-		return m_IPC;
-	}
-
 	Logger::ILoggerPtr Boggart::Logger()
 	{
 		return m_Logger;
-	}
-
-	Timer::IManagerPtr Boggart::TimerManager()
-	{
-		return m_TimerManager;
 	}
 
 	void Boggart::Process()

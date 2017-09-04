@@ -22,7 +22,7 @@
 
 namespace Boggart
 {
-	class Boggart : std::enable_shared_from_this<Boggart>
+	class Boggart : public IPC::Subscribable
 	{
 	private:
 		std::shared_ptr<IPC::IPCBase> m_IPC;
@@ -33,21 +33,27 @@ namespace Boggart
 		static std::vector<Boggart*> s_Boggarts;
 
 		Diagnostics m_Diagnostics;
+		std::string m_Name;
 
 	public:
 		Boggart(std::string name);
 		~Boggart();
+
+		void LoadDefaultDependencies();
 
 		void InjectIPC(std::shared_ptr<IPC::IPCBase> ipc);
 		void InjectLogger(std::shared_ptr<Logger::LoggerBase> logger);
 		void InjectTimerManager(std::shared_ptr<Timer::ManagerBase> timerManager);
 		void InjectTransport(std::shared_ptr<Transport::TransportBase> transport);
 
+		bool SubscribeMessage(std::string type, IPC::Callback_t callback);
+		bool SubscribeSource(std::string type, IPC::Callback_t callback);
+
+		bool Send(std::string destination, Message::IMessagePtr message);
+
 		static void Start();
 
-		IPC::IIPCPtr IPC();
 		Logger::ILoggerPtr Logger();
-		Timer::IManagerPtr TimerManager();
 
 	private:
 		void Process();

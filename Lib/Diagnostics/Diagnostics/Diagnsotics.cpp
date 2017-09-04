@@ -24,7 +24,10 @@ namespace Boggart
 		vsnprintf(buffer, sizeof(buffer), format, args);
 		va_end(args);
 
-		m_Logger->Log(level, Category(), ModuleName(), buffer);
+		if (m_Logger)
+		{
+			m_Logger->Log(level, Category(), ModuleName(), buffer);
+		}
 	}
 
 	void Diagnostics::_OnLoggerInjection()
