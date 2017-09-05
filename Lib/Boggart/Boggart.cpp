@@ -21,7 +21,7 @@ namespace Boggart
 
 	Boggart::~Boggart()
 	{
-		for (int i=0; i<s_Boggarts.size(); i++)
+		for (std::size_t i=0; i<s_Boggarts.size(); i++)
 		{
 			if (s_Boggarts[i] == this)
 			{

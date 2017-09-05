@@ -10,8 +10,8 @@ namespace Boggart
 		IPCBase::IPCBase(std::string moduleName, std::string myId):
 			DependencyInjection(std::string("IPC"), moduleName),
 			m_SubscriptionTable(),
-			m_MyId(myId),
-			m_ConnectionManager(new ConnectionManager(myId, std::bind(&IPCBase::Send, this, std::placeholders::_1, std::placeholders::_2)))
+			m_ConnectionManager(new ConnectionManager(myId, std::bind(&IPCBase::Send, this, std::placeholders::_1, std::placeholders::_2))),
+			m_MyId(myId)
 		{
 
 		}

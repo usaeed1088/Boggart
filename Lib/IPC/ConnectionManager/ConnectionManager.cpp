@@ -100,7 +100,7 @@ namespace Boggart
 		{
 			std::int32_t index = -1;
 
-			for (std::int32_t i = 0; i < m_PeerConnections.size(); i++)
+			for (std::size_t i = 0; i < m_PeerConnections.size(); i++)
 			{
 				if (m_PeerConnections[i].Id == id)
 				{

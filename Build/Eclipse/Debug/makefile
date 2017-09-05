@@ -19,18 +19,24 @@ RM := rm -rf
 -include Lib/Timer/Manager/subdir.mk
 -include Lib/Timer/Device/SoftTimerDevice/subdir.mk
 -include Lib/Timer/Device/subdir.mk
+-include Lib/Message/Utility/subdir.mk
+-include Lib/Message/Factory/subdir.mk
+-include Lib/Message/Definition/subdir.mk
 -include Lib/Message/subdir.mk
 -include Lib/Logger/Console/subdir.mk
 -include Lib/Logger/subdir.mk
 -include Lib/IPC/Subscribable/subdir.mk
 -include Lib/IPC/Messages/Response/subdir.mk
 -include Lib/IPC/Messages/Request/subdir.mk
+-include Lib/IPC/Messages/Factory/subdir.mk
 -include Lib/IPC/Messages/subdir.mk
+-include Lib/IPC/ConnectionManager/subdir.mk
 -include Lib/IPC/Asynchronous/subdir.mk
 -include Lib/IPC/subdir.mk
 -include Lib/Diagnostics/Diagnostics/subdir.mk
 -include Lib/Diagnostics/subdir.mk
 -include Lib/Common/Patterns/DependencyInjection/subdir.mk
+-include Lib/Boggart/subdir.mk
 -include subdir.mk
 -include objects.mk
 

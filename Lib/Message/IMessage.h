@@ -11,7 +11,7 @@ namespace Boggart
 {
 	namespace Message
 	{
-		class IMessage : std::enable_shared_from_this<IMessage>
+		class IMessage : public std::enable_shared_from_this<IMessage>
 		{
 		public:
 			virtual ~IMessage() {}

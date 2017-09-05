@@ -15,7 +15,7 @@ namespace Boggart
 	{
 		typedef std::function<void(std::string, std::string, std::vector<unsigned char>)> Callback_t;
 
-		class IIPC : std::enable_shared_from_this<IIPC>
+		class IIPC : public std::enable_shared_from_this<IIPC>
 		{
 		public:
 			virtual ~IIPC() {}

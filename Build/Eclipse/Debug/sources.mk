@@ -23,18 +23,24 @@ C_DEPS :=
 
 # Every subdirectory with source files must be described here
 SUBDIRS := \
+Lib/Boggart \
 Lib/Common/Patterns/DependencyInjection \
 Lib/Diagnostics/Diagnostics \
 Lib/Diagnostics \
 Lib/IPC/Asynchronous \
+Lib/IPC/ConnectionManager \
 Lib/IPC \
+Lib/IPC/Messages/Factory \
 Lib/IPC/Messages \
 Lib/IPC/Messages/Request \
 Lib/IPC/Messages/Response \
 Lib/IPC/Subscribable \
 Lib/Logger/Console \
 Lib/Logger \
+Lib/Message/Definition \
+Lib/Message/Factory \
 Lib/Message \
+Lib/Message/Utility \
 Lib/Timer/Device \
 Lib/Timer/Device/SoftTimerDevice \
 Lib/Timer/Manager \

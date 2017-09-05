@@ -82,7 +82,7 @@ namespace Boggart
 		{
 			bool enabled = false;
 
-			for (std::int32_t i = 0; i < m_EnabledLevels.size(); i++)
+			for (std::size_t i = 0; i < m_EnabledLevels.size(); i++)
 			{
 				if (m_EnabledLevels[i] == level)
 				{
@@ -98,7 +98,7 @@ namespace Boggart
 		{
 			bool enabled = false;
 
-			for (std::int32_t i = 0; i < m_EnabledCategories.size(); i++)
+			for (std::size_t i = 0; i < m_EnabledCategories.size(); i++)
 			{
 				if (m_EnabledCategories[i] == category)
 				{
