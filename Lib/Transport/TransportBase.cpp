@@ -91,9 +91,11 @@ namespace Boggart
 
 			while (!data.empty())
 			{
-				m_IncomingBuffer.ProcessIncomingData(data);
+				m_IncomingBuffer.StoreIncomingData(data);
 				data = OnReceive();
 			}
+
+			m_IncomingBuffer.ProcessIncomingData();
 		}
 	}
 }

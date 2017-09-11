@@ -18,10 +18,13 @@ namespace Boggart
 
 		}
 
-		void IncomingBuffer::ProcessIncomingData(const std::vector<unsigned char>& data)
+		void IncomingBuffer::StoreIncomingData(const std::vector<unsigned char>& data)
 		{
 			m_Buffer.insert(m_Buffer.end(), data.begin(), data.end());
+		}
 
+		void IncomingBuffer::ProcessIncomingData()
+		{
 			std::int32_t SOPIndex = Find(Definition::SOP);
 
 			if (SOPIndex == -1)

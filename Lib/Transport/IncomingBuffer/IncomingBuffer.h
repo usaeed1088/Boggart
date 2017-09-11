@@ -18,7 +18,8 @@ namespace Boggart
 			IncomingBuffer();
 			~IncomingBuffer();
 
-			void ProcessIncomingData(const std::vector<unsigned char>& data);
+			void StoreIncomingData(const std::vector<unsigned char>& data);
+			void ProcessIncomingData();
 			std::vector<unsigned char> GetNextMessage();
 
 		private:

@@ -83,15 +83,17 @@ namespace Boggart
 
 	void Boggart::Start()
 	{
+		bool run = true;
+
 		// Setup the Boggarts
 		for (Boggart* boggart : s_Boggarts)
 		{
 			boggart->InjectDependencies();
-			boggart->StartComponents();
+			run &= boggart->StartComponents();
 		}
 
 		// Start processing
-		while (true)
+		while (run)
 		{
 			for (Boggart* boggart : s_Boggarts)
 			{
