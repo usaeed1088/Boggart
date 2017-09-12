@@ -73,7 +73,7 @@ namespace Boggart
 			Subscribe(MESSAGE_TABLE, m_ConnectionManager, Request::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 			Subscribe(MESSAGE_TABLE, m_ConnectionManager, Response::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
-			m_ConnectionManager->Start();
+			//m_ConnectionManager->Start();
 
 			return OnStart();
 		}

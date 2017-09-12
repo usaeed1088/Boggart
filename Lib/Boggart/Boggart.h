@@ -17,6 +17,11 @@
 #include <Transport/InProcess/InProcess.h>
 #include <Transport/TCP/Server/Server.h>
 #include <Transport/TCP/Client/Client.h>
+#include <Transport/UDP/Server/Server.h>
+#include <Transport/UDP/Client/Client.h>
+
+// Messages
+#include <Message/Types/Generic/Generic.h>
 
 #include <memory>
 

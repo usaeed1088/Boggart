@@ -101,10 +101,12 @@ namespace Boggart
 
 					for (std::size_t j = 0; j < m_Clients.size(); j++)
 					{
-						if (i != j)
+						if (i == j)
 						{
-							m_Clients[j]->Send(data);
+							continue;
 						}
+							
+						m_Clients[j]->Send(data);
 					}
 
 					m_IncomingQueue.push(data);
