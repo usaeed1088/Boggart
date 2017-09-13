@@ -99,7 +99,7 @@ namespace Boggart
 			subscriber->InjectIPC(this);
 			m_SubscriptionTable[table][type][subscriber->Name()] = callback;
 
-			m_Diagnostics->Log(Logger::Level::Information, "%s Subscribed on %s for type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
+			m_Diagnostics->Log(Logger::Level::Information, "%s Subscribed on %s of type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
 			return true;
 		}
 
@@ -113,7 +113,7 @@ namespace Boggart
 			}		
 
 			m_SubscriptionTable[table][type].erase(subscriberName);
-			m_Diagnostics->Log(Logger::Level::Information, "%s Unsubscribed from %s for type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
+			m_Diagnostics->Log(Logger::Level::Information, "%s Unsubscribed from %s of type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
 
 			return true;
 		}
