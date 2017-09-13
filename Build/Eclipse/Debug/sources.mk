@@ -40,6 +40,7 @@ Lib/Logger \
 Lib/Message/Definition \
 Lib/Message/Factory \
 Lib/Message \
+Lib/Message/Types/Generic \
 Lib/Message/Utility \
 Lib/Timer/Device \
 Lib/Timer/Device/SoftTimerDevice \
@@ -52,4 +53,7 @@ Lib/Transport/IncomingBuffer \
 Lib/Transport/TCP/Client \
 Lib/Transport/TCP/Server \
 Lib/Transport \
+Lib/Transport/UDP/Client \
+Lib/Transport/UDP/Definition \
+Lib/Transport/UDP/Server \
 

@@ -8,6 +8,9 @@ RM := rm -rf
 
 # All of the sources participating in the build are defined here
 -include sources.mk
+-include Lib/Transport/UDP/Server/subdir.mk
+-include Lib/Transport/UDP/Definition/subdir.mk
+-include Lib/Transport/UDP/Client/subdir.mk
 -include Lib/Transport/TCP/Server/subdir.mk
 -include Lib/Transport/TCP/Client/subdir.mk
 -include Lib/Transport/IncomingBuffer/subdir.mk
@@ -20,6 +23,7 @@ RM := rm -rf
 -include Lib/Timer/Device/SoftTimerDevice/subdir.mk
 -include Lib/Timer/Device/subdir.mk
 -include Lib/Message/Utility/subdir.mk
+-include Lib/Message/Types/Generic/subdir.mk
 -include Lib/Message/Factory/subdir.mk
 -include Lib/Message/Definition/subdir.mk
 -include Lib/Message/subdir.mk
