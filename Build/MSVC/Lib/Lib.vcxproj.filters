@@ -152,6 +152,9 @@
     <Filter Include="Transport\UDP\Definition">
       <UniqueIdentifier>{e771fe34-08f7-443f-93a1-3faee00cb9e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Transport\Bridge">
+      <UniqueIdentifier>{2b41aa51-e31a-4660-ad77-e64eeae57857}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -325,6 +328,9 @@
     <ClInclude Include="..\..\..\Lib\Transport\UDP\Definition\Definition.h">
       <Filter>Transport\UDP\Definition</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\Bridge\Bridge.h">
+      <Filter>Transport\Bridge</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
@@ -455,6 +461,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Message\Definition\Definition.cpp">
       <Filter>Message\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Bridge\Bridge.cpp">
+      <Filter>Transport\Bridge</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

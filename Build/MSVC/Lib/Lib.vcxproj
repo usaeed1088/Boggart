@@ -174,6 +174,7 @@
     <ClInclude Include="..\..\..\Lib\Timer\Manager\IManager.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\ManagerBase.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Bridge\Bridge.h" />
     <ClInclude Include="..\..\..\Lib\Transport\Definition\Definition.h" />
     <ClInclude Include="..\..\..\Lib\Transport\Discipline\DisciplineBase.h" />
     <ClInclude Include="..\..\..\Lib\Transport\Discipline\IDiscipline.h" />
@@ -208,7 +209,9 @@
     <ClCompile Include="..\..\..\Lib\IPC\Asynchronous\Asynchronous.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\ConnectionManager\ConnectionManager.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\IPCBase.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Factory\Factory.cpp" />
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Factory\Factory.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)IPCFactory.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\IPCMessage.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/IPCMessageBase.obj</ObjectFileName>
     </ClCompile>
@@ -231,11 +234,14 @@
     <ClCompile Include="..\..\..\Lib\Timer\Device\Type.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\ManagerBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Bridge\Bridge.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\Definition\Definition.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)TransportDefinition.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\Discipline\DisciplineBase.cpp" />
-    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Factory\Factory.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Factory\Factory.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)TransportDisciplineFactory.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Ping\Ping.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Pong\Pong.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\Discipline\Moderated\Moderated.cpp" />

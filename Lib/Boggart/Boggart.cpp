@@ -38,9 +38,9 @@ namespace Boggart
 		InjectTimerManager(std::shared_ptr<Timer::ManagerBase>(new Timer::SoftTimerManager()));
 		InjectTransport(std::shared_ptr<Transport::TransportBase>(new Transport::InProcess(m_Name)));
 
-		Logger()->EnableLevel(Logger::Level::Information);
-		Logger()->EnableLevel(Logger::Level::Error);
-		Logger()->EnableLevel(Logger::Level::FatalError);
+		m_Logger->EnableLevel(Logger::Level::Information);
+		m_Logger->EnableLevel(Logger::Level::Error);
+		m_Logger->EnableLevel(Logger::Level::FatalError);
 
 		m_Diagnostics.Log(Logger::Level::Information, "%s Boggart Loaded Default Dependencies", m_Name.c_str());
 	}
@@ -103,9 +103,9 @@ namespace Boggart
 		}
 	}
 
-	Logger::ILoggerPtr Boggart::Logger()
+	std::string Boggart::Name()
 	{
-		return m_Logger;
+		return m_Name;
 	}
 
 	void Boggart::Process()

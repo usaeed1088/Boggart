@@ -127,7 +127,7 @@ namespace Boggart
 
 			std::int32_t Server::FindIndexOf(std::string source, std::int32_t port)
 			{
-				for (std::size_t i = 0; i < m_Peers.size(); i++)
+				for (std::int32_t i = 0; i < m_Peers.size(); i++)
 				{
 					if (m_Peers[i].IP == source, m_Peers[i].Port == port)
 					{

@@ -20,6 +20,8 @@
 #include <Transport/UDP/Server/Server.h>
 #include <Transport/UDP/Client/Client.h>
 
+#include <Transport/Bridge/Bridge.h>
+
 // Messages
 #include <Message/Types/Generic/Generic.h>
 
@@ -58,7 +60,7 @@ namespace Boggart
 
 		static void Start();
 
-		Logger::ILoggerPtr Logger();
+		std::string Name();
 
 	private:
 		void Process();
