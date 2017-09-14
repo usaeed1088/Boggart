@@ -46,6 +46,7 @@ Lib/Timer/Device \
 Lib/Timer/Device/SoftTimerDevice \
 Lib/Timer/Manager \
 Lib/Timer/Manager/SoftTimerManager \
+Lib/Transport/Bridge \
 Lib/Transport/Definition \
 Lib/Transport/Helper \
 Lib/Transport/InProcess \

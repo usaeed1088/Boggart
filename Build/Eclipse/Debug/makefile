@@ -17,6 +17,7 @@ RM := rm -rf
 -include Lib/Transport/InProcess/subdir.mk
 -include Lib/Transport/Helper/subdir.mk
 -include Lib/Transport/Definition/subdir.mk
+-include Lib/Transport/Bridge/subdir.mk
 -include Lib/Transport/subdir.mk
 -include Lib/Timer/Manager/SoftTimerManager/subdir.mk
 -include Lib/Timer/Manager/subdir.mk
