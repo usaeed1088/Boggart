@@ -10,7 +10,7 @@ namespace Boggart
 
 	namespace Transport
 	{
-		class ITransport : std::enable_shared_from_this<ITransport>
+		class ITransport : public std::enable_shared_from_this<ITransport>
 		{
 		public:
 			virtual ~ITransport() {}

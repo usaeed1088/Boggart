@@ -11,7 +11,7 @@ namespace Boggart
 {
 	namespace Timer
 	{
-		class IDevice : /*public IDependencyInjection<IDevice>,*/ std::enable_shared_from_this<IDevice>
+		class IDevice : public std::enable_shared_from_this<IDevice>
 		{
 		public:
 			virtual ~IDevice() {}

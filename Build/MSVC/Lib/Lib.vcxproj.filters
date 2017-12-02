@@ -134,6 +134,27 @@
     <Filter Include="Transport\Discipline\Messages\Factory">
       <UniqueIdentifier>{b1024ffe-625e-4128-9355-a331f5c1ecc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Transport\UDP">
+      <UniqueIdentifier>{775d716f-aaa8-4a02-89e1-13d8fae27ac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\UDP\Server">
+      <UniqueIdentifier>{4d0a7b76-2248-4ecd-a658-4734d71396d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\UDP\Client">
+      <UniqueIdentifier>{336e6742-c30f-4bfb-8c45-5d064c132730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Message\Types">
+      <UniqueIdentifier>{95055297-6449-4503-9474-303572f03841}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Message\Types\Generic">
+      <UniqueIdentifier>{9c02c70f-314e-49ca-9bfb-9665446eaa26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\UDP\Definition">
+      <UniqueIdentifier>{e771fe34-08f7-443f-93a1-3faee00cb9e6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transport\Bridge">
+      <UniqueIdentifier>{2b41aa51-e31a-4660-ad77-e64eeae57857}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -295,6 +316,21 @@
     <ClInclude Include="..\..\..\Lib\Transport\Discipline\Messages\Factory\Factory.h">
       <Filter>Transport\Discipline\Messages\Factory</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\UDP\Server\Server.h">
+      <Filter>Transport\UDP\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\UDP\Client\Client.h">
+      <Filter>Transport\UDP\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Message\Types\Generic\Generic.h">
+      <Filter>Message\Types\Generic</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\UDP\Definition\Definition.h">
+      <Filter>Transport\UDP\Definition</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\Lib\Transport\Bridge\Bridge.h">
+      <Filter>Transport\Bridge</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Configuration\ConfigurationBase.cpp">
@@ -381,9 +417,6 @@
     <ClCompile Include="..\..\..\Lib\IPC\ConnectionManager\ConnectionManager.cpp">
       <Filter>IPC\ConnectionManager</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\Lib\Message\Definition\Defintion.cpp">
-      <Filter>Message\Definition</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\Lib\Boggart\Boggart.cpp">
       <Filter>Boggart</Filter>
     </ClCompile>
@@ -413,6 +446,24 @@
     </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Factory\Factory.cpp">
       <Filter>Transport\Discipline\Messages\Factory</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\UDP\Server\Server.cpp">
+      <Filter>Transport\UDP\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\UDP\Client\Client.cpp">
+      <Filter>Transport\UDP\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Message\Types\Generic\Generic.cpp">
+      <Filter>Message\Types\Generic</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\UDP\Definition\Definition.cpp">
+      <Filter>Transport\UDP\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Message\Definition\Definition.cpp">
+      <Filter>Message\Definition</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\Bridge\Bridge.cpp">
+      <Filter>Transport\Bridge</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

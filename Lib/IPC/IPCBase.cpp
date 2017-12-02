@@ -10,8 +10,8 @@ namespace Boggart
 		IPCBase::IPCBase(std::string moduleName, std::string myId):
 			DependencyInjection(std::string("IPC"), moduleName),
 			m_SubscriptionTable(),
-			m_MyId(myId),
-			m_ConnectionManager(new ConnectionManager(myId, std::bind(&IPCBase::Send, this, std::placeholders::_1, std::placeholders::_2)))
+			m_ConnectionManager(new ConnectionManager(myId, std::bind(&IPCBase::Send, this, std::placeholders::_1, std::placeholders::_2))),
+			m_MyId(myId)
 		{
 
 		}
@@ -73,7 +73,7 @@ namespace Boggart
 			Subscribe(MESSAGE_TABLE, m_ConnectionManager, Request::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 			Subscribe(MESSAGE_TABLE, m_ConnectionManager, Response::TypeString(), std::bind(&ConnectionManager::OnIncomingMessage, m_ConnectionManager, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
 
-			m_ConnectionManager->Start();
+			//m_ConnectionManager->Start();
 
 			return OnStart();
 		}
@@ -99,7 +99,7 @@ namespace Boggart
 			subscriber->InjectIPC(this);
 			m_SubscriptionTable[table][type][subscriber->Name()] = callback;
 
-			m_Diagnostics->Log(Logger::Level::Information, "%s Subscribed on %s for type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
+			m_Diagnostics->Log(Logger::Level::Information, "%s Subscribed on %s of type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
 			return true;
 		}
 
@@ -113,7 +113,7 @@ namespace Boggart
 			}		
 
 			m_SubscriptionTable[table][type].erase(subscriberName);
-			m_Diagnostics->Log(Logger::Level::Information, "%s Unsubscribed from %s for type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
+			m_Diagnostics->Log(Logger::Level::Information, "%s Unsubscribed from %s of type %s", subscriber->Name().c_str(), table.c_str(), type.c_str());
 
 			return true;
 		}

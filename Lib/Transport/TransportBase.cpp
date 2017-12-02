@@ -17,10 +17,11 @@ namespace Boggart
 
 		TransportBase::~TransportBase()
 		{
-			Close();
-
-			m_TimerManager->Stop(m_ProcessingTimer);
-			m_TimerManager->Destroy(m_ProcessingTimer);
+			if (m_TimerManager)
+			{
+				m_TimerManager->Stop(m_ProcessingTimer);
+				m_TimerManager->Destroy(m_ProcessingTimer);
+			}
 		}
 
 		bool TransportBase::Open()
@@ -90,9 +91,11 @@ namespace Boggart
 
 			while (!data.empty())
 			{
-				m_IncomingBuffer.ProcessIncomingData(data);
+				m_IncomingBuffer.StoreIncomingData(data);
 				data = OnReceive();
 			}
+
+			m_IncomingBuffer.ProcessIncomingData();
 		}
 	}
 }

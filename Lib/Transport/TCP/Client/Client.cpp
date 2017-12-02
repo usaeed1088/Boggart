@@ -19,7 +19,7 @@ namespace Boggart
 
 			Client::~Client()
 			{
-				
+				Close();
 			}
 
 			bool Client::OnOpen()

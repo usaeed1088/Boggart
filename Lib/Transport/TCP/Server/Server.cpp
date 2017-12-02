@@ -21,7 +21,7 @@ namespace Boggart
 
 			Server::~Server()
 			{
-				
+				Close();
 			}
 
 			bool Server::OnOpen()
@@ -47,10 +47,14 @@ namespace Boggart
 			{
 				bool ret = true;
 
+				m_TimerManager->Destroy(m_ProcessingTimer);
+
 				for (std::size_t i = 0; i < m_Clients.size(); i++)
 				{
 					ret &= m_Clients[i]->Close();
 				}
+
+				m_Socket->Close();
 
 				return ret;
 			}
@@ -93,6 +97,16 @@ namespace Boggart
 					if (data.empty())
 					{
 						continue;
+					}
+
+					for (std::size_t j = 0; j < m_Clients.size(); j++)
+					{
+						if (i == j)
+						{
+							continue;
+						}
+							
+						m_Clients[j]->Send(data);
 					}
 
 					m_IncomingQueue.push(data);

@@ -164,6 +164,7 @@
     <ClInclude Include="..\..\..\Lib\Message\Factory\IFactory.h" />
     <ClInclude Include="..\..\..\Lib\Message\IMessage.h" />
     <ClInclude Include="..\..\..\Lib\Message\MessageBase.h" />
+    <ClInclude Include="..\..\..\Lib\Message\Types\Generic\Generic.h" />
     <ClInclude Include="..\..\..\Lib\Message\Utility\Utility.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Common.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Device\DeviceBase.h" />
@@ -173,6 +174,7 @@
     <ClInclude Include="..\..\..\Lib\Timer\Manager\IManager.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\ManagerBase.h" />
     <ClInclude Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\Bridge\Bridge.h" />
     <ClInclude Include="..\..\..\Lib\Transport\Definition\Definition.h" />
     <ClInclude Include="..\..\..\Lib\Transport\Discipline\DisciplineBase.h" />
     <ClInclude Include="..\..\..\Lib\Transport\Discipline\IDiscipline.h" />
@@ -188,6 +190,9 @@
     <ClInclude Include="..\..\..\Lib\Transport\TCP\Client\Client.h" />
     <ClInclude Include="..\..\..\Lib\Transport\TCP\Server\Server.h" />
     <ClInclude Include="..\..\..\Lib\Transport\TransportBase.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\UDP\Client\Client.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\UDP\Definition\Definition.h" />
+    <ClInclude Include="..\..\..\Lib\Transport\UDP\Server\Server.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\Lib\Boggart\Boggart.cpp" />
@@ -204,7 +209,9 @@
     <ClCompile Include="..\..\..\Lib\IPC\Asynchronous\Asynchronous.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\ConnectionManager\ConnectionManager.cpp" />
     <ClCompile Include="..\..\..\Lib\IPC\IPCBase.cpp" />
-    <ClCompile Include="..\..\..\Lib\IPC\Messages\Factory\Factory.cpp" />
+    <ClCompile Include="..\..\..\Lib\IPC\Messages\Factory\Factory.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)IPCFactory.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\..\Lib\IPC\Messages\IPCMessage.cpp">
       <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)/IPCMessageBase.obj</ObjectFileName>
     </ClCompile>
@@ -215,18 +222,26 @@
     <ClCompile Include="..\..\..\Lib\Logger\Console\Console.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\Level.cpp" />
     <ClCompile Include="..\..\..\Lib\Logger\LoggerBase.cpp" />
-    <ClCompile Include="..\..\..\Lib\Message\Definition\Defintion.cpp" />
+    <ClCompile Include="..\..\..\Lib\Message\Definition\Definition.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)MessageDefinition.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\..\Lib\Message\Factory\FactoryBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Message\MessageBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\Message\Types\Generic\Generic.cpp" />
     <ClCompile Include="..\..\..\Lib\Message\Utility\Utility.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Device\DeviceBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Device\SoftTimerDevice\SoftTimerDevice.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Device\Type.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\ManagerBase.cpp" />
     <ClCompile Include="..\..\..\Lib\Timer\Manager\SoftTimerManager\SoftTimerManager.cpp" />
-    <ClCompile Include="..\..\..\Lib\Transport\Definition\Definition.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Bridge\Bridge.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Definition\Definition.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)TransportDefinition.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\Discipline\DisciplineBase.cpp" />
-    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Factory\Factory.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Factory\Factory.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)TransportDisciplineFactory.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Ping\Ping.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\Discipline\Messages\Pong\Pong.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\Discipline\Moderated\Moderated.cpp" />
@@ -234,9 +249,22 @@
     <ClCompile Include="..\..\..\Lib\Transport\Helper\Helper.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\IncomingBuffer\IncomingBuffer.cpp" />
     <ClCompile Include="..\..\..\Lib\Transport\InProcess\InProcess.cpp" />
-    <ClCompile Include="..\..\..\Lib\Transport\TCP\Client\Client.cpp" />
-    <ClCompile Include="..\..\..\Lib\Transport\TCP\Server\Server.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\TCP\Client\Client.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)TCPClient.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\TCP\Server\Server.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)TCPServer.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="..\..\..\Lib\Transport\TransportBase.cpp" />
+    <ClCompile Include="..\..\..\Lib\Transport\UDP\Client\Client.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)UDPClient.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\UDP\Definition\Definition.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)UDPDefinition.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="..\..\..\Lib\Transport\UDP\Server\Server.cpp">
+      <ObjectFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)UDPServer.obj</ObjectFileName>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

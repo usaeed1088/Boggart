@@ -14,14 +14,7 @@ namespace Boggart
 
 		InProcess::~InProcess()
 		{
-			for (std::vector<InProcess*>::iterator it = s_Subscribers.begin(); it != s_Subscribers.end(); ++it)
-			{
-				if ((*it) == this)
-				{
-					s_Subscribers.erase(it);
-					break;
-				}
-			}
+			Close();
 		}
 
 		bool InProcess::OnOpen()
@@ -31,6 +24,15 @@ namespace Boggart
 
 		bool InProcess::OnClose()
 		{
+			for (std::vector<InProcess*>::iterator it = s_Subscribers.begin(); it != s_Subscribers.end(); ++it)
+			{
+				if ((*it) == this)
+				{
+					s_Subscribers.erase(it);
+					break;
+				}
+			}
+
 			return true;
 		}
 
